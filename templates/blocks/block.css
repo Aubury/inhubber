@@ -406,6 +406,10 @@
   transform: translateY(-2%);
 }
 
+.bottom-header__nav-second.multiple-columns {
+  width: auto;
+}
+
 .bottom-header__nav-second li {
   display: -webkit-box;
   display: -ms-flexbox;

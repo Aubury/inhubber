@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const menuMobile = document.createElement('div');
         menuMobile.classList.add('menu-mobile');
+        body.append(menuMobile);
 
         if (burger) {
             burger.addEventListener('click', () => {
@@ -223,15 +224,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //===============================================================================================================
 
-
-
-
     // new WOW().init();
 
-
-
-
-
+    //===============================================================================================================
 
 
 

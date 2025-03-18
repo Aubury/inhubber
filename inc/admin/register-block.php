@@ -838,7 +838,7 @@ function register_example_block() {
 
 					'name' 					=> 'Video',
 		
-					'title' 				=>    'Video',
+					'title' 				=> 'Video',
 		
 					'description' 			=> 'Video',
 		
@@ -866,7 +866,7 @@ function register_example_block() {
 		
 				));
 
-       //customers
+       //customers header block
        acf_register_block_type(
            array(
                'name' 					=> 'compare-header-block',
@@ -883,7 +883,7 @@ function register_example_block() {
        );
 
 
-       //customers
+       //customers table
        acf_register_block_type(
            array(
                'name' 					=> 'customer table',
@@ -955,6 +955,54 @@ function register_example_block() {
                'post_types'			    => array( 'page', 'post' ),
                'mode'					=> 'auto',
                'render_template'		=> 'templates/blocks/glossary/related-terms.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
+       // integrations
+       acf_register_block_type(
+           array(
+               'name' 					=> 'integrations',
+               'title' 				    => 'Platform integrations search',
+               'description' 			=> 'Platform integrations search',
+               'category' 				=> 'category-integrations',
+               'icon'					=> 'format-status',
+               'keywords'				=> array( 'integrations' ),
+               'post_types'			    => array( 'page', 'post' ),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/integrations/platform-integrations-search.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
+       // customers menu
+       acf_register_block_type(
+           array(
+               'name' 					=> 'mane manu en',
+               'title' 				    => 'Mane manu - EN',
+               'description' 			=> 'Mane manu - EN',
+               'category' 				=> 'category-inhubber',
+               'icon'					=> 'format-status',
+               'keywords'				=> array( 'inhubber' ),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/main/mane_menu_en.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
+       // customers menu
+       acf_register_block_type(
+           array(
+               'name' 					=> 'mane manu de',
+               'title' 				    => 'Mane manu - DE',
+               'description' 			=> 'Mane manu - DE',
+               'category' 				=> 'category-inhubber',
+               'icon'					=> 'format-status',
+               'keywords'				=> array( 'inhubber' ),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/main/mane_menu_de.php',
                'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
            )
        );

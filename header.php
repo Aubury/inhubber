@@ -74,14 +74,39 @@
                         <?php endif; ?>
                     </a>
                 </div>
-                <?php wp_nav_menu(array(
-                    'theme_location' => 'main-menu',
-                    'container' => 'nav',
-                    'container_class' => 'bottom-header__nav',
-                    'menu_class' => 'bottom-header__nav-list',
-                    'depth' => 2,
-                    'walker' => new Header_Walker_Nav_Menu(),
-                )); ?>
+                <?php
+
+                $language = function_exists('pll_current_language') ? pll_current_language() : 'en';
+
+                if ( $language == 'en' ) {
+                    if ( get_field( 'showing_menu_en', 'option' ) == 1 ) {
+                        get_template_part('templates/blocks/main/mane_menu_en', get_post_format());
+                    } else {
+                        wp_nav_menu(array(
+                            'theme_location' => 'main-menu',
+                            'container' => 'nav',
+                            'container_class' => 'bottom-header__nav',
+                            'menu_class' => 'bottom-header__nav-list',
+                            'depth' => 2,
+                            'walker' => new Header_Walker_Nav_Menu(),
+                        ));
+                    }
+                } elseif ( $language == 'de' ) {
+                    if ( get_field( 'showing_menu_de', 'option' ) == 1 ) {
+                        get_template_part('templates/blocks/main/mane_menu_de', get_post_format());
+                    } else {
+                        wp_nav_menu(array(
+                            'theme_location' => 'main-menu',
+                            'container' => 'nav',
+                            'container_class' => 'bottom-header__nav',
+                            'menu_class' => 'bottom-header__nav-list',
+                            'depth' => 2,
+                            'walker' => new Header_Walker_Nav_Menu(),
+                        ));
+                    }
+                }
+
+                ?>
                 <div class="language">
                     <div class="langeage__btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"

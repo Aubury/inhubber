@@ -66,6 +66,7 @@ if(function_exists('pll_register_string')){
     pll_register_string('All', 'All', 'inhubber');
     pll_register_string('Data_Controller', 'Data Controller', 'inhubber');
     pll_register_string('On this page', 'On this page', 'inhubber');
+    pll_register_string('Categories', 'Categories', 'inhubber');
 }
 
 
