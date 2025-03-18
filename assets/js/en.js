@@ -1,0 +1,1 @@
+document.querySelectorAll('.language__menu a')[0].classList.add('_active')
