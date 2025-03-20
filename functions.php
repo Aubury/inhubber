@@ -235,6 +235,19 @@ add_filter('template_include', function ($template) {
 	return $template;
 });
 
+if( function_exists('acf_add_options_page') ) {
+  acf_add_options_page(array(
+      'page_title'    => 'ACF Global Settings',
+      'menu_title'    => 'ACF Global Settings',
+      'menu_slug'     => 'global-settings',
+      'capability'    => 'edit_posts',
+      'redirect'      => false
+  ));
+}
+
+
+////////////////////////////////////////////
+
 
 
 function mytheme_setup() {
@@ -272,21 +285,8 @@ function custom_taxonomy() {
 }
 add_action('init', 'custom_taxonomy');
 
-//////////////////////////////////////////////////////////////////////////////
 
-if( function_exists('acf_add_options_page') ) {
-    acf_add_options_page(array(
-        'page_title'    => 'ACF Global Settings',
-        'menu_title'    => 'ACF Global Settings',
-        'menu_slug'     => 'global-settings',
-        'capability'    => 'edit_posts',
-        'redirect'      => false
-    ));
-}
 
-// duplicate page
-// 
-// 
 /*
  * Function for post duplication. Dups appear as drafts. User is redirected to the edit screen
  */
@@ -396,4 +396,8 @@ function rd_duplicate_post_link( $actions, $post ) {
 add_filter('post_row_actions', 'rd_duplicate_post_link', 10, 2);
 add_filter('page_row_actions', 'rd_duplicate_post_link', 10, 2);
 
-
+function add_svg_to_upload_mimes( $mimes ) {
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
+}
+add_filter( 'upload_mimes', 'add_svg_to_upload_mimes' );

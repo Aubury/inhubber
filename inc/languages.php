@@ -42,10 +42,11 @@ if(function_exists('pll_register_string')){
     pll_register_string('footer_menu_product', 'Product', 'inhubber');
     pll_register_string('footer_menu_solutions', 'Solutions', 'inhubber');
     pll_register_string('footer_menu_resources', 'Resources', 'inhubber');
+    pll_register_string('footer_menu_compare', 'Compare', 'inhubber');
     pll_register_string('footer_menu_company', 'Company', 'inhubber');
 
     pll_register_string('Copyright', 'Copyright', 'inhubber');
-    pll_register_string('INHUBBER', 'INHUBBER (key2contract GmbH)', 'inhubber');
+    pll_register_string('Inhubber', 'Inhubber (key2contract GmbH)', 'inhubber');
 
     pll_register_string('Impressum', 'Impressum', 'inhubber');
     pll_register_string('Privacy_Policy', 'Privacy Policy', 'inhubber');

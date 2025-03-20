@@ -173,7 +173,7 @@
             <div class="bottom-footer__wrapper">
                 <div class="bottom-footer__copyright">
                     <?php pll_e('Copyright'); ?> © <?php echo date('Y'); ?>
-                    - <?php pll_e('INHUBBER (key2contract GmbH)'); ?>
+                    - <?php pll_e('Inhubber (key2contract GmbH)'); ?>
                 </div>
                 <nav class="bottom-footer__nav">
                     <ul>
