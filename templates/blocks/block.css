@@ -668,6 +668,10 @@
   background: linear-gradient(180deg, #f8f7fa 0%, rgba(248, 247, 250, 0) 100%);
 }
 
+.offer.white_bg {
+  background: white;
+}
+
 .offer__header {
   max-width: 800px;
   margin: 0px auto 0px auto;
@@ -6067,4 +6071,12 @@ body._active {
   .benefits__item:last-child {
     border: none;
   }
+}
+
+/*////////////////////////////////////////*/
+
+.overwiew-features.section-header.width-100,
+.section-header.width-100,
+.width-100 {
+  max-width: 100%;
 }

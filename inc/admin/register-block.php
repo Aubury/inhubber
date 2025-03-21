@@ -963,12 +963,12 @@ function register_example_block() {
        acf_register_block_type(
 		array(
 			'name' 					=> 'integrations',
-			'title' 				    => 'Platform integrations search',
+			'title' 				=> 'Platform integrations search',
 			'description' 			=> 'Platform integrations search',
 			'category' 				=> 'category-integrations',
 			'icon'					=> 'format-status',
 			'keywords'				=> array( 'integrations' ),
-			'post_types'			    => array( 'page', 'post' ),
+			'post_types'			=> array( 'page', 'post' ),
 			'mode'					=> 'auto',
 			'render_template'		=> 'templates/blocks/integrations/platform-integrations-search.php',
 			'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
@@ -979,12 +979,12 @@ function register_example_block() {
 	acf_register_block_type(
 		array(
 			'name' 					=> 'mane manu en',
-			'title' 				    => 'Mane manu - EN',
+			'title' 				=> 'Mane manu - EN',
 			'description' 			=> 'Mane manu - EN',
 			'category' 				=> 'category-inhubber',
 			'icon'					=> 'format-status',
 			'keywords'				=> array( 'inhubber' ),
-			'post_types'			    => array( 'page'),
+			'post_types'			=> array( 'page'),
 			'mode'					=> 'auto',
 			'render_template'		=> 'templates/blocks/main/mane_menu_en.php',
 			'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
@@ -995,17 +995,49 @@ function register_example_block() {
 	acf_register_block_type(
 		array(
 			'name' 					=> 'mane manu de',
-			'title' 				    => 'Mane manu - DE',
+			'title' 				=> 'Mane manu - DE',
 			'description' 			=> 'Mane manu - DE',
 			'category' 				=> 'category-inhubber',
 			'icon'					=> 'format-status',
 			'keywords'				=> array( 'inhubber' ),
-			'post_types'			    => array( 'page'),
+			'post_types'			=> array( 'page'),
 			'mode'					=> 'auto',
 			'render_template'		=> 'templates/blocks/main/mane_menu_de.php',
 			'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
 		)
 	);
+
+    acf_register_block_type(
+        array(
+           'name' 					=> 'first block with title page',
+           'title' 				    => 'First block with title page',
+           'description' 			=> 'First block with title page',
+           'category' 				=> 'category-inhubber',
+           'icon'					=> 'format-status',
+           'keywords'				=> array( 'inhubber' ),
+           'post_types'			    => array( 'page'),
+           'mode'					=> 'auto',
+           'render_template'		=> 'templates/blocks/main/first_title_block.php',
+           'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+        )
+    );
+
+    // search
+       acf_register_block_type(
+           array(
+               'name' 					=> 'platform search cards',
+               'title' 				    => 'Platform search cards',
+               'description' 			=> 'Platform search cards',
+               'category' 				=> 'category-inhubber',
+               'icon'					=> 'format-status',
+               'keywords'				=> array( 'inhubber' ),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/search/platform_search_cards.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
 		
 
 

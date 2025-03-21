@@ -63,10 +63,9 @@ if (have_posts()) {
                             foreach ($crb_integrations_menu as $item): ?>
                                 <li onclick="filterCategory('<?php echo $item['title']; ?>')">
                                     <?php
-                                        echo $item['title'];
+                                    echo $item['title'];
                                     ?>
                                 </li>
-
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </ul> <!-- end .submenu -->
@@ -81,27 +80,35 @@ if (have_posts()) {
                 <div class="dictionary-single-content__wrapper">
                     <div class="integrations-grid">
                         <?php foreach ($crb_integrations_cards as $card) : ?>
-                        <div class="integrations-card" data-category="<?php echo $card['crm']?>" >
-                            <div class="card-header">
-                                <?php echo wp_get_attachment_image($card['icon'], 'full',); ?>
-                                <p><?php echo $card['upcoming']; ?></p>
+                            <div class="integrations-card" data-category="<?php echo $card['crm']?>" >
+                                <div class="card-header">
+                                    <?php if (!empty($card['icon'])) :  ?>
+                                        <div class="icon-frame">
+                                            <?php echo wp_get_attachment_image($card['icon'], ['24', '24'],); ?>
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php if (!empty( $card['upcoming'] )) : ?>
+                                        <p><?php echo $card['upcoming']; ?></p>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="card-body">
+                                    <p class="info"><?php echo $card['crm']; ?></p>
+                                    <h3><?php echo $card['title']; ?></h3>
+                                    <p><?php echo $card['text']; ?></p>
+                                </div>
+                                <div class="card-footer">
+                                    <a href=""
+                                       onclick="Calendly.initPopupWidget({url: '<?php echo  carbon_get_theme_option('crb_options_menu_request' . carbon_lang_prefix()); ?>' });return false;"
+                                       class="card-button">
+                                        <?php echo esc_html( $card['text_button'] ); ?>
+                                    </a>
+                                    <?php if(!empty($card['link'])) : ?>
+                                        <a href="<?php echo esc_url( $card['link'] ); ?>">
+                                            <?php echo esc_html( $card['text_link'] ); ?>
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <p class="info"><?php echo $card['crm']; ?></p>
-                                <h3><?php echo $card['title']; ?></h3>
-                                <p><?php echo $card['text']; ?></p>
-                            </div>
-                            <div class="card-footer">
-                                <a href=""
-                                   onclick="Calendly.initPopupWidget({url: '<?php echo  carbon_get_theme_option('crb_options_menu_request' . carbon_lang_prefix()); ?>' });return false;"
-                                   class="card-button">
-                                    <?php echo esc_html( $card['text_button'] ); ?>
-                                </a>
-                                <a href="<?php echo esc_url( $card['link'] ); ?>">
-                                    <?php echo esc_html( $card['text_link'] ); ?>
-                                </a>
-                            </div>
-                        </div>
                         <?php endforeach; ?>
                     </div> <!-- end .integrations-grid -->
                 </div> <!-- end .dictionary-single-content__wrapper -->
