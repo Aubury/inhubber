@@ -190,7 +190,7 @@ if (have_posts()) {
         function filterCategory(category) {
             let cards = document.querySelectorAll(".integrations-card");
             cards.forEach(card => {
-                if (category === 'Other' || category === 'Andere') {
+                if (category === 'Other') {
                     if (card.dataset.category && !<?php  echo json_encode($categories); ?>.includes(card.dataset.category)) {
                         card.classList.add("showed");
                         card.classList.remove("hidden");

@@ -11,7 +11,7 @@ function register_example_block() {
 
 			'name' 					=> 'security-one-block',
 
-			'title' 				=>    'First block Security',
+			'title' 				=> 'First block Security',
 
 			'description' 			=> 'First block Security',
 
@@ -44,7 +44,7 @@ function register_example_block() {
 
 			'name' 					=> 'security-protecting-block',
 
-			'title' 				=>    'Protecting Security',
+			'title' 				=> 'Protecting Security',
 
 			'description' 			=> 'Protecting Security',
 
@@ -78,7 +78,7 @@ function register_example_block() {
 
 			'name' 					=> 'security-our-advantages-block',
 
-			'title' 				=>    'Our advantages',
+			'title' 				=> 'Our advantages',
 
 			'description' 			=> 'Our advantages',
 
@@ -114,7 +114,7 @@ function register_example_block() {
 
 			'name' 					=> 'security-our-customers-block',
 
-			'title' 				=>    'Our customers',
+			'title' 				=> 'Our customers',
 
 			'description' 			=> 'Our customers',
 
@@ -148,7 +148,7 @@ function register_example_block() {
 
 			'name' 					=> 'security-faq',
 
-			'title' 				=>    'FAQ Security',
+			'title' 				=> 'FAQ Security',
 
 			'description' 			=> 'FAQ Security',
 
@@ -181,7 +181,7 @@ function register_example_block() {
 
 			'name' 					=> 'security-everything',
 
-			'title' 				=>    'Everything Security',
+			'title' 				=> 'Everything Security',
 
 			'description' 			=> 'Everything Security',
 
@@ -215,7 +215,7 @@ function register_example_block() {
 
 			'name' 					=> 'overwiew-one-block',
 
-			'title' 				=>  'First block Overwiew',
+			'title' 				=> 'First block Overwiew',
 
 			'description' 			=> 'First block Overwiew',
 
@@ -249,7 +249,7 @@ function register_example_block() {
 
 			'name' 					=> 'overwiew-trusted-by-over',
 
-			'title' 				=>  'Slider Logo',
+			'title' 				=> 'Slider Logo',
 
 			'description' 			=> 'Slider Logo',
 
@@ -277,6 +277,7 @@ function register_example_block() {
 
 		));
 
+
 		//Repository //repository
 
 
@@ -284,7 +285,7 @@ function register_example_block() {
 
 			'name' 					=> 'overwiew-information',
 
-			'title' 				=>    'Overwiew Information',
+			'title' 				=> 'Overwiew Information',
 
 			'description' 			=> 'Overwiew Information',
 
@@ -318,7 +319,7 @@ function register_example_block() {
 
 			'name' 					=> 'customer-stories',
 
-			'title' 				=>    'Customer stories',
+			'title' 				=> 'Customer stories',
 
 			'description' 			=> 'Customer stories',
 
@@ -353,7 +354,7 @@ function register_example_block() {
 
 			'name' 					=> 'software',
 
-			'title' 				=>    'Software',
+			'title' 				=> 'Software',
 
 			'description' 			=> 'Software',
 
@@ -388,7 +389,7 @@ function register_example_block() {
 
 			'name' 					=> 'faq',
 
-			'title' 				=>    'FAQ',
+			'title' 				=> 'FAQ',
 
 			'description' 			=> 'FAQ',
 
@@ -423,7 +424,7 @@ function register_example_block() {
 
 			'name' 					=> 'contracts',
 
-			'title' 				=>    'Contracts',
+			'title' 				=> 'Contracts',
 
 			'description' 			=> 'Contracts',
 
@@ -459,7 +460,7 @@ function register_example_block() {
 
 			'name' 					=> 'solutions-one-block',
 
-			'title' 				=>    'First block Solutions',
+			'title' 				=> 'First block Solutions',
 
 			'description' 			=> 'First block Solutions',
 
@@ -492,7 +493,7 @@ function register_example_block() {
 
 			'name' 					=> 'solutions-information',
 
-			'title' 				=>    'Solutions Information',
+			'title' 				=> 'Solutions Information',
 
 			'description' 			=> 'Solutions Information',
 
@@ -526,7 +527,7 @@ function register_example_block() {
 
 			'name' 					=> 'solutions-transform',
 
-			'title' 				=>    'Solutions Transform',
+			'title' 				=> 'Solutions Transform',
 
 			'description' 			=> 'Solutions Transform',
 
@@ -560,7 +561,7 @@ function register_example_block() {
 
 			'name' 					=> 'about-us-one-block',
 
-			'title' 				=>    'First block About US ',
+			'title' 				=> 'First block About US ',
 
 			'description' 			=> 'First block About US ',
 
@@ -594,7 +595,7 @@ function register_example_block() {
 
 			'name' 					=> 'about-us-one-core',
 
-			'title' 				=>    'Our core values',
+			'title' 				=>  'Our core values',
 
 			'description' 			=> 'Our core values',
 
@@ -629,7 +630,7 @@ function register_example_block() {
 
 			'name' 					=> 'about-us-our-partners',
 
-			'title' 				=>    'Our partners',
+			'title' 				=> 'Our partners',
 
 			'description' 			=> 'Our partners',
 
@@ -663,7 +664,7 @@ function register_example_block() {
 
 			'name' 					=> 'about-us-news',
 
-			'title' 				=>    'News',
+			'title' 				=>  'News',
 
 			'description' 			=> 'News',
 
@@ -697,7 +698,7 @@ function register_example_block() {
 
 			'name' 					=> 'customers-one-block',
 
-			'title' 				=>    'First block Customers',
+			'title' 				=> 'First block Customers',
 
 			'description' 			=> 'First block Customers',
 
@@ -733,7 +734,7 @@ function register_example_block() {
 
 			'name' 					=> 'customers-video-review',
 
-			'title' 				=>    'Review',
+			'title' 				=> 'Review',
 
 			'description' 			=> 'Review',
 
@@ -769,7 +770,7 @@ function register_example_block() {
 
 					'name' 					=> 'customers-single-one-block',
 		
-					'title' 				=>    'Main block Single Customers',
+					'title' 				=>  'Main block Single Customers',
 		
 					'description' 			=> 'Main block Single Customers',
 		
@@ -1037,6 +1038,54 @@ function register_example_block() {
                'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
            )
        );
+
+       acf_register_block_type(
+           array(
+               'name' 					=> 'first block with social link',
+               'title' 				    => 'First block with social link',
+               'description' 			=> 'First block with social link',
+               'category' 				=> 'category-inhubber',
+               'icon'					=> 'format-status',
+               'keywords'				=> array( 'inhubber' ),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/main/first_block_with_social_link.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
+       acf_register_block_type(
+           array(
+               'name' 					=> 'list events',
+               'title' 				    => 'List Events',
+               'description' 			=> 'List Events',
+               'category' 				=> 'category-inhubber',
+               'icon'					=> 'format-status',
+               'keywords'				=> array( 'inhubber' ),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/events/list_events.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
+       //Trusted by over
+
+       acf_register_block_type( array(
+
+           'name' 					=> 'single-block-trusted-by-over',
+           'title' 				    => 'Single block - Trusted by over',
+           'description' 			=> 'Single block - Trusted by over',
+           'category' 				=> 'category-inhubber',
+           'icon'					=> 'align-full-width',
+           'keywords'				=> array( 'inhubber' ),
+           'post_types'			    => array( 'page' ),
+           'mode'					=> 'auto',
+           'render_template'		=> 'templates/blocks/events/single-trusted-by-over.php',
+           'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+
+       ));
+
 
 		
 
