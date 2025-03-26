@@ -165,7 +165,7 @@ Text Domain: pddocument
   top: auto !important;
 }
 
-.block-logo:not(.single-block) {
+.block-logo:not(.single-block)  {
   padding: 0 0 120px !important;
 }
 
