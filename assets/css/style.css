@@ -2689,13 +2689,14 @@ p {
   color: #7363E0;
 }
 
-.blog-content__image {
+.card .blog-content__image {
   height: 240px;
+  overflow: hidden;
 }
 
-.blog-content__image img {
+.card .blog-content__image img {
   width: 100%;
-  height: 100%;
+  height: auto;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -6355,7 +6356,7 @@ td.bg-gray {
   gap: 16px;
 }
 
-.menu-content a {
+.menu-content a:not(.btn-fill) {
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
@@ -6363,9 +6364,9 @@ td.bg-gray {
   color: inherit;
 }
 
-.menu-content a:active,
-.menu-content a:focus,
-.menu-content a:hover {
+.menu-content a:active:not(.btn-fill),
+.menu-content a:focus:not(.btn-fill),
+.menu-content a:hover:not(.btn-fill) {
   color: rgba(27, 27, 31, 1);
 }
 

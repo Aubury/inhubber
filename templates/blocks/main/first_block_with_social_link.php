@@ -195,10 +195,12 @@ if ( ! empty( $block['align'] ) ) {
                             </div>
                         <?php endwhile; ?>
                     <?php endif; ?>
-                    <div class="btn-fill"
-                         href="<?php echo carbon_get_post_meta(get_the_ID(), 'crb_event_register') ?>">
-                        <?php pll_e('Register'); ?>
-                    </div>
+                    <?php $register_button = get_sub_field( 'register_button' ); ?>
+                    <?php if ( $register_button ) : ?>
+                        <a class="btn-fill" href="<?php echo esc_url( $register_button['url'] ); ?>" >
+                            <?php echo esc_html( $register_button['title'] ); ?>
+                        </a>
+                    <?php endif; ?>
                 </div>
             </div>
         <?php endwhile; ?>
