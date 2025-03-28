@@ -35,14 +35,16 @@ if ( ! empty( $block['align'] ) ) {
 <section id="<?php echo esc_attr( $id ); ?>" class="page_first_block overwiew-offer white_bg <?php echo esc_attr( $classes ); ?>">
     <div class="container">
         <div class="offer__wrapper">
-            <div class="offer__header">
-                <?php if (get_field('page_title')) : ?>
-                    <h4 class="section-header__overtitle wow animate__animated animate__fadeInUp"><?php the_field( 'page_title' ); ?></h4>
-                <?php endif; ?>
+            <div class="header_block offer__header">
+                <div class="top_header_block">
+                    <?php if (get_field('page_title')) : ?>
+                        <h4 class="section-header__overtitle wow animate__animated animate__fadeInUp"><?php the_field( 'page_title' ); ?></h4>
+                    <?php endif; ?>
 
-                <?php if (get_field('title')) : ?>
-                    <h2 class="section-header__title wow animate__animated animate__fadeInUp"><?php the_field('title'); ?></h2>
-                <?php endif; ?>
+                    <?php if (get_field('title')) : ?>
+                        <h1><?php the_field('title'); ?></h1>
+                    <?php endif; ?>
+                </div>
 
                 <?php if ( get_field( 'social_links' ) == 1 ) : ?>
                     <div class="social_block">
@@ -118,39 +120,44 @@ if ( ! empty( $block['align'] ) ) {
         <?php while ( have_rows( 'information_block' ) ) : the_row(); ?>
             <div class="flex-row">
                 <div class="dictionary-single-content__wrapper main-content">
-                    <h4><?php the_sub_field( 'title' ); ?></h4>
-                    <p><?php the_sub_field( 'text' ); ?></p>
+                    <div class="info-block">
+                        <h4><?php the_sub_field( 'title' ); ?></h4>
+                        <p><?php the_sub_field( 'text' ); ?></p>
+                    </div>
 
                     <div class="table-display speakers_block">
                         <?php if ( have_rows( 'speakers' ) ) : ?>
                             <div class="menu-title">
                                 <?php echo pll_e('Speakers')?>
                             </div>
-                            <?php while ( have_rows( 'speakers' ) ) : the_row(); ?>
 
-                                <?php if ( have_rows( 'speaker' ) ) : ?>
+                            <div class="list-speakers">
+                                <?php while ( have_rows( 'speakers' ) ) : the_row(); ?>
 
-                                    <?php while ( have_rows( 'speaker' ) ) : the_row(); ?>
-                                    <div class="single_speaker">
-                                        <?php $image = get_sub_field( 'image' ); ?>
-                                        <?php if ( $image ) : ?>
-                                            <div class="icon-frame">
-                                                <img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php the_sub_field( 'name_of_speaker' ); ?>" width="40" height="40"/>
-                                            </div>
-                                        <?php endif; ?>
-                                        <div class="single_speaker_info">
-                                            <div class="mane_title">
-                                                <?php the_sub_field( 'name_of_speaker' ); ?>
-                                            </div>
-                                            <div class="info_text">
-                                                <?php the_sub_field( 'positions' ); ?>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <?php if ( have_rows( 'speaker' ) ) : ?>
 
-                                    <?php endwhile; ?>
-                                <?php endif; ?>
-                            <?php endwhile; ?>
+                                        <?php while ( have_rows( 'speaker' ) ) : the_row(); ?>
+                                            <div class="single_speaker">
+                                                <?php $image = get_sub_field( 'image' ); ?>
+                                                <?php if ( $image ) : ?>
+                                                    <div class="icon-frame">
+                                                        <img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php the_sub_field( 'name_of_speaker' ); ?>" width="40" height="40"/>
+                                                    </div>
+                                                <?php endif; ?>
+                                                <div class="single_speaker_info">
+                                                    <div class="mane_title">
+                                                        <?php the_sub_field( 'name_of_speaker' ); ?>
+                                                    </div>
+                                                    <div class="info_text">
+                                                        <?php the_sub_field( 'positions' ); ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php endwhile; ?>
+                                    <?php endif; ?>
+                                <?php endwhile; ?>
+                            </div>
+
                         <?php else : ?>
                             <?php // No rows found ?>
                         <?php endif; ?>
