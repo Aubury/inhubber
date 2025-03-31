@@ -136,6 +136,16 @@ if (have_posts()) {
                             <?php echo $crb_integrations_find_your_integration_under_title; ?>
                         </div>
                     <?php endif; ?>
+
+                    <?php if ($crb_integrations_text_link = carbon_get_post_meta($post->ID, 'crb_integrations_text_link')): ?>
+                        <a href=""
+                           onclick="Calendly.initPopupWidget({url: '<?php echo  carbon_get_theme_option('crb_options_menu_request' . carbon_lang_prefix()); ?>' });return false;"
+                           class="contracts__btn btn-fill">
+                            <?php pll_e('Request a demo'); ?>
+                        </a>
+                    <?php endif; ?>
+
+
                 </div>
                 <div class="solutions-description__img">
                     <?php if ($crb_integrations_find_your_integration_under_image = carbon_get_post_meta($post->ID, 'crb_integrations_find_your_integration_under_image')): ?>

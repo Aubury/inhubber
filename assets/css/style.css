@@ -6945,6 +6945,10 @@ td.bg-gray {
   gap: 32px;
 }
 
+.software_text_image_wrapper .btn-fill {
+  max-width: fit-content;
+}
+
 .table-display {
   display: none;
 }
@@ -7289,6 +7293,11 @@ td.bg-gray {
     gap: 64px;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   }
+
+  .software_text_image_wrapper .btn-fill {
+    justify-self: center;
+  }
+
   .software_text_image_wrapper .solutions-description__img {
     display: flex;
     align-items: center;

@@ -68,6 +68,10 @@ function crb_attach_theme_integrations_page() {
                 ->set_required( true )->set_width( 100 )
                 ->set_default_value('We can build a custom integration just for you. Say goodbye to contract management chaos and enjoy a smoother, smarter workflow. Let’s discuss how we can support you. '),
 
+            Field::make( 'text', 'crb_integrations_text_link', __( 'Text for link' ) )
+                ->set_default_value( __( 'Request a demo', 'inhubber' ) )
+                ->set_width(40),
+
             Field::make( 'image', 'crb_integrations_find_your_integration_under_image', __( 'Image' ) )->set_width(50),
 
         ))
