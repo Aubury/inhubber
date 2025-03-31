@@ -125,6 +125,62 @@ if ( have_posts() ) :?>
     </section>
 <?php endif; ?>
 
+<?php if ( $crb_retail_contract_title = carbon_get_post_meta($post->ID, 'crb_retail_contract_title')) : ?>
+
+<section class="about-us-values solutions-transform software">
+    <div class="container">
+        <div class="solutions-transform__wrapper">
+            <h2>
+                <?php echo $crb_retail_contract_title; ?>
+            </h2>
+
+            <?php if( $crb_retail_contract_text = carbon_get_post_meta($post->ID, 'crb_retail_contract_text')) : ?>
+                <div class="solutions-transform__text">
+                    <?php echo $crb_retail_contract_text; ?>
+                </div>
+            <?php endif; ?>
+
+            <?php $crb_retail_contract_button_title = carbon_get_post_meta($post->ID, 'crb_retail_contract_button_title'); ?>
+            <?php if (isset($crb_retail_contract_button_title)) : ?>
+                     <a href=""
+                       onclick="Calendly.initPopupWidget({url: '<?php echo  carbon_get_theme_option('crb_options_menu_request' . carbon_lang_prefix()); ?>' });return false;"
+                       class="btn-fill">
+                        <?php echo $crb_retail_contract_button_title; ?>
+                    </a>
+            <?php endif; ?>
+
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+
+<?php if ($crb_software_gallery = carbon_get_post_meta($id_home, 'crb_software_gallery')): ?>
+    <section class="software">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-header__title wow animate__animated animate__fadeInUp">
+                    <?php echo carbon_get_post_meta($id_home, 'crb_software_title') ?>
+                </h2>
+                <div class="section-header__undertitle wow animate__animated animate__fadeInUp">
+                    <?php echo carbon_get_post_meta($id_home, 'crb_software_text') ?>
+                </div>
+            </div>
+            <div class="software__items wow animate__animated animate__fadeInUp">
+                <?php foreach ($crb_software_gallery as $image): ?>
+                    <div class="software__item">
+                        <div class="software__wrapp">
+                            <div class="software__img">
+                                <?php echo wp_get_attachment_image($image, 'full',); ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+<?php endif; ?>
+
 <?php
 
 get_footer();
