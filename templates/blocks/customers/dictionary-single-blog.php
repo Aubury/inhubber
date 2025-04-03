@@ -27,7 +27,7 @@ if (!empty($block['align'])) {
 }
 ?>
 
-<section id="<?php echo esc_attr($id); ?>" class="features overwiew-features-white pb-0 <?php echo esc_attr($classes); ?>">
+<section id="<?php echo esc_attr($id); ?>" class="overwiew-features-white pb-0 <?php echo esc_attr($classes); ?>">
     <div class="container flex-row">
           <div class="menu-content">
                 <div class="menu-top-title" href="#">

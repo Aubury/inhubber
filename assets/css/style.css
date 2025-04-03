@@ -2860,10 +2860,6 @@ p {
   fill: #1B1B1F;
 }
 
-.single-content {
-  padding: 0px 0px 120px 0;
-}
-
 .single-content .container {
   max-width: 1072px;
 }
@@ -6438,10 +6434,6 @@ td.bg-gray {
   margin-bottom: 32px !important;
 }
 
-.dictionary-single-blog {
-  margin-top: 114px;
-}
-
 .text-gray {
   margin: 25px 0 0 0;
   font-weight: 400;
@@ -7360,10 +7352,6 @@ td.bg-gray {
 
   th img {
     max-width: 100%;
-  }
-
-  .dictionary-single-blog {
-    margin-top: 64px;
   }
 
   .glossary-grid,

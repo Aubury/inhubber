@@ -9,8 +9,10 @@ Template Name: Single Dictionary page
 ?>
 <?php if ( have_posts() ) :
     while ( have_posts() ) : the_post(); ?>
-        <section class="single-content">
-             <?php the_content(); ?>
+        <section class="single-content single-offer">
+            <div class="container">
+                <?php the_content(); ?>
+            </div>
         </section>
     <?php endwhile; ?>
 <?php else: ?>

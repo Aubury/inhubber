@@ -1,8 +1,8 @@
 <?php
 /**
- * Block template file: templates/blocks/events/list_events.php
+ * Block template file: templates/blocks/events/title-list-events.php
  *
- * List Events Block Template.
+ * Title List Events Block Template.
  *
  * @param   array $block The block settings and attributes.
  * @param   string $content The block inner HTML (empty).
@@ -11,13 +11,13 @@
  */
 
 // Create id attribute allowing for custom "anchor" value.
-$id = 'list-events-' . $block['id'];
+$id = 'title-list-events-' . $block['id'];
 if ( ! empty($block['anchor'] ) ) {
     $id = $block['anchor'];
 }
 
 // Create class attribute allowing for custom "className" and "align" values.
-$classes = 'block-list-events';
+$classes = 'block-title-list-events';
 if ( ! empty( $block['className'] ) ) {
     $classes .= ' ' . $block['className'];
 }

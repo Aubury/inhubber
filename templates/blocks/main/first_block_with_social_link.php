@@ -41,8 +41,8 @@ if ( ! empty( $block['align'] ) ) {
                         <h4 class="section-header__overtitle wow animate__animated animate__fadeInUp"><?php the_field( 'page_title' ); ?></h4>
                     <?php endif; ?>
 
-                    <?php if (get_field('title')) : ?>
-                        <h1><?php the_field('title'); ?></h1>
+                    <?php if (get_field('main_title')) : ?>
+                        <h1><?php the_field('main_title'); ?></h1>
                     <?php endif; ?>
                 </div>
 

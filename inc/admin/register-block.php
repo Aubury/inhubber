@@ -364,7 +364,7 @@ function register_example_block() {
 
 			'keywords'				=> array( 'inhubber' ),
 
-			'post_types'			=> array( 'page' ),
+			'post_types'			=> array( 'page', 'post' ),
 
 			'mode'					=> 'auto',
 
@@ -537,7 +537,7 @@ function register_example_block() {
 
 			'keywords'				=> array( 'solutions' ),
 
-			'post_types'			=> array( 'page' ),
+			'post_types'			=> array( 'page', 'post' ),
 
 			'mode'					=> 'auto',
 
@@ -1091,9 +1091,9 @@ function register_example_block() {
            'name' 					=> 'first-block-of-page',
            'title' 				    => 'First block of page Events',
            'description' 			=> 'First block of page Events',
-           'category' 				=> 'category-events',
+           'category' 				=> 'category-inhubber',
            'icon'					=> 'align-full-width',
-           'keywords'				=> array( 'events' ),
+           'keywords'				=> array( 'inhubber' ),
            'post_types'			    => array( 'page' ),
            'mode'					=> 'auto',
            'render_template'		=> 'templates/blocks/first-page-block/events-first-block-of-page.php',
@@ -1106,15 +1106,30 @@ function register_example_block() {
            'name' 					=> 'events-list',
            'title' 				    => 'All Events List',
            'description' 			=> 'All Events List',
-           'category' 				=> 'category-events',
+           'category' 				=> 'category-inhubber',
            'icon'					=> 'align-full-width',
-           'keywords'				=> array( 'events' ),
+           'keywords'				=> array( 'inhubber' ),
            'post_types'			    => array( 'page' ),
            'mode'					=> 'auto',
            'render_template'		=> 'templates/blocks/events/all-events.php',
            'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
 
        ));
+
+       acf_register_block_type(
+           array(
+               'name' 					=> 'title list events',
+               'title' 				    => 'List Events With title',
+               'description' 			=> 'List Events With title',
+               'category' 				=> 'category-inhubber',
+               'icon'					=> 'format-status',
+               'keywords'				=> array('inhubber'),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/events/title-list-events.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
 
 
    }
