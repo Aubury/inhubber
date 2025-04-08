@@ -1116,20 +1116,6 @@ function register_example_block() {
 
        ));
 
-       acf_register_block_type(
-           array(
-               'name' 					=> 'title list events',
-               'title' 				    => 'List Events With title',
-               'description' 			=> 'List Events With title',
-               'category' 				=> 'category-inhubber',
-               'icon'					=> 'format-status',
-               'keywords'				=> array('inhubber'),
-               'post_types'			    => array( 'page'),
-               'mode'					=> 'auto',
-               'render_template'		=> 'templates/blocks/events/title-list-events.php',
-               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
-           )
-       );
 
 
    }
