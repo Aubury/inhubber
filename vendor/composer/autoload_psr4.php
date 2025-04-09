@@ -6,7 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'enshrined\\svgSanitize\\' => array($vendorDir . '/enshrined/svg-sanitize/src'),
     'Carbon_Fields_Yoast\\' => array($vendorDir . '/htmlburger/carbon-fields-yoast/core'),
     'Carbon_Fields\\' => array($vendorDir . '/htmlburger/carbon-fields/core'),
     'Carbon_Field_UrlPicker\\' => array($vendorDir . '/iamntz/carbon-fields-urlpicker/core'),

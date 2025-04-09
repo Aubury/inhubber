@@ -4,8 +4,7 @@
         "htmlburger/carbon-fields": "^3.6",
         "htmlburger/carbon-field-number": "^3.0",
         "htmlburger/carbon-fields-yoast": "^1.0",
-        "iamntz/carbon-fields-urlpicker": "^3.0",
-        "enshrined/svg-sanitize": "^0.21.0"
+        "iamntz/carbon-fields-urlpicker": "^3.0"
     },
     "config": {
         "allow-plugins": {

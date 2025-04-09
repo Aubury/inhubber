@@ -1,10 +1,8 @@
 <?php get_header();
 
 $id_blog = get_option('page_for_posts');
-$post_slug = get_post_field('post_name', get_post());
 
-
-if (get_the_ID() === 124 || get_the_ID() === 1237 || $post_slug === 'blog' || $post_slug === 'blog-2') { // 124
+if (get_the_ID() === 124 || get_the_ID() === 1237) { // 124
     ?>
     <section class="blog-offer">
         <div class="container">

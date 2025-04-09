@@ -12,10 +12,6 @@ class ComposerStaticInit092253de85949376c4488b47e76d38dc
     );
 
     public static $prefixLengthsPsr4 = array (
-        'e' => 
-        array (
-            'enshrined\\svgSanitize\\' => 22,
-        ),
         'C' => 
         array (
             'Carbon_Fields_Yoast\\' => 20,
@@ -26,10 +22,6 @@ class ComposerStaticInit092253de85949376c4488b47e76d38dc
     );
 
     public static $prefixDirsPsr4 = array (
-        'enshrined\\svgSanitize\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/enshrined/svg-sanitize/src',
-        ),
         'Carbon_Fields_Yoast\\' => 
         array (
             0 => __DIR__ . '/..' . '/htmlburger/carbon-fields-yoast/core',
