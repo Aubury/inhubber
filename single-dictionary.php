@@ -5,9 +5,7 @@ Template Name: Single Dictionary page
 ?>
 <?php get_header() ?>
 <?php $cat = get_the_terms(get_the_ID(), 'category');
-//echo '<pre>';
-//print_r($cat);
-//echo '</pre>';
+
 ?>
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
     <section class="single-offer dictionary_cat">

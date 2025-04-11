@@ -401,3 +401,29 @@ function add_svg_to_upload_mimes( $mimes ) {
     return $mimes;
 }
 add_filter( 'upload_mimes', 'add_svg_to_upload_mimes' );
+
+// Безопасная обработка SVG перед сохранением
+function sanitize_svg_on_upload($file) {
+    if ($file['type'] === 'image/svg+xml') {
+        $svg = file_get_contents($file['tmp_name']);
+        // Удаляем потенциально опасный JS и ненужные теги
+        $svg = preg_replace('/<script.*?<\/script>/is', '', $svg);       // скрипты
+        $svg = preg_replace('/<\?php.*?\?>/is', '', $svg);               // php-теги
+        $svg = preg_replace('/<!--.*?-->/s', '', $svg);                  // комментарии
+
+        // Минимизация пробелов
+        $svg = preg_replace('/\s+/', ' ', $svg);                         // все пробелы
+        $svg = preg_replace('/>\s+</', '><', $svg);                      // между тегами
+        $svg = trim($svg);
+
+        file_put_contents($file['tmp_name'], $svg);
+    }
+    return $file;
+}
+
+add_filter('wp_handle_upload_prefilter', 'sanitize_svg_on_upload');
+
+
+
+
+

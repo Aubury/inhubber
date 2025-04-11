@@ -430,6 +430,11 @@ function library_block_category( $categories, $post ) {
 				'title' => 'Customers Single',
 			),
 
+            array(
+                'slug' => 'category-customers-single-blog',
+                'title' => 'Customers Single Blog',
+            ),
+
 
 			
 

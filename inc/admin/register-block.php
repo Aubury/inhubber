@@ -329,7 +329,7 @@ function register_example_block() {
 
 			'keywords'				=> array( 'inhubber' ),
 
-			'post_types'			=> array( 'page' ),
+			'post_types'			=> array( 'page', 'post' ),
 
 			'mode'					=> 'auto',
 
@@ -1127,6 +1127,21 @@ function register_example_block() {
                'post_types'			    => array( 'page'),
                'mode'					=> 'auto',
                'render_template'		=> 'templates/blocks/events/title-list-events.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
+       acf_register_block_type(
+           array(
+               'name' 					=> 'case-studies-block-sidebar',
+               'title' 				    => 'Case Study Block Sidebar',
+               'description' 			=> 'Case Study Block Sidebar',
+               'category' 				=> 'category-customers-single-blog',
+               'icon'					=> 'format-status',
+               'keywords'				=> array('blog'),
+               'post_types'			    => array( 'post'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/blog/case-studies-block-sidebar.php',
                'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
            )
        );
