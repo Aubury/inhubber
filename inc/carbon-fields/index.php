@@ -26,4 +26,3 @@ require_once(__DIR__ . '/compare-page.php');
 require_once(__DIR__ . '/dictionary-single-page.php');
 require_once(__DIR__ . '/related-terms.php');
 require_once(__DIR__ . '/integrations-page.php');
-//require_once(__DIR__ . '/single-case-studies.php');

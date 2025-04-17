@@ -47,4 +47,3 @@ if ( ! empty( $block['align'] ) ) {
         </div>
     </section>
  <?php endif; ?>
-

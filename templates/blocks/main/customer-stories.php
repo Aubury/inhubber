@@ -51,8 +51,8 @@ if (!empty($block['align'])) {
                             <?php $company_logo = get_sub_field('company_logo'); ?>
                             <?php $image_video = get_sub_field('image_video'); ?>
                             <?php $link_video = get_sub_field('link_video'); ?>
-
                             <?php if (get_sub_field('type') === 'video'): ?>
+
                                 <div class="stories__slide swiper-slide">
                                     <a href="<?php echo esc_url($link_video['url']) ?? ''; ?>"
                                        class="stories__slide-video videoModal">

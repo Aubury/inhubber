@@ -3,7 +3,7 @@
 <?php $cat = get_the_terms(get_the_ID(),'category',);  ?>
 
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-        <section class="single-offer">
+               <section class="single-offer">
             <div class="container">
                 <div class="single-offer__wrapper">
                 	
@@ -49,11 +49,10 @@
         	'cat' => $cat[0]->term_id,
         	'post__not_in' => [get_the_ID()]
 
-        ]);
-        ?>
+        ]); ?> 
 
         <?php  if ( $blog->have_posts() ) :?> 
-        	<section class="single-articles">
+        	        <section class="single-articles">
             <div class="container">
                 <h2><?php pll_e('Related articles'); ?></h2>
                 <div class="single-articles__wrapper">
