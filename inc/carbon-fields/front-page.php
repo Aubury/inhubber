@@ -155,7 +155,9 @@ function crb_attach_theme_front_page() {
 
      ->add_tab( __('Resources','inhubber'), array(
 
-     		Field::make( 'text', 'crb_resources_title', __( 'Title','inhubber' ) )->set_required( true )->set_width( 50 )->set_default_value('Resources'),
+     		Field::make( 'text', 'crb_resources_title', __( 'Title','inhubber' ) )
+                ->set_width( 50 )
+                ->set_default_value('Resources'),
      		Field::make( 'text', 'crb_resources_subtitle', __( 'Subtitle','inhubber' ) )->set_required( true )->set_width( 50 )->set_default_value('Get started easily'),
 
      		Field::make( 'textarea', 'crb_resources_text', __( 'Text','inhubber' ) )->set_required( true )->set_width( 100 )->set_default_value("Find the latest news, useful articles and e-books. Stay up to date with upcoming events or check out Inhubber's guides and features."),

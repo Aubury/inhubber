@@ -129,8 +129,10 @@ $categories = [];
             </div><!-- end .flex-row -->
 
             <div class="flex-row align-items-center justify-content-center">
-                    <button id="loadMore" class="load-more hidden" onclick="showMore()">Load More</button>
-                </div>
+                <button id="loadMore" class="load-more hidden" onclick="showMore()">
+                    <?php pll_e('Load more'); ?>
+                </button>
+            </div>
         <?php endwhile; ?>
         <?php endif; ?>
     </div> <!-- end .container -->

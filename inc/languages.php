@@ -25,6 +25,10 @@ if(function_exists('pll_register_string')){
     pll_register_string('Legal_validity_of_digital', 'Legal validity of digital signatures –...', 'inhubber');
     pll_register_string('Blog', 'Blog', 'inhubber');
     pll_register_string('News_Case_studies', 'News, Case studies', 'inhubber');
+    pll_register_string('Case studies', 'Case studies', 'inhubber');
+    pll_register_string('News', 'News', 'inhubber');
+    pll_register_string('Glossary', 'Glossary', 'inhubber');
+
 
     pll_register_string('times_blog', '18 Jan, Wed at 12:00', 'inhubber');
     pll_register_string('blog_exp', 'Digitaler Mietvertrag – so einfach wie...', 'inhubber');

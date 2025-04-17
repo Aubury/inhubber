@@ -249,9 +249,9 @@ function register_example_block() {
 
 			'name' 					=> 'overwiew-trusted-by-over',
 
-			'title' 				=> 'Slider Logo',
+			'title' 				=> 'Trusted By Over',
 
-			'description' 			=> 'Slider Logo',
+			'description' 			=> 'Trusted By Over',
 
 			'category' 				=> 'category-inhubber',
 

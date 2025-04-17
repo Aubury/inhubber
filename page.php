@@ -1,7 +1,29 @@
 <?php get_header();
+// Получаем текущий язык
+$lang = pll_current_language();
 
 $id_blog = get_option('page_for_posts');
 $post_slug = get_post_field('post_name', get_post());
+
+/** Case Studies */
+$case_studies_pages_link = pll_current_language() === 'en' ? get_the_permalink(5478) : get_the_permalink(5480);
+$case_studies = get_category_by_slug('case-studies');
+$case_studies_cat_id = $case_studies ? $case_studies->cat_ID : $case_studies->term_taxonomy_id ;
+$case_studies_category = get_category($case_studies_cat_id);
+
+/** NEWS */
+$news_pages_link = $lang === 'en' ? get_the_permalink(5482) : get_the_permalink(5484);
+$lang === 'en' ? $category_slug = 'news' : $category_slug = 'nachrichten';
+$lang === 'en' ? $news_cat_id = get_cat_ID('news') : $news_cat_id = get_cat_ID('nachrichten');
+$news_category = get_category($news_cat_id);
+
+/** BLOG  */
+$blog_cat_id = get_cat_ID('blog');
+
+/** GLOSSARY */
+$glossary_pages_link = $lang === 'en' ? get_the_permalink(2794) : get_the_permalink(2826);
+$glossary_cat_id = get_cat_ID('glossary');
+$glossary_category = get_category($glossary_cat_id);
 
 if (get_the_ID() === 124 || get_the_ID() === 1237 || $post_slug === 'blog' || $post_slug === 'blog-2') { // 124
     ?>
@@ -15,14 +37,34 @@ if (get_the_ID() === 124 || get_the_ID() === 1237 || $post_slug === 'blog' || $p
                     <?php echo get_the_content(null, null, $id_blog) ?>
                 </div>
                 <div class="blog-offer__tabs">
-                    <a href="<?php echo get_page_link(pll_get_post($id_blog)); ?>" class="blog-offer__tab _active">
+                    <a href="<?php echo get_page_link(pll_get_post($id_blog)); ?>" data-id="<?php echo esc_attr($id_blog) ?>" class="blog-offer__tab _active">
                         <?php pll_e('All'); ?>
                     </a>
+
+                    <?php if ($case_studies_category->count > 0) : ?>
+                        <a href="<?php echo $case_studies_pages_link; ?>" data-id="<?php echo esc_attr($case_studies_cat_id) ?>" class="blog-offer__tab">
+                            <?php pll_e('Case studies'); ?>
+                        </a>
+                    <?php endif; ?>
+
+                    <?php if ($news_category->count > 0) : ?>
+                        <a href="<?php echo $news_pages_link; ?>" data-id="<?php echo esc_attr($news_cat_id) ?>" class="blog-offer__tab">
+                            <?php pll_e('News'); ?>
+                        </a>
+                    <?php endif; ?>
+
+                    <?php if ($glossary_category->count > 0) : ?>
+                        <a href="<?php echo $glossary_pages_link; ?>" data-id="<?php echo esc_attr($glossary_cat_id) ?>" class="blog-offer__tab">
+                            <?php pll_e('Glossary'); ?>
+                        </a>
+                    <?php endif; ?>
+
                     <?php
                     $terms = get_terms([
                         'taxonomy' => 'category',
                         'hide_empty' => true,
                         'orderby' => 'id',
+                        'exclude'    => [$case_studies_cat_id, $news_cat_id, $blog_cat_id, $glossary_cat_id]
                     ]);
                     ?>
                     <?php if ($terms): ?>

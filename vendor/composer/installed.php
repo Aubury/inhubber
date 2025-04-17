@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'e6c95bfcd88e0f81d5f5802b3e715a39f3ca8644',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'e6c95bfcd88e0f81d5f5802b3e715a39f3ca8644',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -29,9 +29,9 @@
             'dev_requirement' => false,
         ),
         'htmlburger/carbon-fields' => array(
-            'pretty_version' => 'v3.6.3',
-            'version' => '3.6.3.0',
-            'reference' => 'd913a5148cb9dc61ed239719c747f4ebb513003f',
+            'pretty_version' => 'v3.6.6',
+            'version' => '3.6.6.0',
+            'reference' => '9cb536e775f3c0688e18fca39445326521197220',
             'type' => 'library',
             'install_path' => __DIR__ . '/../htmlburger/carbon-fields',
             'aliases' => array(),

@@ -354,6 +354,7 @@
 
 <?php endif; ?>
 
+<?php if (!empty(carbon_get_post_meta($id_home, 'crb_resources_title'))) : ?>
     <section class="resourse">
         <div class="container">
             <div class="resourse__wrapper">
@@ -498,6 +499,8 @@
             </div>
         </div>
     </section>
+<?php endif; ?>
+
 <?php if ($faqs = carbon_get_post_meta($id_home, 'crb_faq')): ?>
     <section class="faq">
         <div class="container">
