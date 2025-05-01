@@ -7424,6 +7424,108 @@ td.bg-gray {
   margin-top: 0 !important;
 }
 
+.img-box-shadow {
+  border-radius: 8px;
+  border: #F3F2F5;
+  background: #FFF;
+  box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.16);
+}
+
+.image-info-block.offer__images-small-1 {
+  top: auto;
+  bottom: 72px;
+  left: 0;
+}
+
+.image-info-block.offer__images-small-2 {
+  top: 184px;
+  left: auto;
+  right: 32px;
+}
+
+.image-info-block.offer__images-small-3 {
+  bottom: 136px;
+  left: auto;
+  right: 0;
+}
+
+.image-info-block-digital.offer__images-small-1 {
+  top: auto;
+  bottom: 48px;
+  max-width: 400px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 6px;
+}
+
+.image-info-block-digital.offer__images-small-1 img {
+  max-width: 100%;
+}
+
+.image-info-block-digital.offer__images-small-2 {
+  top: auto;
+  bottom: 152px;
+  left: 286px;
+  right: auto;
+}
+
+.image-info-block-digital.offer__images-small-3 {
+  top: 120px;
+  bottom: auto;
+  left: auto;
+  right: 0;
+}
+
+.image-info-block-digital.offer__images-small-4 {
+  top: auto;
+  bottom: 192px;
+  left: auto;
+  right: 140px;
+}
+
+.offer_over_title {
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 133.333%;
+  letter-spacing: -0.3px;
+  margin-bottom: 16px;
+}
+
+.offer_over_title.color_black {
+  color: #1B1B1F;
+}
+
+.offer_over_title.color_orange {
+  color: #EB992F;
+}
+
+.standard_width_card{
+  flex: 0 0 50%;
+}
+
+.full_width_card {
+  flex: 0 0 100%;
+}
+
+.block-solutions-information-title .container {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.block-solutions-information-title .container .solutions-description__wrapper {
+  margin-bottom: 0;
+}
+
+.block-solutions-information-title .solutions-description__descr h2 {
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 125%;
+  letter-spacing: -0.34px;
+}
 
 @media screen and (max-width: 1025px) {
   .menu-content {
@@ -7536,7 +7638,13 @@ td.bg-gray {
 }
 
 @media screen and (max-width: 768px) {
+  .offer_over_title {
+    font-size: 20px;
+  }
 
+  .standard_width_card{
+    flex: 0 0 100%;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -7653,7 +7761,18 @@ td.bg-gray {
   .case-blog-mane-block {
     padding: 80px 0;
   }
- 
+
+  .offer_over_title {
+    font-size: 16px;
+  }
+
+  .block-solutions-information-title .container {
+    gap: 64px;
+  }
+
+  .block-solutions-information-title .solutions-description__descr h2 {
+    font-size: 24px;
+  }
 
 }
 

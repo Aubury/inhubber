@@ -1091,7 +1091,7 @@ function register_example_block() {
            'name' 					=> 'first-block-of-page',
            'title' 				    => 'First block of page Events',
            'description' 			=> 'First block of page Events',
-           'category' 				=> 'category-inhubber',
+           'category' 				=> 'category-page-first-block',
            'icon'					=> 'align-full-width',
            'keywords'				=> array( 'inhubber' ),
            'post_types'			    => array( 'page' ),
@@ -1146,6 +1146,80 @@ function register_example_block() {
            )
        );
 
+       acf_register_block_type(
+           array(
+               'name' 					=> 'customer-page-first-block',
+               'title' 				    => 'Customer - Page First Block - align center',
+               'description' 			=> 'Customer - Page First Block - align center',
+               'category' 				=> 'category-page-first-block',
+               'icon'					=> 'format-status',
+               'keywords'				=> array('inhubber'),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/first-page-block/first-block-align-center.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
+       acf_register_block_type(
+           array(
+               'name' 					=> 'customer-page-first-block-digital',
+               'title' 				    => 'Page First Block - Digital',
+               'description' 			=> 'Page First Block - Digital',
+               'category' 				=> 'category-page-first-block',
+               'icon'					=> 'format-status',
+               'keywords'				=> array('inhubber'),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/first-page-block/first-block-digital.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
+       acf_register_block_type(
+           array(
+               'name' 					=> 'list-cards-with-images',
+               'title' 				    => 'List cards with images',
+               'description' 			=> 'List cards with images',
+               'category' 				=> 'category-list',
+               'icon'					=> 'format-status',
+               'keywords'				=> array('list'),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/list/list-cards-with-images.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
+       acf_register_block_type(
+           array(
+               'name' 					=> 'benefits',
+               'title' 				    => 'Benefits',
+               'description' 			=> 'Benefits',
+               'category' 				=> 'category-inhubber',
+               'icon'					=> 'format-status',
+               'keywords'				=> array('inhubber'),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/main/benefits.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
+       acf_register_block_type(
+           array(
+               'name' 					=> 'solutions-information-title',
+               'title' 				    => 'Solutions Information with header title',
+               'description' 			=> 'Solutions Information with header title',
+               'category' 				=> 'category-solutions',
+               'icon'					=> 'format-status',
+               'keywords'				=> array('solutions'),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/solutions/solutions-information-title.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
 
    }
 

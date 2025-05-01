@@ -423,6 +423,12 @@ function sanitize_svg_on_upload($file) {
 
 add_filter('wp_handle_upload_prefilter', 'sanitize_svg_on_upload');
 
+/** Отключения Отключение авто обновлений плагинов и тем */
+// Отключение авто обновлений плагинов
+add_filter('auto_update_plugin', '__return_false');
+// Отключение авто обновлений тем
+add_filter('auto_update_theme', '__return_false');
+/** END - Отключения Отключение авто обновлений плагинов и тем */
 
 
 

@@ -25,32 +25,32 @@ if ( ! empty( $block['align'] ) ) {
     $classes .= ' align' . $block['align'];
 }
 ?>
-	<?php if ( have_rows( 'solutions_information' ) ) : ?>
-<section id="<?php echo esc_attr( $id ); ?>" class="about-us-values solutions-description <?php echo esc_attr( $classes ); ?>">
-            <div class="container">
-               <?php $k = 1; ?>
+<?php if ( have_rows( 'solutions_information' ) ) : ?>
+    <section id="<?php echo esc_attr( $id ); ?>" class="about-us-values solutions-description <?php echo esc_attr( $classes ); ?>">
+        <div class="container">
+           <?php $k = 1; ?>
             <?php while ( have_rows( 'solutions_information' ) ) : the_row(); ?>
-            
+
                <div class="solutions-description__wrapper <?php if($k % 2 == 0): ?> _revers <?php endif; ?>">
                     <div class="solutions-description__descr">
                         <h2>
                         <?php the_sub_field( 'title' ); ?>
                         </h2>
                         <div class="solutions-description__text">
-                        <?php the_sub_field( 'text' ); ?>   
+                        <?php the_sub_field( 'text' ); ?>
                         </div>
                     </div>
                     <?php $image = get_sub_field( 'image' ); ?>
                     <div class="solutions-description__img">
-                    <img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>" />
+                        <img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>" />
                     </div>
                 </div>
-                  
-               
+
+
             <?php $k++; ?>
             <?php endwhile; ?>
 
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <?php endif; ?>
+<?php endif; ?>

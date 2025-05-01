@@ -435,6 +435,16 @@ function library_block_category( $categories, $post ) {
                 'title' => 'Customers Single Blog',
             ),
 
+            array(
+                'slug' => 'category-page-first-block',
+                'title' => 'Page First Block',
+            ),
+
+            array(
+                'slug' => 'category-list',
+                'title' => 'List',
+            ),
+
 
 			
 

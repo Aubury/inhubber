@@ -45,12 +45,17 @@ else {
 <section id="<?php echo esc_attr( $id ); ?>" class="features overwiew-features  <?php echo $color; ?> <?php echo esc_attr( $classes ); ?>">
             <div class="container">
                 <div class="section-header">
-                    <div class="section-header__overtitle wow animate__animated animate__fadeInUp">
-                    <?php the_field( 'title' ); ?>
-                    </div>
-                    <h2 class="section-header__title wow animate__animated animate__fadeInUp">
-                    <?php the_field( 'subtitle' ); ?>
-                    </h2>
+                    <?php if (get_field('title')) : ?>
+                        <div class="section-header__overtitle wow animate__animated animate__fadeInUp">
+                        <?php the_field( 'title' ); ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (get_field('subtitle')): ?>
+                        <h2 class="section-header__title wow animate__animated animate__fadeInUp">
+                        <?php the_field( 'subtitle' ); ?>
+                        </h2>
+                    <?php endif; ?>
 
                     <?php if (get_field('text' )) : ?>
                         <div class="section-header__undertitle wow animate__animated animate__fadeInUp">
