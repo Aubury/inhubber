@@ -29,8 +29,7 @@
                                 <?php foreach ($crb_trusted_gallery as $image): ?>
                                     <div class="offer__trusted-image block-logo__slide swiper-slide">
 
-                                        <img src="<?php echo kama_thumb_src('w=176 &h=64 &crop=false', $image); ?>"
-                                             alt="img">
+                                        <?php echo  wp_get_attachment_image($image, 'post-thumbnail', 'true', array('alt' => 'img' )); ?>
 
                                     </div>
                                 <?php endforeach; ?>
