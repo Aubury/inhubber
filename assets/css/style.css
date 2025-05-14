@@ -1512,6 +1512,8 @@ p {
 
 .stories__slide-img.no-before:before {
   background: transparent !important;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 
 .stories__slide-img picture {
@@ -7652,6 +7654,21 @@ td.bg-gray {
 
   .standard_width_card{
     flex: 0 0 100%;
+  }
+
+  .stories__slide-img.no-before {
+    min-width: 100%;
+    width: auto;
+    min-height: unset;
+    height: auto;
+  }
+
+
+    .stories__slide-img.no-before img {
+    min-width: 100%;
+    width: auto;
+    min-height: unset;
+    height: auto;
   }
 }
 
