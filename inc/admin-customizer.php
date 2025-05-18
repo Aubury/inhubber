@@ -445,6 +445,11 @@ function library_block_category( $categories, $post ) {
                 'title' => 'List',
             ),
 
+            array(
+                'slug' => 'category-table',
+                'title' => 'Table',
+            ),
+
 
 			
 

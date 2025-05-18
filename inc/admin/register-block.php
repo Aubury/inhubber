@@ -890,7 +890,7 @@ function register_example_block() {
                'name' 					=> 'customer table',
                'title' 				    => 'Customers table',
                'description' 			=> 'Customers table',
-               'category' 				=> 'category-customers',
+               'category' 				=> 'category-table',
                'icon'					=> 'format-status',
                'keywords'				=> array( 'customers' ),
                'post_types'			    => array( 'page' ),
@@ -1242,6 +1242,21 @@ function register_example_block() {
                'title' 				    => 'Pricing block cards',
                'description' 			=> 'Pricing block cards',
                'category' 				=> 'category-inhubber',
+               'icon'					=> 'format-status',
+               'keywords'				=> array('inhubber'),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/main/pricing-block-cards.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
+       acf_register_block_type(
+           array(
+               'name' 					=> 'pricing-table-compare',
+               'title' 				    => 'Pricing table compare',
+               'description' 			=> 'Pricing table compare',
+               'category' 				=> 'category-table',
                'icon'					=> 'format-status',
                'keywords'				=> array('inhubber'),
                'post_types'			    => array( 'page'),
