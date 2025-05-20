@@ -75,6 +75,8 @@ if(function_exists('pll_register_string')){
     pll_register_string('Details', 'Details', 'inhubber');
     pll_register_string('Speakers', 'Speakers', 'inhubber');
     pll_register_string('Most popular', 'Most popular', 'inhubber');
+    pll_register_string('Monthly', 'Monthly', 'inhubber');
+    pll_register_string('Annually', 'Annually', 'inhubber');
 }
 
 

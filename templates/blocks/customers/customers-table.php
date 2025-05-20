@@ -113,12 +113,15 @@ if (!empty($block['align'])) {
                         <?php else : ?>
                             <?php // No rows found ?>
                         <?php endif; ?>
+
                         <?php if ( have_rows( 'subtable' ) ) : ?>
                             <?php while ( have_rows( 'subtable' ) ) : the_row(); ?>
-                               <tr><td colspan="3" class="table-title"><?php the_sub_field( 'title' ); ?></td></tr>
+                               <tr>
+                                   <td colspan="3" class="table-title"><?php the_sub_field( 'title' ); ?></td>
+                               </tr>
                                 <?php if ( have_rows( 'row' ) ) : ?>
                                     <?php while ( have_rows( 'row' ) ) : the_row(); ?>
-                                        <tr>
+                                        <tr class="bg-hover">
                                             <td>
                                                 <div>
                                                     <?php the_sub_field( 'column_1' ); ?>

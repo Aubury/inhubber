@@ -1261,7 +1261,7 @@ function register_example_block() {
                'keywords'				=> array('inhubber'),
                'post_types'			    => array( 'page'),
                'mode'					=> 'auto',
-               'render_template'		=> 'templates/blocks/main/pricing-block-cards.php',
+               'render_template'		=> 'templates/blocks/table/pricing-table-compare.php',
                'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
            )
        );

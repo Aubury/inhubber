@@ -37,19 +37,21 @@ if ( ! empty( $block['align'] ) ) {
        <div class="payment_period">
            <div class="period-choose-container">
                <div class="toggle-wrapper">
-                   <span id="label-month" class="label">Monthly</span>
-
+                   <span id="label-month" class="label">
+                       <?php pll_e('Monthly'); ?>
+                   </span>
                    <label class="switch">
                        <input type="checkbox" id="billing-toggle" checked>
                        <span class="slider"></span>
                    </label>
 
-                   <span id="label-annual" class="label active">Annually</span>
+                   <span id="label-annual" class="label active">
+                       <?php pll_e('Annually'); ?>
+                   </span>
                    <span id="save-badge" class="save-label active">
                        <?php the_field( 'title_save_%' ); ?>
                    </span>
                </div>
-
            </div>
 
            <?php if ( have_rows( 'pricing_card' ) ) : ?>
