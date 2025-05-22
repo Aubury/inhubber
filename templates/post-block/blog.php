@@ -1,9 +1,20 @@
-<?php $cat_blog = get_the_terms(get_the_ID(),'category',);  ?>
+<?php $cat_blog = get_the_terms(get_the_ID(),'category',);
+
+$thumb_id = get_post_thumbnail_id(); // получаем ID текущего изображения
+$thumb_url = kama_thumb_src([
+	'src' => wp_get_attachment_url($thumb_id),
+	'w'   => 592,
+	'h'   => 240,
+	'crop' => true,
+	'alt' => get_the_title(),
+]);
+?>
+
 
 <div class="blog-content__item">
 	<a href="<?php the_permalink(); ?>" class="blog-content__wrapp">
 		<div class="blog-content__image">
-			<?php echo kama_thumb_img('w=592 &h=240 &crop=true  &alt='.get_the_title( ).''); ?>
+            <img src="<?php echo esc_url($thumb_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
 		</div>
 		<div class="blog-content__info">
 			<div class="blog-content__date">
