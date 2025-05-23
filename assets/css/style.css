@@ -7955,6 +7955,31 @@ td.bg-gray {
   background-color: #F8F7FA;
 }
 
+/* Общая ширина/высота скроллбара */
+::-webkit-scrollbar {
+  width: 5px;  /* вертикальный скролл */
+  height: 5px; /* горизонтальный скролл */
+}
+
+/* Фон скроллбара */
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 5px;
+}
+
+/* Бегунок (ползунок) */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #888, #555);
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* При наведении на бегунок */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #666, #333);
+}
+
+
 @media screen and (max-width: 1025px) {
   .menu-content {
     min-width: 220px;
@@ -8251,5 +8276,26 @@ td.bg-gray {
     border-color: transparent #1B1B1F transparent transparent;
   }
 
+  #table-pricing-boxes {
+    width: auto;
+    overflow-x: scroll;
+  }
+
+  #table-pricing-boxes table {
+    width: fit-content;
+    table-layout: auto;
+  }
+
+  #table-pricing-boxes .btn-fill {
+    white-space: nowrap;
+  }
+
+  #table-pricing-boxes th {
+    min-width: 160px;
+  }
+
+  .tooltip-container {
+    margin-left: 20px;
+  }
 }
 

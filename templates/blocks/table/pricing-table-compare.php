@@ -77,7 +77,7 @@ if ( ! empty( $block['align'] ) ) {
 
         <div id="table-pricing-boxes" class="table-wrapper table-pricing-mode-annual">
             <table>
-                <theader>
+                <thead>
                 <?php if ( have_rows( 'table_header' ) ) : ?>
                     <tr>
                         <?php while ( have_rows( 'table_header' ) ) : the_row(); ?>
@@ -270,7 +270,7 @@ if ( ! empty( $block['align'] ) ) {
                         <?php endwhile; ?>
                     </tr>
                 <?php endif; ?>
-            </theader>
+                 </thead>
 
                 <tbody>
                     <?php if ( have_rows( 'subtable' ) ) : ?>
