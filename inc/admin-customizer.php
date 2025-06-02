@@ -445,12 +445,10 @@ function library_block_category( $categories, $post ) {
                 'title' => 'List',
             ),
 
-            array(
+             array(
                 'slug' => 'category-table',
                 'title' => 'Table',
-            ),
-
-
+             ),
 			
 
 
@@ -461,4 +459,3 @@ function library_block_category( $categories, $post ) {
 }
 add_filter( 'block_categories', 'library_block_category', 10, 2);
 //Создание категорий для гутенберга
-

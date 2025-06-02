@@ -137,4 +137,3 @@ if ( ! empty( $block['align'] ) ) {
     <?php endif; ?>
 
 </div>
-

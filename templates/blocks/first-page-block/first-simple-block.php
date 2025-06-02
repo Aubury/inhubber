@@ -53,6 +53,13 @@ if ( ! empty( $block['align'] ) ) {
                         <?php the_field( 'under_title' ); ?>
                     </div>
                 <?php endif; ?>
+
+                <?php $link = get_field('link'); ?>
+                <?php if ($link['title']) : ?>
+                    <a href=""
+                       onclick="Calendly.initPopupWidget({url: '<?php echo  carbon_get_theme_option('crb_options_menu_request' . carbon_lang_prefix()); ?>' });return false;"
+                       class="btn-fill"><?php echo esc_html($link['title']); ?></a>
+                <?php endif; ?>
             </div>
         </div>
     </div>

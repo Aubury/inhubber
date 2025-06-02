@@ -2681,6 +2681,7 @@ p {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 50%;
           flex: 0 0 50%;
+  max-width: 100%;
 }
 
 .blog-content__wrapp {
