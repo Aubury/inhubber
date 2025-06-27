@@ -112,13 +112,39 @@
                             )); ?>
                         </div>
                     <?php endif; ?>
-                    <?php if (has_nav_menu('solutions-menu')): ?>
+<!--                    --><?php //if (has_nav_menu('solutions-menu')): ?>
+<!--                        <div class="top-footer__nav-item">-->
+<!--                            <div class="top-footer__nav-title">-->
+<!--                                --><?php //pll_e('Solutions'); ?>
+<!--                            </div>-->
+<!--                            --><?php //wp_nav_menu(array(
+//                                'theme_location' => 'solutions-menu',
+//                                'container' => false,
+//                                'menu_class' => '',
+//                                'depth' => 1,
+//                            )); ?>
+<!--                        </div>-->
+<!--                    --><?php //endif; ?>
+                    <?php if (has_nav_menu('industries-menu')): ?>
                         <div class="top-footer__nav-item">
                             <div class="top-footer__nav-title">
-                                <?php pll_e('Solutions'); ?>
+                                <?php pll_e('Industries'); ?>
                             </div>
                             <?php wp_nav_menu(array(
-                                'theme_location' => 'solutions-menu',
+                                'theme_location' => 'industries-menu',
+                                'container' => false,
+                                'menu_class' => '',
+                                'depth' => 1,
+                            )); ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (has_nav_menu('teams-menu')): ?>
+                        <div class="top-footer__nav-item">
+                            <div class="top-footer__nav-title">
+                                <?php pll_e('Teams'); ?>
+                            </div>
+                            <?php wp_nav_menu(array(
+                                'theme_location' => 'teams-menu',
                                 'container' => false,
                                 'menu_class' => '',
                                 'depth' => 1,
@@ -151,19 +177,19 @@
                             )); ?>
                         </div>
                     <?php endif; ?>
-                    <?php if (has_nav_menu('company-menu')): ?>
-                        <div class="top-footer__nav-item">
-                            <div class="top-footer__nav-title">
-                                <?php pll_e('Company'); ?>
-                            </div>
-                            <?php wp_nav_menu(array(
-                                'theme_location' => 'company-menu',
-                                'container' => false,
-                                'menu_class' => '',
-                                'depth' => 1,
-                            )); ?>
-                        </div>
-                    <?php endif; ?>
+<!--                    --><?php //if (has_nav_menu('company-menu')): ?>
+<!--                        <div class="top-footer__nav-item">-->
+<!--                            <div class="top-footer__nav-title">-->
+<!--                                --><?php //pll_e('Company'); ?>
+<!--                            </div>-->
+<!--                            --><?php //wp_nav_menu(array(
+//                                'theme_location' => 'company-menu',
+//                                'container' => false,
+//                                'menu_class' => '',
+//                                'depth' => 1,
+//                            )); ?>
+<!--                        </div>-->
+<!--                    --><?php //endif; ?>
                 </nav>
             </div>
         </div>

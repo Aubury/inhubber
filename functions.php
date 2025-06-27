@@ -65,6 +65,8 @@ if (!function_exists('inhubber_setup')) :
 				'resources-menu' => __('Resources', 'inhubber'),
 				'company-menu' => __('Company', 'inhubber'),
 				'compare-menu' => __('Compare', 'inhubber'),
+                'industries-menu' => __('Industries', 'inhubber'),
+                'teams-menu' => __('Teams', 'inhubber'),
 			)
 		);
 	}
