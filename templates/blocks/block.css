@@ -2841,7 +2841,7 @@
   line-height: 150%;
 }
 
-.single-content ul {
+.single-content ul:not(.information_block ul) {
   margin: 32px 0px 0px 0px;
   padding: 0px 0px 0 18px;
 }

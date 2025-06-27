@@ -1078,7 +1078,7 @@ function register_example_block() {
            'category' 				=> 'category-inhubber',
            'icon'					=> 'align-full-width',
            'keywords'				=> array( 'inhubber' ),
-           'post_types'			    => array( 'page' ),
+           'post_types'			    => array( 'page', 'post' ),
            'mode'					=> 'auto',
            'render_template'		=> 'templates/blocks/events/single-trusted-by-over.php',
            'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
