@@ -1,6 +1,18 @@
 <?php get_header() ?>
 	
-<?php $cat = get_the_terms(get_the_ID(),'category',);  ?>
+<?php $cat = get_the_terms(get_the_ID(),'category',);
+
+$thumb_id = get_post_thumbnail_id(); // получаем ID текущего изображения
+$thumb_url = kama_thumb_src([
+    'src' => wp_get_attachment_url($thumb_id),
+    'w'   => 1080,
+    'h'   => 408,
+    'crop' => true,
+    'alt' => get_the_title(),
+]);
+?>
+
+
 
     <?php if ( have_posts() ) :
         while ( have_posts() ) : the_post(); ?>
@@ -35,9 +47,8 @@
             </section>
             <section class="single-content">
                 <div class="container">
-                    <?php echo kama_thumb_img('w=1080 &h=408 &crop=true  &alt='.get_the_title( ).''); ?>
+                    <img src="<?php echo esc_url($thumb_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
                     <?php the_content(); ?>
-
                 </div>
             </section>
             <?php endwhile; ?>

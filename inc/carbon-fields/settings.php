@@ -38,6 +38,16 @@ function crb_attach_theme_options()
          Field::make( 'text', 'crb_options_soc_instagram_link'.carbon_lang_prefix(), __('Instagram', 'inhubber') )->set_default_value('#')->set_width( 50 ),
       ))
 
+       ->add_tab(__('Phone numbers', 'inhubber'), array(
+
+           Field::make( 'text', 'crb_options_company_phone'.carbon_lang_prefix(), __('Company phone number ', 'inhubber') )
+               ->set_default_value('#')
+               ->set_width( 50 ),
+           Field::make( 'text', 'crb_options_whatsapp_number'.carbon_lang_prefix(), __('WhatsApp number', 'inhubber') )
+               ->set_default_value('#')
+               ->set_width( 50 ),
+       ))
+
       ->add_tab(__('Footer Menu', 'inhubber'), array(
 
           Field::make( 'separator', 'crb_options_footer_separator', __( 'Information block in footer','inhubber' ) ),

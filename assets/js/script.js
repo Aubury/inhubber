@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const burger = document.querySelector('.header__burger');
         const menu = document.querySelector('.bottom-header__nav');
         const btns = document.querySelector('.bottom-header__btns');
+        const phones = document.querySelector('.bottom-header_phones');
         const body = document.body;
 
         const menuMobile = document.createElement('div');
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (document.documentElement.clientWidth <= 992) {
                 burger.insertAdjacentElement('afterend', menuMobile);
                 menuMobile.insertAdjacentElement('beforeend', menu);
+                menuMobile.insertAdjacentElement('beforeend', phones);
             }
             if (document.documentElement.clientWidth <= 576) {
                 menuMobile.insertAdjacentElement('beforeend', btns);

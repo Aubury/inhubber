@@ -196,52 +196,145 @@
     </div>
     <div class="footer__bottom bottom-footer">
         <div class="container">
-            <div class="bottom-footer__wrapper">
-                <div class="bottom-footer__copyright">
-                    <?php pll_e('Copyright'); ?> © <?php echo date('Y'); ?>
-                    - <?php pll_e('Inhubber (key2contract GmbH)'); ?>
-                </div>
-                <nav class="bottom-footer__nav">
-                    <ul>
-                        <li>
-                            <a href="<?php echo carbon_get_theme_option('crb_options_footer_link_impressum' . carbon_lang_prefix()); ?>"><?php pll_e('Impressum'); ?></a>
-                        </li>
-                        <li>
-                            <a href="<?php echo carbon_get_theme_option('crb_options_footer_link_privacy' . carbon_lang_prefix()); ?>"><?php pll_e('Privacy Policy'); ?></a>
-                        </li>
-                    </ul>
-                </nav>
+            <div class="bottom-footer__wrapper desktop-display">
 
-                <?php if (function_exists('pll_the_languages')): ?>
-                    <?php $translations = pll_the_languages(['raw' => 1]); ?>
-                    <?php if ($translations): ?>
-                        <div class="bottom-footer__language">
-                            <div class="bottom-footer__language-header">
-                                <?php foreach ($translations as $lang): ?>
-                                    <?php if ($lang['current_lang']): ?>
-                                        <div class="bottom-footer__language-text">
-                                            <?php echo $lang['name'] ?>
-                                        </div>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                                <div class="bottom-footer__language-icon">
-                                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/arrow-menu.svg"
-                                         alt="arrow-menu">
+                    <div class="bottom-footer__copyright">
+                        <?php pll_e('Copyright'); ?> © <?php echo date('Y'); ?>
+                        - <?php pll_e('Inhubber (key2contract GmbH)'); ?>
+                    </div>
+                    <nav class="bottom-footer__nav">
+                        <ul>
+                            <li>
+                                <a href="<?php echo carbon_get_theme_option('crb_options_footer_link_impressum' . carbon_lang_prefix()); ?>"><?php pll_e('Impressum'); ?></a>
+                            </li>
+                            <li>
+                                <a href="<?php echo carbon_get_theme_option('crb_options_footer_link_privacy' . carbon_lang_prefix()); ?>"><?php pll_e('Privacy Policy'); ?></a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <?php if (function_exists('pll_the_languages')): ?>
+                        <?php $translations = pll_the_languages(['raw' => 1]); ?>
+                        <?php if ($translations): ?>
+                            <div class="bottom-footer__language">
+                                <div class="bottom-footer__language-header">
+                                    <?php foreach ($translations as $lang): ?>
+                                        <?php if ($lang['current_lang']): ?>
+                                            <div class="bottom-footer__language-text">
+                                                <?php echo $lang['name'] ?>
+                                            </div>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                    <div class="bottom-footer__language-icon">
+                                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/arrow-menu.svg"
+                                             alt="arrow-menu">
+                                    </div>
+                                </div>
+                                <div class="bottom-footer__language-body">
+                                    <?php foreach ($translations as $lang): ?>
+                                        <?php if ($lang['no_translation'] == false): ?>
+                                            <div class="bottom-footer__language-item <?php if ($lang['current_lang']): ?>_active <?php endif; ?>">
+                                                <a href="<?php echo $lang['url'] ?>"><?php echo $lang['name'] ?></a>
+
+                                            </div>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
                                 </div>
                             </div>
-                            <div class="bottom-footer__language-body">
-                                <?php foreach ($translations as $lang): ?>
-                                    <?php if ($lang['no_translation'] == false): ?>
-                                        <div class="bottom-footer__language-item <?php if ($lang['current_lang']): ?>_active <?php endif; ?>">
-                                            <a href="<?php echo $lang['url'] ?>"><?php echo $lang['name'] ?></a>
-
-                                        </div>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
+                        <?php endif; ?>
                     <?php endif; ?>
-                <?php endif; ?>
+
+                    <?php
+                    $crb_options_company_phone = carbon_get_theme_option('crb_options_company_phone' . carbon_lang_prefix());
+                    $crb_options_whatsapp_number = carbon_get_theme_option('crb_options_whatsapp_number' . carbon_lang_prefix());
+                    ?>
+
+                    <div class="bottom-footer_phones">
+                        <a href="tel:<?php echo str_replace(' ', '', $crb_options_company_phone); ?>">
+                            <?php echo $crb_options_company_phone; ?>
+                        </a>
+                        <a href="https://wa.me/<?php echo preg_replace('/\D+/', '', $crb_options_whatsapp_number);?>" target="_blank">
+                            WhatsApp
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.99707 1C9.85012 1.00005 11.594 1.72173 12.9033 3.03418C14.2126 4.34663 14.9999 6.08738 15 7.94043C15 11.7654 11.8189 14.8778 7.99707 14.8779H7.99414C6.83164 14.8779 5.69023 14.5873 4.67773 14.0342L1 15L1.98438 11.4062C1.37813 10.3531 1.05957 9.15938 1.05957 7.9375C1.05957 4.1125 4.17207 1 7.99707 1ZM5.53711 4.7373C5.42148 4.7374 5.23437 4.78153 5.0752 4.95312L5.04004 4.99121C4.85871 5.1855 4.46875 5.60362 4.46875 6.40039C4.46893 7.23123 5.0584 8.03556 5.16699 8.18359L5.1748 8.19336C5.17932 8.19933 5.18724 8.2103 5.19727 8.22461L5.20801 8.24023C5.42216 8.54641 6.51733 10.1114 8.1377 10.8125C9.23756 11.2874 9.66879 11.3283 10.2188 11.2471C10.5531 11.1971 11.2439 10.8281 11.3877 10.4219C11.5314 10.0157 11.5311 9.66855 11.4873 9.59668C11.4532 9.53148 11.367 9.48975 11.2393 9.42871C11.2174 9.41826 11.1942 9.40734 11.1699 9.39551L11.1592 9.39062C10.9869 9.30295 10.1339 8.88436 9.97461 8.82812C9.81541 8.76884 9.69953 8.74114 9.58398 8.91602C9.46809 9.09122 9.13723 9.47801 9.03418 9.59668C8.93418 9.71231 8.83105 9.72812 8.65918 9.64062C7.64052 9.13129 6.97164 8.73119 6.2998 7.57812C6.20103 7.40825 6.26672 7.33909 6.40137 7.19824C6.50937 7.08527 6.66225 6.9255 6.80957 6.63086C6.86555 6.51544 6.83762 6.41551 6.79395 6.32812C6.76313 6.26649 6.58144 5.82511 6.42676 5.44824C6.36199 5.29045 6.30222 5.14346 6.25977 5.04102C6.16722 4.81891 6.07293 4.76289 5.98926 4.74902L5.90918 4.74414C5.89541 4.74416 5.8819 4.74487 5.86914 4.74414C5.76914 4.73789 5.65273 4.7373 5.53711 4.7373Z" fill="#1B1B1F"/>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+            </div>
+
+            <div class="bottom-footer__wrapper_table table-display">
+                    <div class="flex-row">
+                        <div class="bottom-footer__copyright">
+                            <?php pll_e('Copyright'); ?> © <?php echo date('Y'); ?>
+                            - <?php pll_e('Inhubber (key2contract GmbH)'); ?>
+                        </div>
+                        <nav class="bottom-footer__nav">
+                            <ul>
+                                <li>
+                                    <a href="<?php echo carbon_get_theme_option('crb_options_footer_link_impressum' . carbon_lang_prefix()); ?>"><?php pll_e('Impressum'); ?></a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo carbon_get_theme_option('crb_options_footer_link_privacy' . carbon_lang_prefix()); ?>"><?php pll_e('Privacy Policy'); ?></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="flex-row">
+                        <?php if (function_exists('pll_the_languages')): ?>
+                            <?php $translations = pll_the_languages(['raw' => 1]); ?>
+                            <?php if ($translations): ?>
+                                <div class="bottom-footer__language">
+                                    <div class="bottom-footer__language-header">
+                                        <?php foreach ($translations as $lang): ?>
+                                            <?php if ($lang['current_lang']): ?>
+                                                <div class="bottom-footer__language-text">
+                                                    <?php echo $lang['name'] ?>
+                                                </div>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                        <div class="bottom-footer__language-icon">
+                                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/arrow-menu.svg"
+                                                 alt="arrow-menu">
+                                        </div>
+                                    </div>
+                                    <div class="bottom-footer__language-body">
+                                        <?php foreach ($translations as $lang): ?>
+                                            <?php if ($lang['no_translation'] == false): ?>
+                                                <div class="bottom-footer__language-item <?php if ($lang['current_lang']): ?>_active <?php endif; ?>">
+                                                    <a href="<?php echo $lang['url'] ?>"><?php echo $lang['name'] ?></a>
+
+                                                </div>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        <?php endif; ?>
+
+                        <div class="vr"></div>
+
+                        <?php
+                        $crb_options_company_phone = carbon_get_theme_option('crb_options_company_phone' . carbon_lang_prefix());
+                        $crb_options_whatsapp_number = carbon_get_theme_option('crb_options_whatsapp_number' . carbon_lang_prefix());
+                        ?>
+
+                        <div class="bottom-footer_phones">
+                            <a href="tel:<?php echo str_replace(' ', '', $crb_options_company_phone); ?>">
+                                <?php echo $crb_options_company_phone; ?>
+                            </a>
+                            <a href="https://wa.me/<?php echo preg_replace('/\D+/', '', $crb_options_whatsapp_number);?>" target="_blank">
+                                WhatsApp
+                                <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.99707 1C9.85012 1.00005 11.594 1.72173 12.9033 3.03418C14.2126 4.34663 14.9999 6.08738 15 7.94043C15 11.7654 11.8189 14.8778 7.99707 14.8779H7.99414C6.83164 14.8779 5.69023 14.5873 4.67773 14.0342L1 15L1.98438 11.4062C1.37813 10.3531 1.05957 9.15938 1.05957 7.9375C1.05957 4.1125 4.17207 1 7.99707 1ZM5.53711 4.7373C5.42148 4.7374 5.23437 4.78153 5.0752 4.95312L5.04004 4.99121C4.85871 5.1855 4.46875 5.60362 4.46875 6.40039C4.46893 7.23123 5.0584 8.03556 5.16699 8.18359L5.1748 8.19336C5.17932 8.19933 5.18724 8.2103 5.19727 8.22461L5.20801 8.24023C5.42216 8.54641 6.51733 10.1114 8.1377 10.8125C9.23756 11.2874 9.66879 11.3283 10.2188 11.2471C10.5531 11.1971 11.2439 10.8281 11.3877 10.4219C11.5314 10.0157 11.5311 9.66855 11.4873 9.59668C11.4532 9.53148 11.367 9.48975 11.2393 9.42871C11.2174 9.41826 11.1942 9.40734 11.1699 9.39551L11.1592 9.39062C10.9869 9.30295 10.1339 8.88436 9.97461 8.82812C9.81541 8.76884 9.69953 8.74114 9.58398 8.91602C9.46809 9.09122 9.13723 9.47801 9.03418 9.59668C8.93418 9.71231 8.83105 9.72812 8.65918 9.64062C7.64052 9.13129 6.97164 8.73119 6.2998 7.57812C6.20103 7.40825 6.26672 7.33909 6.40137 7.19824C6.50937 7.08527 6.66225 6.9255 6.80957 6.63086C6.86555 6.51544 6.83762 6.41551 6.79395 6.32812C6.76313 6.26649 6.58144 5.82511 6.42676 5.44824C6.36199 5.29045 6.30222 5.14346 6.25977 5.04102C6.16722 4.81891 6.07293 4.76289 5.98926 4.74902L5.90918 4.74414C5.89541 4.74416 5.8819 4.74487 5.86914 4.74414C5.76914 4.73789 5.65273 4.7373 5.53711 4.7373Z" fill="#1B1B1F"/>
+                                </svg>
+                            </span>
+                            </a>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
