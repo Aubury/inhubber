@@ -56,7 +56,7 @@ if ( ! empty( $block['align'] ) ) {
         </div> <!-- end .section-header -->
 
 
-        <div class="flex-row">
+        <div class="flex-row max-display-tablet">
             <div class="circle-process">
 
                <div class="circle-diagram">
@@ -125,6 +125,58 @@ if ( ! empty( $block['align'] ) ) {
 
             </div> <!-- end .circle-process -->
 
+        </div>
+
+        <div class="max-display-mobile">
+            <div class="flex-column">
+                <div class="center-label">
+                    <?php if ( have_rows( 'information_inside_the_circle' ) ) : ?>
+                        <?php while ( have_rows( 'information_inside_the_circle' ) ) : the_row(); ?>
+
+                                <div class="information_inside_the_circle">
+                                    <div class="title"><?php the_sub_field( 'title' ); ?></div>
+                                    <div class="subtitle"><?php the_sub_field( 'subtitle' ); ?></div>
+                                </div>
+
+                        <?php endwhile; ?>
+                    <?php endif; ?>
+                </div>
+
+                <div class="flex-row">
+                    <div class="vertical-steps"></div>
+                    <div class="flex-column information_outside_of_circle">
+                        <?php if ( have_rows( 'information_outside_of_circle' ) ) : ?>
+                            <?php $index = 1; ?>
+                            <?php while ( have_rows( 'information_outside_of_circle' ) ) : the_row(); ?>
+                            <div class="step-block">
+                                <div class="step-number"><?php echo $index; ?></div>
+                                    <div class="step-content">
+                                    <?php $icon = get_sub_field( 'icon' ); ?>
+                                    <?php if ( $icon ) : ?>
+                                        <img class="icon"
+                                             src="<?php echo esc_url( $icon['url'] ); ?>"
+                                             alt="<?php echo esc_attr('icon' ); ?>" />
+                                    <?php endif; ?>
+
+                                    <div class="step-info">
+                                        <?php if (get_sub_field('title')) : ?>
+                                            <div class="title"><?php the_sub_field( 'title' ); ?></div>
+                                        <?php endif; ?>
+
+                                        <?php if (get_sub_field('under_title')) : ?>
+                                            <div class="subtitle"><?php the_sub_field( 'under_title' ); ?></div>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <?php $index++; ?>
+                            <?php endwhile; ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div> <!-- end .container -->
 
