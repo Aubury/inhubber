@@ -94,7 +94,7 @@ else {
                         <?php $link = get_sub_field( 'link' ); ?>
                         <?php if ( $link ) : ?>
                             <div class="flex-row">
-                                <a href="<?php echo esc_url( $link['url'] ); ?>" class="btn-fill white" target="<?php echo esc_attr( $link['target'] ); ?>">
+                                <a href="<?php echo esc_url( $link['url'] ); ?>" class="btn-fill white">
                                     <?php echo esc_html( $link['title'] ); ?>
                                 </a>
                             </div>

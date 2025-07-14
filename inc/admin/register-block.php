@@ -1281,6 +1281,53 @@ function register_example_block() {
            )
        );
 
+       acf_register_block_type(
+           array(
+               'name' 					=> 'simple-information-block',
+               'title' 				    => 'Simple information block',
+               'description' 			=> 'Simple information block',
+               'category' 				=> 'category-inhubber',
+               'icon'					=> 'format-status',
+               'keywords'				=> array('inhubber'),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/main/simple-information-block.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
+       acf_register_block_type(
+           array(
+               'name' 					=> 'table-two-columns',
+               'title' 				    => 'Table two columns',
+               'description' 			=> 'Table two columns',
+               'category' 				=> 'category-table',
+               'icon'					=> 'format-status',
+               'keywords'				=> array('inhubber'),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/table/table-two-columns.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
+       acf_register_block_type(
+           array(
+               'name' 					=> 'our-integrations',
+               'title' 				    => 'Our integrations',
+               'description' 			=> 'Our integrations',
+               'category' 				=> 'category-about-us',
+               'icon'					=> 'admin-page',
+               'keywords'				=> array('About US'),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/about-us/our-integrations.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
+
+
    }
 
 }

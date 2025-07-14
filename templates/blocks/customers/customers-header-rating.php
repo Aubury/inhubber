@@ -29,7 +29,12 @@ if (!empty($block['align'])) {
 <section id="<?php echo esc_attr($id); ?>" class="offer customers-single-offer <?php echo esc_attr($classes); ?>">
     <div class="container">
         <div class="offer__wrapper">
-            <div class="offer__header">
+            <div class="offer__header full-width">
+                <?php if (get_field('over_title')) : ?>
+                    <h4 class="section-header__overtitle wow animate__animated animate__fadeInUp">
+                        <?php the_field( 'over_title' ); ?>
+                    </h4>
+                <?php endif; ?>
                 <h1>
                     <?php the_field( 'title' ); ?>
                 </h1>

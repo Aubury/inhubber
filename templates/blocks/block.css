@@ -3255,9 +3255,13 @@ body._active {
   color: #1B1B1F;
 }
 
-.btn-fill:hover {
+.btn-fill:hover:not(.btn-fill.white) {
   background: #6658c7;
   color: #fff;
+}
+
+.btn-fill.white:hover {
+  background: rgba(171, 169, 184, 0.16) !important;
 }
 
 .section-header {

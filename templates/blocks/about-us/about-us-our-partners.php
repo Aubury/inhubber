@@ -26,7 +26,7 @@ if ( ! empty( $block['align'] ) ) {
 }
 ?>
 
-<section id="<?php echo esc_attr( $id ); ?>" class="about-us-values about-us-partners <?php echo esc_attr( $classes ); ?>">
+<section id="<?php echo esc_attr( $id ); ?>" class="about-us-values about-us-partners software <?php echo esc_attr( $classes ); ?>">
             <div class="container">
                 <h2>
                 <?php the_field( 'title' ); ?>
