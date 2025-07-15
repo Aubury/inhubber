@@ -8454,6 +8454,21 @@ td.bg-gray {
   flex-shrink: 0;
 }
 
+.form-contact-us {
+  width: 802px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-contact-us .hs-form-frame {
+  min-width: 100%;
+}
+
+.form-contact-us .hsfc-Step .hsfc-Step__Banner {
+  display: none !important;
+}
 
 @media screen and (max-width: 1025px) {
   .menu-content {

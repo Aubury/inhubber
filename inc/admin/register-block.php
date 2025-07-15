@@ -1303,7 +1303,7 @@ function register_example_block() {
                'description' 			=> 'Table two columns',
                'category' 				=> 'category-table',
                'icon'					=> 'format-status',
-               'keywords'				=> array('inhubber'),
+               'keywords'				=> array('Table'),
                'post_types'			    => array( 'page'),
                'mode'					=> 'auto',
                'render_template'		=> 'templates/blocks/table/table-two-columns.php',
@@ -1322,6 +1322,36 @@ function register_example_block() {
                'post_types'			    => array( 'page'),
                'mode'					=> 'auto',
                'render_template'		=> 'templates/blocks/about-us/our-integrations.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
+       acf_register_block_type(
+           array(
+               'name' 					=> 'form-contact-us',
+               'title' 				    => 'Form contact us',
+               'description' 			=> 'Form contact us',
+               'category' 				=> 'category-inhubber',
+               'icon'					=> 'format-status',
+               'keywords'				=> array('inhubber'),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/main/form-contact-us.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
+       acf_register_block_type(
+           array(
+               'name' 					=> 'clm-circle-nine-point',
+               'title' 				    => 'Circle - 9 point',
+               'description' 			=> 'Circle - 9 point',
+               'category' 				=> 'category-inhubber',
+               'icon'					=> 'format-status',
+               'keywords'				=> array('inhubber'),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/main/clm-circle-nine-point.php',
                'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
            )
        );
