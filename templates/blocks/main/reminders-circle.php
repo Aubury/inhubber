@@ -32,7 +32,7 @@ if ( ! empty( $block['align'] ) ) {
     }
 </style>
 
-<section id="<?php echo esc_attr( $id ); ?>" class="features overwiew-features-white <?php echo esc_attr( $classes ); ?>">
+<section id="<?php echo esc_attr( $id ); ?>" class="features overwiew-features-white software <?php echo esc_attr( $classes ); ?>">
     <div class="container">
         <div class="section-header full-width">
             <?php if (get_field('over_title' )) : ?>
@@ -195,18 +195,11 @@ if ( ! empty( $block['align'] ) ) {
         const containerWidth = container.offsetWidth;
         const containerHeight = container.offsetHeight;
         const stepSize = steps[0].offsetWidth; // предполагаем, что все .step одинаковой ширины
-        const parentHeight = containerHeight + steps[2].offsetHeight * 2;
         const radius = container.offsetWidth / 2 + stepSize / 2 + 24;
+        const parentHeight = radius * 2 + steps[2].offsetHeight;
 
         parent.style.height = `${parentHeight}px`;
 
-        // console.log('totalSteps = ' + totalSteps);
-        // console.log('containerWidth = ' + containerWidth);
-        // console.log('containerHeight = ' + containerHeight);
-        // console.log('centerX = ' + centerX);
-        // console.log('centerY = ' + centerY);
-        // console.log('radius = ' + radius);
-        // console.log('rect = ' + rect);
 
         steps.forEach((step, index) => {
             const angle = (360 / totalSteps) * index - 90; // -90 = чтобы первый шаг был сверху

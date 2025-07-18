@@ -32,7 +32,7 @@ if ( ! empty( $block['align'] ) ) {
     }
 </style>
 
-<section id="<?php echo esc_attr( $id ); ?>" class="benefits <?php echo esc_attr( $classes ); ?>">
+<section id="<?php echo esc_attr( $id ); ?>" class="benefits software <?php echo esc_attr( $classes ); ?>">
     <div class="container">
         <div class="benefits__wrapper">
             <div class="benefits__descr">

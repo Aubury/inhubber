@@ -68,12 +68,6 @@ $glossary_category = get_category($glossary_cat_id);
                     </a>
                 <?php endif; ?>
 
-                <?php if ($glossary_category->count > 0) : ?>
-                    <a href="<?php echo $glossary_pages_link; ?>" data-id="<?php echo esc_attr($glossary_cat_id) ?>" class="blog-offer__tab">
-                        <?php pll_e('Glossary'); ?>
-                    </a>
-                <?php endif; ?>
-
                 <?php
                 $terms = get_terms([
                     'taxonomy' => 'category',

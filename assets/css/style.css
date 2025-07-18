@@ -8155,6 +8155,14 @@ td.bg-gray {
   aspect-ratio: 1 / 1;
 }
 
+.circle-diagram-with-icon {
+  width: 348px;
+  height: 348px;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 2px solid #7363E0;
+}
+
 
 .information_inside_the_circle {
   text-align: center;
@@ -8164,6 +8172,10 @@ td.bg-gray {
   align-items: center;
   gap: 8px;
   z-index: 10;
+}
+
+.circle-diagram-with-icon .circle-center {
+  max-width: 200px;
 }
 
 
@@ -8187,7 +8199,8 @@ td.bg-gray {
   letter-spacing: -0.18px;
 }
 
-.steps {
+.steps,
+.steps-icons {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -8195,6 +8208,39 @@ td.bg-gray {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.steps-icons .step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid #7363E0;
+  background: #F8F7FA;
+  width: 48px;
+  height: 48px;
+}
+
+
+.steps-icons .step .icon {
+  width: 32px;
+  height: 32px;
+  padding: 5px;
+}
+
+.step-number .icon {
+  width: 32px;
+  height: 32px;
+  padding: 7px;
+}
+
+.steps-icons .arrow-point {
+  position: absolute;
+  background: url("../img/arrow-number.svg");
+  background-size: cover;
+  width: 14px;
+  height: 14px;
+  transform-origin: center;
 }
 
 .step {
@@ -8525,7 +8571,7 @@ td.bg-gray {
   }
 }
 
-@media screen and (max-width: 820px) {
+@media screen and (max-width: 821px) {
   .software_text_image_wrapper {
     gap: 64px;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -8597,6 +8643,13 @@ td.bg-gray {
     width: 100%;
     justify-content: space-between;
   }
+
+  .circle-diagram,
+  .circle-diagram-with-icon {
+    width: calc(348px * 0.75);
+    height: calc(348px * 0.75);
+    transform-origin: center;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -8623,11 +8676,6 @@ td.bg-gray {
     height: auto;
   }
 
-  .circle-diagram {
-    width: calc(348px * 0.75);
-    height: calc(348px * 0.75);
-    transform-origin: center;
-  }
 
   .information_inside_the_circle {
     transform: scale(0.75);

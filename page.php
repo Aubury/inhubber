@@ -27,7 +27,7 @@ $glossary_category = get_category($glossary_cat_id);
 
 if (get_the_ID() === 124 || get_the_ID() === 1237 || $post_slug === 'blog' || $post_slug === 'blog-2') { // 124
     ?>
-    <section class="blog-offer">
+    <section class="blog-offer 1">
         <div class="container">
             <div class="blog-offer__wrapper">
                 <h1>
@@ -51,13 +51,10 @@ if (get_the_ID() === 124 || get_the_ID() === 1237 || $post_slug === 'blog' || $p
                         <a href="<?php echo $news_pages_link; ?>" data-id="<?php echo esc_attr($news_cat_id) ?>" class="blog-offer__tab">
                             <?php pll_e('News'); ?>
                         </a>
-                    <?php endif; ?>
+                    <?php endif;
 
-                    <?php if ($glossary_category->count > 0) : ?>
-                        <a href="<?php echo $glossary_pages_link; ?>" data-id="<?php echo esc_attr($glossary_cat_id) ?>" class="blog-offer__tab">
-                            <?php pll_e('Glossary'); ?>
-                        </a>
-                    <?php endif; ?>
+                    ?>
+
 
                     <?php
                     $terms = get_terms([
@@ -70,7 +67,7 @@ if (get_the_ID() === 124 || get_the_ID() === 1237 || $post_slug === 'blog' || $p
                     <?php if ($terms): ?>
                         <?php foreach ($terms as $term):
                             ?>
-                            <a href="<?php echo get_term_link($term->term_id) ?>" class="blog-offer__tab"
+                            <a href="<?php echo get_term_link($term->term_id) ?>" class="blog-offer__tab 2"
                                 <?php echo isset($term->term_id) && !empty($term->term_id) ? ' data-id="' . esc_attr($term->term_id) . '" ' : ''; ?>
                                 <?php echo isset($term->name) && !empty($term->name) ? ' data-name="' . esc_attr($term->name) . '" ' : ''; ?>
                                 <?php echo isset($term->slug) && !empty($term->slug) ? ' data-slug="' . esc_attr($term->slug) . '" ' : ''; ?>
@@ -90,7 +87,9 @@ if (get_the_ID() === 124 || get_the_ID() === 1237 || $post_slug === 'blog' || $p
         'post_status' => 'publish',
         'order' => 'DESC',
         'orderby' => 'date',
+        'cat'         => '-' . $glossary_cat_id, // Именно так: минус перед ID
     );
+
 
     $query = new WP_Query($args);
 
@@ -100,6 +99,9 @@ if (get_the_ID() === 124 || get_the_ID() === 1237 || $post_slug === 'blog' || $p
                 <div class="blog-content__content">
                     <div class="blog-content__items" id="blog-content__items">
                         <?php while ($query->have_posts()) : $query->the_post(); ?>
+                            <?php if (has_category('glossary', $id)) :
+                                continue; // Пропустить пост, если у него есть категория glossary
+                            endif; ?>
                             <?php get_template_part('templates/post-block/blog'); ?>
                         <?php endwhile; ?>
                     </div>

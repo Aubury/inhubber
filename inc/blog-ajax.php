@@ -42,13 +42,29 @@ function blog_loadmore_ajax_handler()
 
     // var_dump($category_name);
 
-    $args = array(
-        'post_type' => 'post',
-        'post_status' => 'publish',
-        'order' => 'DESC',
-        'orderby' => 'date',
-        'paged' => $_POST['page'] + 1,
-    );
+    $id_blog = get_option('page_for_posts');
+    $post_slug = $post_query['pagename'];
+    $glossary_cat_id = get_cat_ID('glossary');
+    $glossary_category = get_category($glossary_cat_id);
+
+    if (get_the_ID() === 124 || get_the_ID() === 1237 || $post_slug === 'blog' || $post_slug === 'blog-2') { // 124
+        $args = array(
+            'post_type'   => 'post',
+            'post_status' => 'publish',
+            'order'       => 'DESC',
+            'orderby'     => 'date',
+            'paged'       => $_POST['page'] + 1,
+            'cat'         => '-' . $glossary_cat_id, // Именно так: минус перед ID
+        );
+    } else {
+        $args = array(
+            'post_type'   => 'post',
+            'post_status' => 'publish',
+            'order'       => 'DESC',
+            'orderby'     => 'date',
+            'paged'       => $_POST['page'] + 1,
+        );
+    }
 
     if ( isset($category_name) && !empty($category_name) ) {
         $args['category_name'] = $category_name;
