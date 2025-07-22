@@ -8516,6 +8516,10 @@ td.bg-gray {
   display: none !important;
 }
 
+.calendly-overlay .calendly-popup {
+  height: 866px;
+  max-height: calc(100% - 48px) !important;
+}
 @media screen and (max-width: 1025px) {
   .menu-content {
     min-width: 220px;
