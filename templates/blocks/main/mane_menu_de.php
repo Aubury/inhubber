@@ -101,7 +101,7 @@ if ( ! empty( $block['align'] ) ) {
                                                    class="dropdown-item link-icon">
                                                     <?php echo esc_html( $url_to_mane_page_of_column['title'] ); ?>
 
-                                                    <span><img src="<?php echo get_template_directory_uri() ?>/assets/img/Chevron-right.svg"
+                                                    <span><img src="<?php echo get_template_directory_uri() ?>/assets/img/Arrow-right.svg"
                                                                alt="right"></span>
                                                 </a>
                                             </li>
