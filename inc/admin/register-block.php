@@ -1356,6 +1356,21 @@ function register_example_block() {
            )
        );
 
+       acf_register_block_type(
+           array(
+               'name' 					=> 'about-us-people',
+               'title' 				    => 'About us - People',
+               'description' 			=> 'About us - People',
+               'category' 				=> 'category-about-us',
+               'icon'					=> 'format-status',
+               'keywords'				=> array('About us'),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/about-us/about-us-people.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
 
 
    }

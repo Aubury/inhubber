@@ -26,12 +26,17 @@
 
                         <div class="offer__trusted-images block-logo__slider swiper hero__swiper">
                             <div class="swiper-wrapper">
+
                                 <?php foreach ($crb_trusted_gallery as $image): ?>
+                                <?php if (!empty(wp_get_attachment_image($image))) : ?>
                                     <div class="offer__trusted-image block-logo__slide swiper-slide">
 
-                                        <?php echo  wp_get_attachment_image($image, 'post-thumbnail', 'true', array('alt' => 'img' )); ?>
+                                        <?php
+                                            echo  wp_get_attachment_image($image, 'post-thumbnail', 'true', array('alt' => 'img' ));
+                                        ?>
 
                                     </div>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
                             </div>
 

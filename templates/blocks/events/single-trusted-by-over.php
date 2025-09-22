@@ -46,7 +46,7 @@ if ( ! empty( $block['align'] ) ) {
                     <div class="swiper-wrapper">
                         <?php foreach ( $logo_user_images as $logo_user_image ): ?>
                             <div class="block-logo__slide swiper-slide">
-                                <img src="<?php echo esc_url( $logo_user_image['url'] ); ?>" alt="<?php echo esc_attr( $logo_user_image['alt'] ); ?>">
+                                <img src="<?php echo esc_url( $logo_user_image['url'] ); ?>" alt="<?php echo esc_attr( $logo_user_image['alt'] ); ?>" style="max-width: 100%;">
                             </div>
                         <?php endforeach; ?>
                     </div>

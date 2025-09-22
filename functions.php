@@ -431,3 +431,10 @@ add_filter('auto_update_plugin', '__return_false');
 // Отключение авто обновлений тем
 add_filter('auto_update_theme', '__return_false');
 /** END - Отключения Отключение авто обновлений плагинов и тем */
+
+add_filter( 'pll_rel_hreflang_attributes', function( $hreflangs ) {
+    $hreflangs['x-default'] = $hreflangs['en'];
+    return $hreflangs;
+} );
+
+
