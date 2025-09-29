@@ -1,5 +1,8 @@
 <?php
-## отменим показ выбранного термина наверху в checkbox списке терминов
+
+
+
+##  отменим показ выбранного термина наверху в checkbox списке терминов
 add_filter('wp_terms_checklist_args', 'set_checked_ontop_default', 10);
 function set_checked_ontop_default($args)
 {

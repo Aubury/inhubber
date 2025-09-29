@@ -73,6 +73,12 @@ if ( ! empty( $block['align'] ) ) {
                             </div>
                             <div class="overwiew-features__text">
                                 <?php the_sub_field( 'text' ); ?>
+                                <?php $link = get_sub_field( 'link' ); ?>
+                                <?php if ( $link ) : ?>
+                                    <a href="<?php echo esc_url( $link['url'] ); ?>" target="<?php echo esc_attr( $link['target'] ); ?>">
+                                        <?php echo esc_html( $link['title'] ); ?>
+                                    </a>
+                                <?php endif; ?>
                             </div>
                         </div>
                 <?php endwhile; ?>
