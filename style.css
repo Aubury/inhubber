@@ -353,12 +353,11 @@ Text Domain: pddocument
 .language {
   position: relative;
   z-index: 0;
-  margin-right: 16px;
 }
 
 .langeage__btn {
   border-radius: 8px;
-  background: #fff;
+  background: #ffffff;
   min-width: 32px;
   max-width: 32px;
   height: 32px;

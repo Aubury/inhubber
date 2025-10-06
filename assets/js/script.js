@@ -17,13 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function burgerClick() {
         const burger = document.querySelector('.header__burger');
         const menu = document.querySelector('.bottom-header__nav');
-        const btns = document.querySelector('.bottom-header__btns');
+        const btns = document.querySelectorAll('.bottom-header__btns');
         const phones = document.querySelector('.bottom-header_phones');
+        const btn_sing_in = document.querySelector('#sing-in-btn');
+        const bottom_header__btns_blok = document.querySelector('#bottom-header__btn');
         const body = document.body;
 
         const menuMobile = document.createElement('div');
         menuMobile.classList.add('menu-mobile');
-        body.append(menuMobile);
 
         if (burger) {
             burger.addEventListener('click', () => {
@@ -32,16 +33,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 menuMobile.classList.toggle('_active');
             });
 
-            if (document.documentElement.clientWidth <= 992) {
+            if (document.documentElement.clientWidth <= 1300) {
                 burger.insertAdjacentElement('afterend', menuMobile);
                 menuMobile.insertAdjacentElement('beforeend', menu);
+                btns.forEach(btn => {
+                    menuMobile.insertAdjacentElement('beforeend', btn);
+                });
+
+                bottom_header__btns_blok.insertAdjacentElement('beforeend', btn_sing_in);
                 menuMobile.insertAdjacentElement('beforeend', phones);
-            }
-            if (document.documentElement.clientWidth <= 576) {
-                menuMobile.insertAdjacentElement('beforeend', btns);
             }
         }
     }
+
     burgerClick();
 
     //==============================================================
@@ -58,12 +62,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const link = links[index];
                 let secondMenuHeight = menuListSecond[index].clientHeight;
 
-                if (document.documentElement.clientWidth <= 992) {
+                if (document.documentElement.clientWidth <= 1300) {
                     menuListSecond[index].style.height = '0px';
                 }
 
                 link.addEventListener('click', (e) => {
-                    if (document.documentElement.clientWidth <= 992) {
+                    if (document.documentElement.clientWidth <= 1300) {
                         e.preventDefault();
                         link.parentElement.classList.toggle('_active');
 

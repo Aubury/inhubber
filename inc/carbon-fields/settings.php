@@ -9,11 +9,28 @@ function crb_attach_theme_options()
    Container::make('theme_options', __('Theme Options'))
       ->add_tab(__('Header Video', 'inhubber'), array(
 
-         Field::make( 'text', 'crb_options_header_video_text'.carbon_lang_prefix(), __('Text', 'inhubber') )->set_default_value('Join a live product demo of the Inhubber platform with CEO Dr. Elena Mechik')->set_width( 50 ),
+         Field::make( 'text', 'crb_options_header_video_text'.carbon_lang_prefix(), __('Text', 'inhubber') )
+             ->set_default_value('Join a live product demo of the Inhubber platform with CEO Dr. Elena Mechik')
+             ->set_width( 50 ),
 
-         Field::make( 'text', 'crb_options_header_video_register'.carbon_lang_prefix(), __('Register url', 'inhubber') )->set_default_value('#')->set_required( true )->set_width( 50 ),
+         Field::make( 'text', 'crb_options_header_video_register'.carbon_lang_prefix(), __('Register url', 'inhubber') )
+             ->set_default_value('#')
+             ->set_required( true )
+             ->set_width( 50 ),
 
       ))
+
+       ->add_tab(__('Header button link', 'inhubber'), array(
+
+           Field::make( 'text', 'crb_options_header_button_text' . carbon_lang_prefix(), __('Text', 'inhubber') )
+               ->set_default_value('Free trial')
+               ->set_width( 50 ),
+
+           Field::make( 'text', 'crb_options_header_button_link' . carbon_lang_prefix(), __('Register url', 'inhubber') )
+               ->set_required( false )
+               ->set_width( 50 ),
+
+       ))
 
       ->add_tab(__('Logo', 'inhubber'), array(
 

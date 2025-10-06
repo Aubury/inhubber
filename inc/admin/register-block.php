@@ -1343,6 +1343,21 @@ function register_example_block() {
 
        acf_register_block_type(
            array(
+               'name' 					=> 'form-script-code',
+               'title' 				    => 'Form add script code',
+               'description' 			=> 'Form add script code',
+               'category' 				=> 'category-inhubber',
+               'icon'					=> 'format-status',
+               'keywords'				=> array('inhubber'),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/main/form-script-code.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
+       acf_register_block_type(
+           array(
                'name' 					=> 'clm-circle-nine-point',
                'title' 				    => 'Circle - 9 point',
                'description' 			=> 'Circle - 9 point',
