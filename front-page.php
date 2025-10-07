@@ -18,35 +18,77 @@
                     </a>
                 </div>
 
-                <?php if ($crb_trusted_gallery = carbon_get_post_meta($id_home, 'crb_trusted_gallery')): ?>
+<!--                --><?php //if ($crb_trusted_gallery = carbon_get_post_meta($id_home, 'crb_trusted_gallery')): ?>
+<!--                    <div class="offer__trusted wow animate__animated animate__fadeInUp">-->
+<!--                        <div class=" offer__trusted-title">-->
+<!--                            --><?php //echo carbon_get_post_meta($id_home, 'crb_trusted_title'); ?>
+<!--                        </div>-->
+<!---->
+<!--                        <div class="offer__trusted-images block-logo__slider swiper hero__swiper">-->
+<!--                            <div class="swiper-wrapper">-->
+<!---->
+<!--                                --><?php //foreach ($crb_trusted_gallery as $image): ?>
+<!--                                --><?php //if (!empty(wp_get_attachment_image($image))) : ?>
+<!--                                    <div class="offer__trusted-image block-logo__slide swiper-slide">-->
+<!---->
+<!--                                        --><?php
+//                                            echo  wp_get_attachment_image($image, 'post-thumbnail', 'true', array('alt' => 'img' ));
+//                                        ?>
+<!---->
+<!--                                    </div>-->
+<!--                                    --><?php //endif; ?>
+<!--                                --><?php //endforeach; ?>
+<!--                            </div>-->
+<!---->
+<!---->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                --><?php //endif; ?>
+
+                <?php if ($crb_new_trusted_gallery = carbon_get_post_meta($id_home, 'crb_new_trusted_gallery')): ?>
                     <div class="offer__trusted wow animate__animated animate__fadeInUp">
                         <div class=" offer__trusted-title">
-                            <?php echo carbon_get_post_meta($id_home, 'crb_trusted_title'); ?>
+                            <?php echo carbon_get_post_meta($id_home, 'crb_new_trusted_title'); ?>
                         </div>
 
                         <div class="offer__trusted-images block-logo__slider swiper hero__swiper">
                             <div class="swiper-wrapper">
+                                <?php
+                                $ids = carbon_get_post_meta($id_home, 'crb_new_trusted_gallery') ?: [];
 
-                                <?php foreach ($crb_trusted_gallery as $image): ?>
-                                <?php if (!empty(wp_get_attachment_image($image))) : ?>
+                                $images = array_values(array_filter(array_map(function($id){
+                                    $id  = (int) $id;
+                                    $url = wp_get_attachment_url($id);
+                                    if (!$url) return null;
+
+                                    return [
+                                            'id'    => $id,
+                                            'url'   => $url,
+                                            'alt'   => get_post_meta($id, '_wp_attachment_image_alt', true),
+                                            'title' => get_the_title($id),
+                                        // метаданные с размерами (thumbnail, medium, etc.)
+                                            'meta'  => wp_get_attachment_metadata($id),
+                                    ];
+                                }, $ids)));
+
+                                foreach ($images as $img) : ?>
                                     <div class="offer__trusted-image block-logo__slide swiper-slide">
-
-                                        <?php
-                                            echo  wp_get_attachment_image($image, 'post-thumbnail', 'true', array('alt' => 'img' ));
-                                        ?>
-
+                                    <?php
+                                        echo '<img src="' . esc_url($img['url']) . '" alt="' . esc_attr($img['alt']) . '">';
+                                     ?>
                                     </div>
-                                    <?php endif; ?>
                                 <?php endforeach; ?>
-                            </div>
 
+                            </div>
 
                         </div>
                     </div>
                 <?php endif; ?>
+
+
                 <div class="offer__images wow animate__animated animate__fadeInUp">
                     <div class=" offer__images-big">
-                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/offer__images-big.png"
+                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/Main-hero.png"
                              alt="offer__images">
                     </div>
                     <div class="offer__images-small offer__images-small-1">

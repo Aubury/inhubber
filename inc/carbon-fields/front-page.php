@@ -38,15 +38,33 @@ function crb_attach_theme_front_page() {
 
      ))
 
-      ->add_tab( __('Trusted by','inhubber'), array(
+//      ->add_tab( __('Trusted by','inhubber'), array(
+//
+//     		Field::make( 'text', 'crb_trusted_title', __( 'Title','inhubber' ) )->set_required( true )->set_width( 50 )->set_default_value('Trusted by successful global companies'),
+//
+//
+//     		Field::make( 'media_gallery', 'crb_trusted_gallery', __( 'Images logo','inhubber' ) )
+//                ->set_required( false )
+//                ->set_width( 50 )
+//                ->set_type( array( 'image' ) ),
+//
+//
+//     ))
 
-     		Field::make( 'text', 'crb_trusted_title', __( 'Title','inhubber' ) )->set_required( true )->set_width( 50 )->set_default_value('Trusted by successful global companies'),
+        ->add_tab( __('New - Trusted by','inhubber'), array(
+
+            Field::make( 'text', 'crb_new_trusted_title', __( 'Title','inhubber' ) )
+                ->set_required( true )
+                ->set_width( 50 )
+                ->set_default_value('Trusted by successful global companies'),
 
 
-     		Field::make( 'media_gallery', 'crb_trusted_gallery', __( 'Images logo','inhubber' ) )->set_required( false )->set_width( 50 )->set_type( array( 'image' ) ),
-
-
-     ))
+            Field::make( 'media_gallery', 'crb_new_trusted_gallery', __( 'Images logo','inhubber' ) )
+                ->set_required(false)
+                ->set_width(50)
+                ->set_type(['image'])         // только изображения
+                ->set_duplicates_allowed(false),
+        ))
 
 
       ->add_tab( __('Top features','inhubber'), array(
