@@ -7,7 +7,7 @@ function ajax_loader_blog()
 {
     global $wp_query;
 
-    wp_register_script('blog-load', get_stylesheet_directory_uri() . '/assets/js/blog-load.js', array('jquery'));
+    wp_register_script('blog-load', get_stylesheet_directory_uri() . '/assets/js/blog-load.js', [], md5_file(get_stylesheet_directory() . '/assets/js/blog-load.js'), true);
 
     wp_localize_script(
         'blog-load',

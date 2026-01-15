@@ -1,5 +1,7 @@
 <?php
 
+// it activates lazy-load for styles, scripts and other things
+define('CUSTOM_LAZY_LOAD_ENABLED', true);
 require_once  get_template_directory() . '/inc/admin-customizer.php';
 
 require_once  get_template_directory() . '/inc/post-customizer.php';
@@ -74,45 +76,59 @@ endif;
 add_action('after_setup_theme', 'inhubber_setup');
 
 
-/**
- * Enqueue scripts and styles.
- */
-function inhubber_scripts()
-{
+// add_action('wp_enqueue_scripts', function() {
+//   if(isset($_GET['remove_swiper'])) {
+//     wp_dequeue_style('wp-block-library');
+//     wp_dequeue_style('wp-block-library-theme');
 
-	global $wp_query; 
-
-	$my_lang = pll_current_language();  
-
-	wp_deregister_script('jquery');
-	wp_register_script('jquery', get_template_directory_uri() . '/assets/js/jquery-3.6.1.min.js');
-	wp_enqueue_script('jquery');
-
-	wp_enqueue_style( 'inhubber-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-	wp_enqueue_style( 'inhubber-glightbox', get_template_directory_uri() . '/assets/css/glightbox.min.css');
-	wp_enqueue_style( 'inhubber-mystyle', get_template_directory_uri() . '/assets/css/style.css');
-	//wp_enqueue_style( 'inhubber-animate.min.css', get_template_directory_uri() . '/assets/css/animate.min.css');
-	wp_enqueue_style('inhubber-style', get_stylesheet_uri(), array(), '1.0');
-
-	wp_enqueue_script( 'inhubber-swiper-bundle.min.js', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', array(), false, true );
-	//wp_enqueue_script( 'inhubber-wow.min.js', get_template_directory_uri() . '/assets/js/wow.min.js', array(), false, true );
-	wp_enqueue_script( 'inhubber-glightbox.min.js', get_template_directory_uri() . '/assets/js/glightbox.min.js', array(), false, true );
-	wp_enqueue_script( 'inhubber-script.min.js', get_template_directory_uri() . '/assets/js/script.min.js', array(), false, true );
-	wp_enqueue_script( 'inhubber-main.js', get_template_directory_uri() . '/assets/js/main.js', array(), false, true );
-	if($my_lang == 'en') {
-		wp_enqueue_script( 'inhubber-en.js', get_template_directory_uri() . '/assets/js/en.js', array(), false, true );
-	}
-	if($my_lang == 'de') {
-		wp_enqueue_script( 'inhubber-de.js', get_template_directory_uri() . '/assets/js/de.js', array(), false, true );
-	}
-
-	
+//     if ( is_singular() && has_blocks( get_the_ID() ) ) {
+//         wp_enqueue_style('wp-block-library');
+//     }
+//   }
+// }, 20);
 
 
+// add_action('wp_enqueue_scripts', 'inhubber_critical_scripts');
+// function inhubber_critical_scripts() {
+//   if(isset($_GET['remove_swiper'])) {
 
-}
-add_action('wp_enqueue_scripts', 'inhubber_scripts');
+//     wp_deregister_script('jquery');
+//     wp_deregister_script('jquery-core');
+//     wp_deregister_script('jquery-migrate');
+//   }
+// 	wp_enqueue_style( 'inhubber-mystyle', get_template_directory_uri() . '/assets/css/style.css');
+// }
 
+// add_filter('style_loader_tag', function ($html, $handle, $href, $media) {
+//   if ($handle !== 'inhubber-mystyle') return $html;
+
+//   $href = esc_url($href);
+//   return sprintf(
+//     '<link rel="preload" as="style" href="%1$s" onload="this.onload=null;this.rel=\'stylesheet\'">' .
+//     '<noscript><link rel="stylesheet" href="%1$s"></noscript>',
+//     $href
+//   );
+// }, 10, 4);
+
+// // Defer all enqueued scripts except those with specific handles if needed
+// add_filter('script_loader_tag', function($tag, $handle) {
+//   // Add handles here you do NOT want to defer
+//   if(!isset($_GET['remove_swiper'])) {
+//     return $tag;
+//   }
+//   $no_defer = array('jquery');
+//   if (in_array($handle, $no_defer)) {
+//     return $tag;
+//   }
+//   // Only add defer if not already present
+//   if (strpos($tag, ' defer') === false) {
+//     return str_replace(' src', ' defer src', $tag);
+//   }
+//   return $tag;
+// }, 10, 2);
+
+require_once get_template_directory() . '/scripts-styles.php';
+require_once get_template_directory() . '/local-proxy.php';
 
 add_filter('intermediate_image_sizes_advanced', 'true_remove_default_sizes');
 
@@ -437,4 +453,33 @@ add_filter( 'pll_rel_hreflang_attributes', function( $hreflangs ) {
     return $hreflangs;
 } );
 
+// Вимкнути короткі посилання WordPress
+remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
+remove_action('template_redirect', 'wp_shortlink_header', 11, 0);
 
+// Disable RSS Feeds
+function disable_rss_feeds() {
+  wp_die( __( 'No feed available, please visit the <a href="'. esc_url( home_url( '/' ) ) .'">homepage</a>!' ) );
+}
+add_action('do_feed', 'disable_rss_feeds', 1);
+add_action('do_feed_rdf', 'disable_rss_feeds', 1);
+add_action('do_feed_rss', 'disable_rss_feeds', 1);
+add_action('do_feed_rss2', 'disable_rss_feeds', 1);
+add_action('do_feed_atom', 'disable_rss_feeds', 1);
+add_action('do_feed_rss2_comments', 'disable_rss_feeds', 1);
+add_action('do_feed_atom_comments', 'disable_rss_feeds', 1);
+
+// Remove RSS feed links from header
+remove_action('wp_head', 'feed_links', 2);
+remove_action('wp_head', 'feed_links_extra', 3);
+
+
+
+add_filter( 'rank_math/frontend/canonical', function( $canonical ) {
+  global $post;
+
+  if ( is_singular() && isset( $post->ID ) ) {
+      $canonical = get_permalink( $post->ID );
+  }
+  return $canonical;
+});

@@ -204,11 +204,16 @@
                     </div>
                     <nav class="bottom-footer__nav">
                         <ul>
+                            <?php
+                            // Use Polylang's pll_get_post to get correct ID per language
+                            $impressum_id = function_exists('pll_get_post') ? pll_get_post(301) : 301;
+                            $privacy_id = function_exists('pll_get_post') ? pll_get_post(319) : 319;
+                            ?>
                             <li>
-                                <a href="<?php echo carbon_get_theme_option('crb_options_footer_link_impressum' . carbon_lang_prefix()); ?>"><?php pll_e('Impressum'); ?></a>
+                                <a href="<?php echo get_permalink($impressum_id); ?>"><?php pll_e('Impressum'); ?></a>
                             </li>
                             <li>
-                                <a href="<?php echo carbon_get_theme_option('crb_options_footer_link_privacy' . carbon_lang_prefix()); ?>"><?php pll_e('Privacy Policy'); ?></a>
+                                <a href="<?php echo get_permalink($privacy_id); ?>"><?php pll_e('Privacy Policy'); ?></a>
                             </li>
                         </ul>
                     </nav>
@@ -272,11 +277,16 @@
                         </div>
                         <nav class="bottom-footer__nav">
                             <ul>
+                                <?php
+                                // Use Polylang's pll_get_post to get correct ID per language
+                                $impressum_id = function_exists('pll_get_post') ? pll_get_post(301) : 301;
+                                $privacy_id = function_exists('pll_get_post') ? pll_get_post(319) : 319;
+                                ?>
                                 <li>
-                                    <a href="<?php echo carbon_get_theme_option('crb_options_footer_link_impressum' . carbon_lang_prefix()); ?>"><?php pll_e('Impressum'); ?></a>
+                                    <a href="<?php echo get_permalink($impressum_id); ?>"><?php pll_e('Impressum'); ?></a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo carbon_get_theme_option('crb_options_footer_link_privacy' . carbon_lang_prefix()); ?>"><?php pll_e('Privacy Policy'); ?></a>
+                                    <a href="<?php echo get_permalink($privacy_id); ?>"><?php pll_e('Privacy Policy'); ?></a>
                                 </li>
                             </ul>
                         </nav>
@@ -339,7 +349,6 @@
         </div>
     </div>
 </footer>
-
 
 <?php wp_footer(); ?>
 </body>

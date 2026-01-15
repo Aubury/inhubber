@@ -59,6 +59,7 @@ if ( ! empty( $block['align'] ) ) {
         <div class="two_columns_grid">
             <?php if ( have_rows( 'single_card' ) ) : ?>
                 <?php while ( have_rows( 'single_card' ) ) : the_row(); ?>
+
                 <div class="card">
                     <?php $link = get_sub_field( 'link' ); ?>
                     <?php if ( $link ) : ?>
@@ -105,9 +106,7 @@ if ( ! empty( $block['align'] ) ) {
                         </div>
                     <?php endif; ?>
                 </div>
-
-
-
+                
                 <?php endwhile; ?>
             <?php else : ?>
                 <?php // No rows found ?>

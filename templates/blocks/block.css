@@ -482,6 +482,10 @@
   background: #e9e8eb;
 }
 
+.bottom-header__btns .btn.button_header_border {
+    margin: 0 0 0 0;
+}
+
 .burger-header {
   display: none;
   -webkit-box-pack: justify;

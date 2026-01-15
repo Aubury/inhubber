@@ -539,3 +539,9 @@ Text Domain: pddocument
         margin: 32px 0 -24px 0;
     }
 }
+
+/*///////////////////////////////*/
+
+.single-content a {
+    color: #7363E0;
+}

@@ -5,31 +5,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link rel="apple-touch-icon" sizes="76x76"
           href="<?php echo get_template_directory_uri() ?>/assets/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32"
           href="<?php echo get_template_directory_uri() ?>/assets/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16"
           href="<?php echo get_template_directory_uri() ?>/assets/img/favicon-16x16.png">
-    <link rel="manifest" href="<?php echo get_template_directory_uri() ?>/assets/img/site.webmanifest">
+    <!-- <link rel="manifest" href="<?php echo get_template_directory_uri() ?>/assets/img/site.webmanifest"> -->
     <link rel="mask-icon" href="<?php echo get_template_directory_uri() ?>/assets/img/safari-pinned-tab.svg"
           color="#5bbad5">
-    <!-- Calendly Link-Widget Beginn -->
-    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
-    <!-- Calendly Link-Widget Ende -->
+    
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
+    <?php if (!defined('CUSTOM_LAZY_LOAD_ENABLED') || !CUSTOM_LAZY_LOAD_ENABLED): ?>
+        
+    <?php endif; ?>
+
+    <script>
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://s.inhubber.com/92nvkxitxrmpr.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','ay4p=aWQ9R1RNLTVRVFJIUFBT&sort=asc');
+    </script>
     <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
+<?php if (defined('CUSTOM_LAZY_LOAD_ENABLED') && CUSTOM_LAZY_LOAD_ENABLED): ?>
+    <!-- Preconnect to Usercentrics for faster loading -->
+    <!-- <link rel="preconnect" href="https://web.cmp.usercentrics.eu" crossorigin> -->
+
+    <script>
+        // Initialize Google Consent Mode with denied by default
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('consent', 'default', {
+            ad_storage: 'denied',
+            analytics_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            wait_for_update: 500
+        });
+    </script>
+
+    <!-- Official Usercentrics CMP Script -->
+    <!-- <script
+        id="usercentrics-cmp"
+        data-settings-id="-UUHgIebdqCyo7"
+        src="https://web.cmp.usercentrics.eu/ui/loader.js"
+        async>
+    </script> -->
+
+    <script>
+        // Utility: call a function only once
+        function once(fn) {
+            let done = false;
+            return () => { if (!done) { done = true; fn(); } }
+        }
+
+        // Loads the Stape Tag Manager *only once* after consent
+        const loadStape = once(function () {
+            const s = document.createElement('script');
+            s.async = true;
+            s.id = 'stape-script';
+            // Inline loading of Stape GTM loader to bypass any script blocks until consent
+            s.textContent = "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://s.inhubber.com/92nvkxitxrmpr.js?'+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','ay4p=aWQ9R1RNLTVRVFJIUFBT&sort=asc');";
+            document.head.appendChild(s);
+        });
+
+        // Listen for Usercentrics consent updates (v3 Window Event)
+        window.addEventListener('ucEvent', function (e) {
+            // Trigger only on consent_status event from Usercentrics
+            if (e.detail && e.detail.event === 'consent_status') {
+                // A) Accept if any required categories are allowed
+                const allowedByCategory =
+                    (e.detail.categories?.marketing === true) ||
+                    (e.detail.categories?.analytics === true);
+
+                // B) Or by specific service names (as configured in Usercentrics)
+                const allowedByService =
+                    (e.detail['Google Analytics'] === true) ||
+                    (e.detail['Meta Pixel'] === true) ||
+                    (e.detail['Hotjar'] === true);
+
+                if (allowedByCategory || allowedByService) {
+                    // Optionally update Google Consent Mode
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag() { dataLayer.push(arguments); }
+                    gtag('consent', 'update', {
+                        ad_storage: 'granted',
+                        analytics_storage: 'granted'
+                    });
+                    console.log('loadStape: consent granted, loading scripts.');
+                    // Eagerly load scripts that depend on marketing/analytics consent
+                    if (typeof injectLazyScripts === 'function') {
+                        injectLazyScripts();
+                    }
+                    if (typeof loadStape === 'function') {
+                        loadStape();
+                    }
+                }
+            }
+        });
+    </script>
+<?php else: ?>
+    <?php endif; ?>
 <header class="header">
     <?php if (carbon_get_theme_option('crb_options_header_video_text' . carbon_lang_prefix())): ?>
         <div class="header__top top-header">
@@ -158,7 +238,7 @@
                 </div>
 
 
-                <div id="bottom-header__btn" class="bottom-header__btns">
+                <div id="bottom-header__btn" class="bottom-header__btns table-xl-display-none">
                     <?php if (!empty(carbon_get_theme_option('crb_options_header_button_link' . carbon_lang_prefix()))) : ?>
                         <a class="btn button_header_border"
                            href="<?php echo carbon_get_theme_option('crb_options_header_button_link' . carbon_lang_prefix()) ?>"

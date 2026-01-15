@@ -3,8 +3,8 @@ function glossary_enqueue_scripts() {
     wp_enqueue_script(
         'glossary-search',
         get_stylesheet_directory_uri() . '/assets/js/glossary-load.js',
-        array('jquery'),
-        null,
+        [],
+        md5_file(get_stylesheet_directory() . '/assets/js/glossary-load.js'),
         true
     );
     wp_localize_script(
@@ -58,7 +58,7 @@ function glossary_ajax_search() {
         }
         echo '</div>';
     } else {
-        echo '<p>Ничего не найдено</p>';
+        echo '<p>Nothing found</p>';
     }
 
     wp_die();

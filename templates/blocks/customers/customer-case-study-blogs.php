@@ -61,7 +61,7 @@ if (!empty($block['align'])) {
 
                                     <div class="blog-content__item">
 
-                                    <a href="<?php echo $post->guid; ?>"  class="blog-content__wrapp">
+                                    <a href="<?php echo get_the_permalink($post->ID); ?>"  class="blog-content__wrapp">
                                         <div class="blog-content__image">
                                             <?php echo kama_thumb_img('w=592 &h=240 &crop=true &post_id=' . $post->ID . ' &alt=' . get_the_title( $post->ID ) . ''); ?>
                                         </div>

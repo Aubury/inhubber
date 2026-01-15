@@ -3896,9 +3896,15 @@ body._active {
   line-height: 133.333%; /* 133.333% */
   letter-spacing: -0.3px;
 }
-.overwiew-features__text,
-.overwiew-features__text a {
+.overwiew-features__text {
   color: var(--graphite-02, #5F5E66);
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%; /* 150% */
+  letter-spacing: -0.18px;
+}
+.overwiew-features__text a {
   margin-top: 8px;
   font-size: 16px;
   font-weight: 400;

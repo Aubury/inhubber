@@ -1386,6 +1386,36 @@ function register_example_block() {
            )
        );
 
+       acf_register_block_type(
+           array(
+               'name' 					=> 'first-simple-block-social-links',
+               'title' 				    => 'First simple block with social links',
+               'description' 			=> 'First simple block with social links',
+               'category' 				=> 'category-page-first-block',
+               'icon'					=> 'format-status',
+               'keywords'				=> array('inhubber'),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/first-page-block/first-simple-block-social-links.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
+       acf_register_block_type(
+           array(
+               'name' 					=> 'Image, page information block',
+               'title' 				    => 'Image, page information block',
+               'description' 			=> 'Image, page information block',
+               'category' 				=> 'category-inhubber',
+               'icon'					=> 'format-status',
+               'keywords'				=> array('inhubber'),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/main/page-information-block.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
 
 
    }

@@ -10,7 +10,7 @@ function ajax_loader_library() {
 
  
 	
-	wp_register_script( 'library-load', get_stylesheet_directory_uri() . '/assets/js/library-load.js', array('jquery') );
+	wp_register_script( 'library-load', get_stylesheet_directory_uri() . '/assets/js/library-load.js', [], md5_file(get_stylesheet_directory() . '/assets/js/library-load.js'), true);
  
 	
 	wp_localize_script( 'library-load', 'library_loadmore_params', array(

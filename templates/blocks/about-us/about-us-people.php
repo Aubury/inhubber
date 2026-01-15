@@ -61,20 +61,20 @@ if ( ! empty( $block['align'] ) ) {
                     <?php $image = get_sub_field( 'image' ); ?>
                         <div class="overwiew-features__item">
                             <?php if ( $image ) : ?>
-                                <div class="overwiew-features__image">
+                                <a style="display: block;" href="<?php echo esc_url( $link['url'] ); ?>" target="<?php echo esc_attr( $link['target'] ); ?>" class="overwiew-features__image">
                                     <img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>" />
-                                </div>
+                                </a>
                             <?php endif; ?>
-                            <div class="overwiew-features__title">
+                            <a style="display: block;" href="<?php echo esc_url( $link['url'] ); ?>" target="<?php echo esc_attr( $link['target'] ); ?>" class="overwiew-features__title">
                                 <?php the_sub_field( 'name' ); ?>
-                            </div>
+                            </a>
                             <div class="overwiew-features__subtitle">
                                 <?php the_sub_field( 'specialization' ); ?>
                             </div>
                             <div class="overwiew-features__text">
                                 <?php the_sub_field( 'text' ); ?>
                                 <?php $link = get_sub_field( 'link' ); ?>
-                                <?php if ( $link ) : ?>
+                                <?php if ( $link  &&  1 == 2) : ?> <!-- commented it -->
                                     <a href="<?php echo esc_url( $link['url'] ); ?>" target="<?php echo esc_attr( $link['target'] ); ?>">
                                         <?php echo esc_html( $link['title'] ); ?>
                                     </a>

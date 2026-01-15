@@ -8,13 +8,14 @@ $thumb_url = kama_thumb_src([
 	'crop' => true,
 	'alt' => get_the_title(),
 ]);
+$thumb_url = wp_get_attachment_url($thumb_id, 'full');
 ?>
 
 
 <div class="blog-content__item">
 	<a href="<?php the_permalink(); ?>" class="blog-content__wrapp">
 		<div class="blog-content__image">
-            <img src="<?php echo esc_url($thumb_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+            <img style="width: 100%; height: auto; aspect-ratio: 592/240; object-fit: cover;" src="<?php echo esc_url($thumb_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
 		</div>
 		<div class="blog-content__info">
 			<div class="blog-content__date">
