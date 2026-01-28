@@ -58,22 +58,46 @@ if ( ! empty( $block['align'] ) ) {
         <?php if ( have_rows( 'information' ) ) : ?>
             <div class="about-us-features__items">
                 <?php while ( have_rows( 'information' ) ) : the_row(); ?>
-                    <?php $image = get_sub_field( 'image' ); ?>
+                    <?php
+                        $image = get_sub_field( 'image' );
+                        $link = get_sub_field('link');
+                    ?>
                         <div class="overwiew-features__item">
                             <?php if ( $image ) : ?>
-                                <a style="display: block;" href="<?php echo esc_url( $link['url'] ); ?>" target="<?php echo esc_attr( $link['target'] ); ?>" class="overwiew-features__image">
-                                    <img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>" />
+                                <?php if ( $link ) : ?>
+                                    <a style="display: block;" href="<?php echo esc_url( $link['url'] ); ?>"
+                                       target="<?php echo esc_attr( $link['target'] ); ?>"
+                                       class="overwiew-features__image">
+                                        <img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>" />
+                                    </a>
+                                <?php else : ?>
+                                    <a style="display: block;" href="#"
+                                       class="overwiew-features__image">
+                                        <img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>" />
+                                    </a>
+                                <?php endif; ?>
+                            <?php endif; ?>
+
+                            <?php if ( $link ) : ?>
+                                <a style="display: block;"
+                                   href="<?php echo esc_url( $link['url'] ); ?>"
+                                   target="<?php echo esc_attr( $link['target'] ); ?>"
+                                   class="overwiew-features__title">
+                                    <?php the_sub_field( 'name' ); ?>
+                                </a>
+                            <?php else: ?>
+                                <a style="display: block;"
+                                   href="#"
+                                   class="overwiew-features__title">
+                                    <?php the_sub_field( 'name' ); ?>
                                 </a>
                             <?php endif; ?>
-                            <a style="display: block;" href="<?php echo esc_url( $link['url'] ); ?>" target="<?php echo esc_attr( $link['target'] ); ?>" class="overwiew-features__title">
-                                <?php the_sub_field( 'name' ); ?>
-                            </a>
+
                             <div class="overwiew-features__subtitle">
                                 <?php the_sub_field( 'specialization' ); ?>
                             </div>
                             <div class="overwiew-features__text">
                                 <?php the_sub_field( 'text' ); ?>
-                                <?php $link = get_sub_field( 'link' ); ?>
                                 <?php if ( $link  &&  1 == 2) : ?> <!-- commented it -->
                                     <a href="<?php echo esc_url( $link['url'] ); ?>" target="<?php echo esc_attr( $link['target'] ); ?>">
                                         <?php echo esc_html( $link['title'] ); ?>

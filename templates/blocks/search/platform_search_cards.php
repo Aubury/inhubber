@@ -106,7 +106,7 @@ if ( ! empty( $block['align'] ) ) {
                         </div>
                     <?php endif; ?>
                 </div>
-                
+
                 <?php endwhile; ?>
             <?php else : ?>
                 <?php // No rows found ?>
@@ -122,6 +122,17 @@ if ( ! empty( $block['align'] ) ) {
 </section>
 
 <script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+
+        let cards = document.querySelectorAll(".card");
+        if (cards.length > 6) {
+            for (let i = 6; i < cards.length; i++) {
+                cards[i].classList.add("hidden");
+            }
+            document.getElementById("loadMore").classList.remove("hidden");
+        }
+    });
 
     function filterContent() {
         let input = document.getElementById("integrations-search").value.toLowerCase();
@@ -150,26 +161,16 @@ if ( ! empty( $block['align'] ) ) {
     }
 
     function showMore() {
-        let cards = document.querySelectorAll(".card.hidden");
+        let _cards = document.querySelectorAll(".card.hidden");
 
-        if (cards.length > 6) {
-            for (let i = 6; i < cards.length; i++) {
-                cards[i].classList.remove("hidden");
+        if (_cards.length > 6) {
+            for (let i = 0; i < 6; i++) {
+                _cards[i].classList.remove("hidden");
             }
         } else {
-            cards.forEach(card => card.classList.remove("hidden"));
+            _cards.forEach(card => card.classList.remove("hidden"));
             document.getElementById("loadMore").classList.add("hidden");
         }
     }
 
-    document.addEventListener("DOMContentLoaded", function() {
-
-        let cards = document.querySelectorAll(".card");
-        if (cards.length > 6) {
-            for (let i = 6; i < cards.length; i++) {
-                cards[i].classList.add("hidden");
-            }
-            document.getElementById("loadMore").classList.remove("hidden");
-        }
-    });
 </script>
