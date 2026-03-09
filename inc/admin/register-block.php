@@ -1416,6 +1416,21 @@ function register_example_block() {
            )
        );
 
+       acf_register_block_type(
+           array(
+               'name' 					=> 'Courses',
+               'title' 				    => 'Courses',
+               'description' 			=> 'Courses',
+               'category' 				=> 'category-inhubber',
+               'icon'					=> 'format-status',
+               'keywords'				=> array('inhubber'),
+               'post_types'			    => array( 'page', 'post'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/main/courses-block.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
 
 
    }
