@@ -4539,11 +4539,13 @@ background: transparent;
   margin-top: 48px;
   overflow: hidden !important;
 }
+
 .block-logo__slide {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 @media screen and (max-width: 768px) {
   .block-logo {
     padding: 80px 0;
@@ -4886,7 +4888,7 @@ background: transparent;
   }
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1387px) {
   .bottom-header__nav-item:hover {
     background: #f3f2f5;
   }
@@ -5222,22 +5224,6 @@ background: transparent;
 
   .offer__trusted-images {
     margin: 40px 0px -44px 0px;
-  }
-
-  .offer__trusted-image {
-    margin: 0px 0px 44px 0px;
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 25%;
-    flex: 0 0 25%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
   }
 
   .features {
@@ -5602,6 +5588,8 @@ background: transparent;
 
   .offer__header h1 {
     font-size: 40px;
+    max-width: 100%;
+    word-wrap: break-word;
   }
 
   .offer__header a {
@@ -5655,13 +5643,6 @@ background: transparent;
 
   .offer__trusted-images {
     margin: 20px 0px 0px 0px;
-  }
-
-  .offer__trusted-image {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 33.33333333%;
-    flex: 0 0 33.33333333%;
-    margin: 0px 0px 16px 0px;
   }
 
   .features {
@@ -6031,14 +6012,6 @@ background: transparent;
 @media screen and (max-width: 490px) {
   .menu-mobile {
     top: 160px;
-  }
-}
-
-@media screen and (max-width: 476px) {
-  .offer__trusted-image {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 50%;
-    flex: 0 0 50%;
   }
 }
 

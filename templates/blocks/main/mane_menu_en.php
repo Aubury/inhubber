@@ -63,13 +63,20 @@ if ( ! empty( $block['align'] ) ) {
                                 <?php if ( have_rows( 'icon_title' ) ) : ?>
 
                                     <?php while ( have_rows( 'icon_title' ) ) : the_row(); ?>
-                                        <div class="flex-row icon_title">
-                                            <?php $icon = get_sub_field( 'icon' ); ?>
-                                            <?php if ( $icon ) : ?>
-                                                <img src="<?php echo esc_url( $icon['url'] ); ?>" alt="icon" />
-                                            <?php endif; ?>
-                                            <span><?php the_sub_field( 'title' ); ?></span>
-                                        </div>
+                                        <?php $icon = get_sub_field( 'icon' ); ?>
+                                        <?php $title_after = get_sub_field('title'); ?>
+
+                                        <?php if ($icon || $title_after) : ?>
+
+                                            <div class="flex-row icon_title">
+
+                                                <?php if ( $icon ) : ?>
+                                                    <img src="<?php echo esc_url( $icon['url'] ); ?>" alt="icon" />
+                                                <?php endif; ?>
+                                                <span><?php the_sub_field( 'title' ); ?></span>
+                                            </div>
+
+                                        <?php endif; ?>
                                     <?php endwhile; ?>
 
                                 <?php endif; ?>
