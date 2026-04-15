@@ -5462,6 +5462,13 @@ body._active {
   }
 }
 
+@media screen and (max-width: 821px) {
+  .bottom-footer__language-body {
+    left: 0;
+    right: auto;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .menu-mobile {
     top: 136px;

@@ -73,14 +73,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         if (link.parentElement.classList.contains('_active')) {
                             menuListSecond[index].style.height = `${secondMenuHeight}px`;
+                            menuListSecond[index].style.marginTop = '16px';
                         } else {
                             menuListSecond[index].style.height = '0px';
+                            menuListSecond[index].style.marginTop = '0px';
                         }
                     }
                 });
             }
         }
     }
+
     menuClickNavMobile();
 
     //===================================================================
@@ -149,33 +152,31 @@ document.addEventListener('DOMContentLoaded', () => {
     //Footer Language
 
     function footerLangugeClick() {
-        const languageHeader = document.querySelector('.bottom-footer__language-header');
-        // const language = document.querySelector('.bottom-footer__language');
-        const languageBody = document.querySelector('.bottom-footer__language-body');
+        const languageHeader = document.querySelectorAll('.bottom-footer__language-header');
         const body = document.body;
 
-        if (languageHeader) {
-            const div = document.createElement('div');
-            body.append(div);
+        if ( languageHeader.length > 0 ) {
+            for (let i = 0; i < languageHeader.length; i++) {
 
-            languageHeader.addEventListener('click', () => {
-                languageBody.classList.toggle('_active');
+                languageHeader[i].addEventListener('click',function () {
+                    const self = this;
+                    const languageBody = self.nextElementSibling;
+                    const div = document.createElement('div');
 
-                if (languageBody.classList.contains('_active')) {
-                    div.classList.add('div-body');
-                } else {
-                    div.classList.remove('div-body');
-                }
-            });
+                    body.append(div);
+                    languageBody.classList.toggle('_active');
 
-            div.addEventListener('click', () => {
-                if (languageBody.classList.contains('_active')) {
-                    div.classList.remove('div-body');
-                    languageBody.classList.remove('_active');
-                }
-            });
+                    if (languageBody.classList.contains('_active')) {
+                        div.classList.add('div-body');
+                    } else {
+                        div.classList.remove('div-body');
+                    }
+                });
+
+            }
         }
     }
+
     footerLangugeClick();
 
     //====================================================================
