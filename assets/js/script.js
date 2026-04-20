@@ -4,6 +4,35 @@
 console.log('script.js loaded and function called');
 document.addEventListener('DOMContentLoaded', () => {
 
+    const headerHeight = document.querySelector('.header').offsetHeight; // Позиция элемента с учетом высоты header
+    const firstSection = document.querySelector('main section');
+
+    if (firstSection) {
+        firstSection.style.marginTop = headerHeight + 'px';
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', e => {
+            e.preventDefault(); // Определяем целевой элемент по якорю
+            const targetId = anchor.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) { // Высота header
+                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - (headerHeight + 30); // Плавный скролл
+                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            }
+        });
+    });
+
+    const onresize = (dom_elem, callback) => {
+        const resizeObserver = new ResizeObserver(() => callback() );
+        resizeObserver.observe(dom_elem);
+    };
+
+    onresize(firstSection, function () {
+        const headerHeight = document.querySelector('.header').offsetHeight; // Позиция элемента с учетом высоты header
+        firstSection.style.marginTop = headerHeight + 'px';
+    });
+
     const swiper = new Swiper('.stories__slider', {
         slidesPerView: 1,
         navigation: {

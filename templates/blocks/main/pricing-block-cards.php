@@ -100,10 +100,22 @@ if ( ! empty( $block['align'] ) ) {
 
                            <?php $button = get_sub_field( 'button' ); ?>
                            <?php if ( $button ) : ?>
-                               <?php $index == 1 ? $class = '' : $class = 'white';?>
+                               <?php
+                                     $index == 1 ? $class = '' : $class = 'white';
+                                     $url = '';
+                                     $onclick = '';
 
-                                   <a href=""
-                                      onclick="Calendly.initPopupWidget({url: '<?php echo  carbon_get_theme_option('crb_options_menu_request' . carbon_lang_prefix()); ?>' });return false;"
+                                     if ( $button['url'] !== '#' ) :
+                                         $url = $button['url'];
+                                     else:
+                                         $onclick = "Calendly.initPopupWidget({url:'" .  carbon_get_theme_option('crb_options_menu_request' . carbon_lang_prefix()) . "' });return false;";
+                                     endif;
+
+
+                               ?>
+
+                                   <a href="<?php echo esc_url( $url ); ?>"
+                                      onclick="<?php echo esc_attr( $onclick ); ?>"
                                       class="btn-fill full-width <?php echo esc_attr( $class ); ?>">
                                        <?php echo esc_html( $button['title'] ); ?>
                                    </a>

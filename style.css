@@ -569,7 +569,7 @@ Text Domain: pddocument
   }
 
   .solutions-offer h1 {
-    word-break: normal!important;
+    word-break: normal;
   }
 }
 
