@@ -399,7 +399,7 @@ function register_example_block() {
 
 			'keywords'				=> array( 'inhubber' ),
 
-			'post_types'			=> array( 'page' ),
+			'post_types'			=> array( 'page', 'post' ),
 
 			'mode'					=> 'auto',
 

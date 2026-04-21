@@ -112,7 +112,13 @@ if (!empty($block['align'])) {
                                             <div class="stories__slide-text">
                                                 <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/cov.svg"
                                                      alt="cov">
-                                                <span><?php the_sub_field('review'); ?></span>
+
+                                                <span class="review-desktop">
+                                                    <?php the_sub_field('review'); ?>
+                                                </span>
+                                                <span class="review-mobile">
+                                                    <?php the_sub_field('text_review_-_mobile'); ?>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>

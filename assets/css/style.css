@@ -3933,10 +3933,6 @@ body._active {
 .overwiew-features-white .overwiew-features__items {
   border-top: 1px solid #F3F2F5;
 }
-.block-logo-ovewiew {
-  padding-top: 0 !important;
-	padding-bottom: 0 !important;
-}
 
 .faq-owerview {
   position: relative;

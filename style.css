@@ -165,10 +165,6 @@ Text Domain: pddocument
   top: auto !important;
 }
 
-.block-logo:not(.single-block)  {
-  padding: 0 0 120px !important;
-}
-
 .page-id-667 .block-logo {
   padding: 0 !important;
 }
@@ -193,7 +189,7 @@ Text Domain: pddocument
 }
 
 .offer {
-  padding: 120px 0 !important;
+  padding: 120px 0;
 }
 
 .offer__images {
@@ -556,10 +552,6 @@ Text Domain: pddocument
 
 /* .stories__slide-video */
 @media (max-width: 768px) {
-  .stories__slide-video {
-    height: auto !important;
-  }
-
   .stories__slide-btn {
     position: static;
     display: inline-block;

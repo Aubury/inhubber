@@ -16,8 +16,8 @@
   flex-direction: column;
 }
 .offer {
-   padding: 120px 0 !important;
-	margin: 108px 0px 0px 0px !important;
+   padding: 120px 0;
+	margin: 108px 0 0 0;
 }
 .swiper-wrapper {
   position: relative;
@@ -1518,6 +1518,10 @@
   font-size: 24px;
   line-height: 133%;
   max-width: 824px;
+}
+
+.stories__slide-text .review-mobile {
+  display: none;
 }
 
 .stories__slide-btn {
@@ -4159,7 +4163,8 @@ background: transparent;
     margin-top: 24px;
   }
   .solutions-offer__img {
-    display: none;
+    /*display: none;*/
+    margin-top: 48px;
   }
 }
 .solutions-description {
@@ -5200,6 +5205,13 @@ background: transparent;
   .bottom-footer__language-body {
     left: 0;
     right: auto;
+  }
+  .stories__slide-text .review-desktop {
+    display: none;
+  }
+
+  .stories__slide-text .review-mobile {
+    display: block;
   }
 }
 
