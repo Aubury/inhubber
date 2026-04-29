@@ -25,7 +25,7 @@ if ( ! empty( $block['align'] ) ) {
     $classes .= ' align' . $block['align'];
 }
 ?>
-
+<?php $language = function_exists('pll_current_language') ? pll_current_language() : 'en'; ?>
 <style type="text/css">
     <?php echo '#' . $id; ?> {
     /* Add styles that use ACF values here */
@@ -54,13 +54,38 @@ if ( ! empty( $block['align'] ) ) {
                     </div>
                 <?php endif; ?>
 
-                <?php $link = get_field('link'); ?>
-                <?php if ($link['title']) : ?>
-                    <a href=""
-                       onclick="Calendly.initPopupWidget({url: '<?php echo  carbon_get_theme_option('crb_options_menu_request' . carbon_lang_prefix()); ?>' });return false;"
-                       class="btn-fill"><?php echo esc_html($link['title']); ?></a>
+                <?php if ( get_field( 'display_form_for_pricing' ) == 1 ) : ?>
+                    <div class="form-contact-us full-width">
+                        <?php if ( $language == 'en' ) : ?>
+                            <div class="hs-form-frame" data-region="na1" data-form-id="b6805bb4-71df-4e56-8f08-03888e0a3824" data-portal-id="6737149"></div>
+                        <?php  elseif ( $language == 'de' ) : ?>
+                            <div class="hs-form-frame" data-region="na1" data-form-id="a0f9b160-97b9-4a9b-b1bc-3d40c7040b86" data-portal-id="6737149"></div>
+                        <?php endif; ?>
+                    </div>
+                <?php else : ?>
+                    <?php $link = get_field('link'); ?>
+                    <?php if ( $link ) : ?>
+                        <?php
+                            $url = '';
+                            $onclick = '';
+
+                            if ( $link['url'] !== '#' ) :
+                                $url = $link['url'];
+                            else:
+                                $onclick = "Calendly.initPopupWidget({url:'" .  carbon_get_theme_option('crb_options_menu_request' . carbon_lang_prefix()) . "' });return false;";
+                            endif;
+                        ?>
+
+                        <a href="<?php echo esc_url( $url ); ?>"
+                           onclick="<?php echo esc_attr( $onclick ); ?>"
+                           class="btn-fill">
+                            <?php echo esc_html( $link['title'] ); ?>
+                        </a>
+                    
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
         </div>
     </div>
 </section>
+<script src="https://js.hsforms.net/forms/embed/6737149.js" defer></script>

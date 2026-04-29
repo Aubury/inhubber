@@ -18,33 +18,6 @@
                     </a>
                 </div>
 
-<!--                --><?php //if ($crb_trusted_gallery = carbon_get_post_meta($id_home, 'crb_trusted_gallery')): ?>
-<!--                    <div class="offer__trusted wow animate__animated animate__fadeInUp">-->
-<!--                        <div class=" offer__trusted-title">-->
-<!--                            --><?php //echo carbon_get_post_meta($id_home, 'crb_trusted_title'); ?>
-<!--                        </div>-->
-<!---->
-<!--                        <div class="offer__trusted-images block-logo__slider swiper hero__swiper">-->
-<!--                            <div class="swiper-wrapper">-->
-<!---->
-<!--                                --><?php //foreach ($crb_trusted_gallery as $image): ?>
-<!--                                --><?php //if (!empty(wp_get_attachment_image($image))) : ?>
-<!--                                    <div class="offer__trusted-image block-logo__slide swiper-slide">-->
-<!---->
-<!--                                        --><?php
-//                                            echo  wp_get_attachment_image($image, 'post-thumbnail', 'true', array('alt' => 'img' ));
-//                                        ?>
-<!---->
-<!--                                    </div>-->
-<!--                                    --><?php //endif; ?>
-<!--                                --><?php //endforeach; ?>
-<!--                            </div>-->
-<!---->
-<!---->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                --><?php //endif; ?>
-
                 <?php if ($crb_new_trusted_gallery = carbon_get_post_meta($id_home, 'crb_new_trusted_gallery')): ?>
                     <div class="offer__trusted wow animate__animated animate__fadeInUp">
                         <div class=" offer__trusted-title">
@@ -313,7 +286,12 @@
                                             <div class="stories__slide-text">
                                                 <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/cov.svg"
                                                      alt="cov">
-                                                <span><?php echo $item['text']; ?></span>
+                                                <span class="review-desktop">
+                                                    <?php echo $item['text']; ?>
+                                                </span>
+                                                <span class="review-mobile">
+                                                    <?php echo $item['text-mobile']; ?>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>

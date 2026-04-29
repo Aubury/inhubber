@@ -387,6 +387,8 @@ Text Domain: pddocument
   }
 
   .solutions-offer h1 {
+    max-width: 100%;
+    word-wrap: break-word;
     word-break: break-all;
   }
 
@@ -561,7 +563,7 @@ Text Domain: pddocument
   }
 
   .solutions-offer h1 {
-    word-break: normal;
+    word-break: break-all;
   }
 }
 

@@ -153,6 +153,7 @@ function crb_attach_theme_front_page() {
 				        Field::make( 'text', 'link_video', __( 'Link video','inhubber' ) )->set_width( 50 ),
 				        Field::make( 'image', 'image', __( 'Image','inhubber' ) )->set_width( 50 ),
 				        Field::make( 'textarea', 'text', __( 'Text','inhubber' ) )->set_required( false )->set_width( 100 ),
+                        Field::make( 'textarea', 'text-mobile', __( 'Text - Mobile','inhubber' ) )->set_required( false )->set_width( 100 )->set_attribute( 'maxlength', 270 ),
 
 				    ) )->set_layout('tabbed-horizontal')
 
