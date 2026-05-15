@@ -4148,7 +4148,12 @@ background: transparent;
     margin-top: 4px;
     font-size: 40px;
     text-align: center;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
     word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: unset;
     max-width: 100%;
   }
   .solutions-offer__overtitle {

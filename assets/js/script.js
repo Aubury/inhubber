@@ -30,8 +30,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     onresize(firstSection, function () {
         const headerHeight = document.querySelector('.header').offsetHeight; // Позиция элемента с учетом высоты header
-        firstSection.style.marginTop = headerHeight + 'px';
+        if (!firstSection.classList.contains('single-content')) {
+            firstSection.style.marginTop = headerHeight + 'px';
+        } else if (window.innerWidth < 770) {
+            firstSection.style.marginTop = headerHeight + 'px';
+        }
     });
+
+    const language = document.documentElement.lang;
+    const language__menu = document.querySelectorAll('.language__menu a');
+
+    if ( language__menu.length > 1 ) {
+        if(language === 'de-DE') {
+            language__menu[1].classList.add('_active');
+        } else {
+            language__menu[0].classList.add('_active');
+        }
+    }
 
     const swiper = new Swiper('.stories__slider', {
         slidesPerView: 1,
