@@ -161,6 +161,15 @@ function crb_attach_theme_front_page() {
 
      ))
 
+        ->add_tab( __('Snippet','inhubber'), array(
+
+            Field::make( 'complex', 'crb_snippet', __( 'Snippet','inhubber' ) )
+                ->add_fields( array(
+                    Field::make( 'text', 'crb_snippet_title', __( 'Title','inhubber' ) )->set_required( true )->set_width( 30 ),
+                    Field::make( 'textarea', 'crb_snippet_code', __( 'Code','inhubber' ) )->set_required( true )->set_width( 70 ),
+                ) )->set_layout('tabbed-horizontal')
+        ))
+
         ->add_tab( __('Software','inhubber'), array(
 
      		Field::make( 'text', 'crb_software_title', __( 'Title','inhubber' ) )->set_required( true )->set_width( 100 )->set_default_value('Award winning CLM software'),

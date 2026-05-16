@@ -351,6 +351,20 @@
 
 <?php endif; ?>
 
+<?php if ( $crb_snippet = carbon_get_post_meta($id_home, 'crb_snippet')) : ?>
+
+    <section class="software block-snippet">
+        <div class="container">
+            <?php foreach ($crb_snippet as $snippet) : ?>
+                <?php if ( $snippet['crb_snippet_code'] ) : ?>
+                   <?php echo $snippet['crb_snippet_code']; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </div>
+    </section>
+
+<?php endif; ?>
+
 <?php if ($crb_software_gallery = carbon_get_post_meta($id_home, 'crb_software_gallery')): ?>
     <section class="software">
         <div class="container">

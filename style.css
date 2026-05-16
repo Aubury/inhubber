@@ -578,3 +578,17 @@ Text Domain: pddocument
 .single-content a {
     color: #7363E0;
 }
+
+/*/////////////////////////////////////////*/
+.block-snippet .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.block-snippet img {
+  width: 125px;
+  height: auto;
+}
