@@ -32,16 +32,16 @@ if ( ! empty( $block['align'] ) ) {
     }
 </style>
 
-<div id="<?php echo esc_attr( $id ); ?>" class="offer overwiew-offer white_bg <?php echo esc_attr( $classes ); ?>">
+<section id="<?php echo esc_attr( $id ); ?>" class="offer overwiew-offer white_bg <?php echo esc_attr( $classes ); ?>">
     <div class="container">
         <div class="offer__wrapper">
-            <div class="offer__header">
+            <div class="section-header">
                 <?php if (get_field('page_title')) : ?>
                     <h4 class="section-header__overtitle wow animate__animated animate__fadeInUp"><?php the_field( 'page_title' ); ?></h4>
                 <?php endif; ?>
 
                 <?php if (get_field('title')) : ?>
-                    <h2 class="section-header__title wow animate__animated animate__fadeInUp"><?php the_field('title'); ?></h2>
+                    <h1 class="section-header__title wow animate__animated animate__fadeInUp"><?php the_field('title'); ?></h1>
                 <?php endif; ?>
 
                 <?php if (get_field('text')) : ?>
@@ -60,4 +60,4 @@ if ( ! empty( $block['align'] ) ) {
             </div>
         </div>
     </div>
-</div>
+</section>

@@ -1,6 +1,7 @@
 <?php get_header();
 // Получаем текущий язык
 $lang = pll_current_language();
+$id_home = pll_get_post(get_option('page_on_front'));
 
 $id_blog = get_option('page_for_posts');
 $post_slug = get_post_field('post_name', get_post());
@@ -115,6 +116,19 @@ if (get_the_ID() === 124 || get_the_ID() === 1237 || $post_slug === 'blog' || $p
                 </div>
             </div>
         </section>
+    <?php endif; ?>
+    <?php if ( $crb_snippet = carbon_get_post_meta($id_home, 'crb_snippet')) : ?>
+
+        <section class="software block-snippet">
+            <div class="container">
+                <?php foreach ($crb_snippet as $snippet) : ?>
+                    <?php if ( $snippet['crb_snippet_code'] ) : ?>
+                        <?php echo $snippet['crb_snippet_code']; ?>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+        </section>
+
     <?php endif; ?>
     <?php
 } else {

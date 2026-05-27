@@ -3276,8 +3276,12 @@ background: transparent;
   background: rgba(171, 169, 184, 0.16) !important;
 }
 
+.block-first-block-with-title-page .section-header {
+  max-width: 1000px;
+}
+
 .section-header {
-  margin: 0px auto 0px auto;
+  margin: 0 auto 0 auto;
   max-width: 800px;
   display: -webkit-box;
   display: -ms-flexbox;

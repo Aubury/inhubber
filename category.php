@@ -2,6 +2,7 @@
 // Получаем текущий язык
 $lang = pll_current_language();
 $id_blog = get_option('page_for_posts');
+$id_home = pll_get_post(get_option('page_on_front'));
 
 get_header();
 
@@ -115,6 +116,19 @@ $glossary_category = get_category($glossary_cat_id);
     </section>
 <?php endif; ?>
 
+<?php if ( $crb_snippet = carbon_get_post_meta($id_home, 'crb_snippet')) : ?>
+
+    <section class="software block-snippet">
+        <div class="container">
+            <?php foreach ($crb_snippet as $snippet) : ?>
+                <?php if ( $snippet['crb_snippet_code'] ) : ?>
+                    <?php echo $snippet['crb_snippet_code']; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </div>
+    </section>
+
+<?php endif; ?>
 
 <?php get_template_part('templates/footer-everything') ?>
 <?php get_footer() ?>
