@@ -43,9 +43,9 @@ if ( ! empty( $block['align'] ) ) {
                 <?php endif; ?>
 
                 <?php if (get_field('title')) : ?>
-                    <h2 class="section-header__title">
+                    <h1 class="section-header__title">
                         <?php the_field( 'title' ); ?>
-                    </h2>
+                    </h1>
                 <?php endif; ?>
 
                 <?php if (get_field('under_title')) : ?>
