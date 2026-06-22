@@ -22,11 +22,59 @@ if ( have_posts()) :
                   </h1>
 
                   <div class="single-offer__icons">
-                      <div class="single-offer__icons-text">
-                          <?php pll_e('Share'); ?>:
-                      </div>
-                      <div class="single-offer__icon">
-                          <?php echo do_shortcode('[Sassy_Social_Share]') ?>
+                      <?php if (!empty($authors)) : ?>
+                          <?php foreach ($authors as $author) : ?>
+
+                              <div class="blog-author-wrap">
+
+                                  <?php if (!empty($author['icon'])) : ?>
+                                      <div class="blog-author_icon">
+                                          <?php echo wp_get_attachment_image($author['icon'], 'full'); ?>
+                                      </div>
+                                  <?php endif; ?>
+
+                                  <div class="blog-author_info_wrap">
+                                      <div class="blog-author_info">
+
+                                          <?php if (!empty($author['author_name'])) : ?>
+                                              <div class="blog_author_name">
+                                                  <h4><?php echo esc_html($author['author_name']); ?></h4>
+                                                  <p><?php echo esc_html($author['author_position']); ?></p>
+                                              </div>
+                                          <?php endif; ?>
+
+                                          <?php if (!empty($author['url'])) : ?>
+                                              <?php foreach ($author['url'] as $social) : ?>
+
+                                                  <a href="<?php echo esc_url($social['link']); ?>" class="blog-author_social_url" target="_blank" rel="nofollow noopener">
+
+                                                      <?php if (!empty($social['icon'])) : ?>
+                                                          <?php echo wp_get_attachment_image($social['icon'], 'full'); ?>
+                                                      <?php endif; ?>
+
+                                                      <?php if (!empty($social['text'])) : ?>
+                                                          <span><?php echo esc_html($social['text']); ?></span>
+                                                      <?php endif; ?>
+
+                                                  </a>
+
+                                              <?php endforeach; ?>
+                                          <?php endif; ?>
+
+                                      </div>
+                                  </div>
+                              </div>
+
+                          <?php endforeach; ?>
+                      <?php endif; ?>
+
+                      <div class="single-offer__icons-text_wrap">
+                          <div class="single-offer__icons-text">
+                              <?php pll_e('Share'); ?>:
+                          </div>
+                          <div class="single-offer__icon">
+                              <?php echo do_shortcode('[Sassy_Social_Share]') ?>
+                          </div>
                       </div>
                   </div>
 
