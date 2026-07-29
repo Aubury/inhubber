@@ -79,6 +79,7 @@ if(function_exists('pll_register_string')){
     pll_register_string('Annually', 'Annually', 'inhubber');
     pll_register_string('Industries', 'Industries', 'inhubber');
     pll_register_string('Teams', 'Teams', 'inhubber');
+    pll_register_string('ISO 27 001 certified', 'ISO 27 001 certified', 'inhubber');
 }
 
 

@@ -2365,7 +2365,6 @@ p {
 }
 
 .top-footer__made-item {
-  margin: 0px 8px 0px 0px;
   background: #FFFFFF;
   border: 1px solid #E9E8EB;
   border-radius: 8px;
@@ -2377,6 +2376,7 @@ p {
       -ms-flex-align: center;
           align-items: center;
   max-width: 130px;
+  gap: 8px;
 }
 
 .top-footer__made-flag {

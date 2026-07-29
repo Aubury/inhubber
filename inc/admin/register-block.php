@@ -1446,7 +1446,162 @@ function register_example_block() {
            )
        );
 
+       acf_register_block_type(
+           array(
+               'name' 					=> 'Main page - first section',
+               'title' 				    => 'Main page - first section',
+               'description' 			=> 'Main page - first section',
+               'category' 				=> 'category-main-page',
+               'icon'					=> 'format-status',
+               'keywords'				=> array('category-main-page'),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/main-page/first-section.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
 
+       acf_register_block_type(
+           array(
+               'name' 					=> 'Main page - Benefits',
+               'title' 				    => 'Main page - Benefits',
+               'description' 			=> 'Main page - Benefits',
+               'category' 				=> 'category-main-page',
+               'icon'					=> 'format-status',
+               'keywords'				=> array('category-main-page'),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/main-page/benefits.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
+       acf_register_block_type(
+           array(
+               'name' 					=> 'Main page - Features',
+               'title' 				    => 'Main page - Features',
+               'description' 			=> 'Main page - Features',
+               'category' 				=> 'category-main-page',
+               'icon'					=> 'format-status',
+               'keywords'				=> array('category-main-page'),
+               'post_types'			    => array( 'page'),
+               'mode'					=> 'auto',
+               'render_template'		=> 'templates/blocks/main-page/features.php',
+               'enqueue_style' 		    => get_template_directory_uri() . '/templates/blocks/block.css',
+           )
+       );
+
+       acf_register_block_type( array(
+
+           'name' 					=> 'Main page - Contracts',
+           'title' 				    => 'Main page - Contracts',
+           'description' 			=> 'Main page - Contracts',
+           'category' 				=> 'category-main-page',
+           'icon'					=> 'format-status',
+           'keywords'				=> array('category-main-page'),
+           'post_types'			    => array( 'page' ),
+           'mode'					=> 'auto',
+           'render_template'		=> 'templates/blocks/main-page/contracts.php',
+           'enqueue_style' 		=> get_template_directory_uri() . '/templates/blocks/block.css',
+       ));
+
+       acf_register_block_type( array(
+
+           'name' 					=> 'Main page - Security & Compliance',
+           'title' 				    => 'Main page - Security & Compliance',
+           'description' 			=> 'Main page - Security & Compliance',
+           'category' 				=> 'category-main-page',
+           'icon'					=> 'format-status',
+           'keywords'				=> array('category-main-page'),
+           'post_types'			    => array( 'page' ),
+           'mode'					=> 'auto',
+           'render_template'		=> 'templates/blocks/main-page/security_compliance.php',
+           'enqueue_style' 		=> get_template_directory_uri() . '/templates/blocks/block.css',
+       ));
+
+       acf_register_block_type( array(
+
+           'name' 					=> 'Main page - Solutions',
+           'title' 				    => 'Main page - Solutions',
+           'description' 			=> 'Main page - Solutions',
+           'category' 				=> 'category-main-page',
+           'icon'					=> 'format-status',
+           'keywords'				=> array('category-main-page'),
+           'post_types'			    => array( 'page' ),
+           'mode'					=> 'auto',
+           'render_template'		=> 'templates/blocks/main-page/solutions.php',
+           'enqueue_style' 		=> get_template_directory_uri() . '/templates/blocks/block.css',
+       ));
+
+       acf_register_block_type( array(
+
+           'name' 					=> 'Main page - Customer stories',
+           'title' 				    => 'Main page - Customer stories',
+           'description' 			=> 'Main page - Customer stories',
+           'category' 				=> 'category-main-page',
+           'icon'					=> 'format-status',
+           'keywords'				=> array('category-main-page'),
+           'post_types'			    => array( 'page' ),
+           'mode'					=> 'auto',
+           'render_template'		=> 'templates/blocks/main-page/customer-stories.php',
+           'enqueue_style' 		=> get_template_directory_uri() . '/templates/blocks/block.css',
+       ));
+
+       acf_register_block_type( array(
+
+           'name' 					=> 'Main page - Industry-recognised',
+           'title' 				    => 'Main page - Industry-recognised',
+           'description' 			=> 'Main page - Industry-recognised',
+           'category' 				=> 'category-main-page',
+           'icon'					=> 'format-status',
+           'keywords'				=> array('category-main-page'),
+           'post_types'			    => array( 'page' ),
+           'mode'					=> 'auto',
+           'render_template'		=> 'templates/blocks/main-page/industry-recognised.php',
+           'enqueue_style' 		=> get_template_directory_uri() . '/templates/blocks/block.css',
+       ));
+
+       acf_register_block_type( array(
+
+           'name' 					=> 'Main page - Contracts with rating badges',
+           'title' 				    => 'Main page - Contracts with rating badges',
+           'description' 			=> 'Main page - Contracts with rating badges',
+           'category' 				=> 'category-main-page',
+           'icon'					=> 'format-status',
+           'keywords'				=> array('category-main-page'),
+           'post_types'			    => array( 'page' ),
+           'mode'					=> 'auto',
+           'render_template'		=> 'templates/blocks/main-page/contracts-rating-badges.php',
+           'enqueue_style' 		=> get_template_directory_uri() . '/templates/blocks/block.css',
+       ));
+
+       acf_register_block_type( array(
+
+           'name' 					=> 'Main page - FAQ',
+           'title' 				    => 'Main page - FAQ',
+           'description' 			=> 'Main page - FAQ',
+           'category' 				=> 'category-main-page',
+           'icon'					=> 'format-status',
+           'keywords'				=> array('category-main-page'),
+           'post_types'			    => array( 'page' ),
+           'mode'					=> 'auto',
+           'render_template'		=> 'templates/blocks/main-page/frequently.php',
+           'enqueue_style' 		=> get_template_directory_uri() . '/templates/blocks/block.css',
+       ));
+
+       acf_register_block_type( array(
+
+           'name' 					=> 'FAQ - MetaBox from Main Page',
+           'title' 				    => 'FAQ - MetaBox from Main Page',
+           'description' 			=> 'FAQ - MetaBox from Main Page',
+           'category' 				=> 'category-main-page',
+           'icon'					=> 'format-status',
+           'keywords'				=> array('category-main-page'),
+           'post_types'			    => array( 'page' ),
+           'mode'					=> 'auto',
+           'render_template'		=> 'templates/blocks/main-page/faq.php',
+           'enqueue_style' 		=> get_template_directory_uri() . '/templates/blocks/block.css',
+       ));
 
    }
 

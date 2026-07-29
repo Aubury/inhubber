@@ -17,7 +17,8 @@
     
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-
+    <meta name="robots" content="index,follow">
+    
     <?php if (!defined('CUSTOM_LAZY_LOAD_ENABLED') || !CUSTOM_LAZY_LOAD_ENABLED): ?>
         
     <?php endif; ?>

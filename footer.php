@@ -80,6 +80,15 @@
                     <div class="top-footer__made">
                         <div class="top-footer__made-item">
                             <div class="top-footer__made-flag">
+                                <img src="<?php echo get_template_directory_uri() ?>/assets/img/ISMS_Digitalbadge01.png"
+                                     alt="footer__made-flag">
+                            </div>
+                            <div class="top-footer__made-text">
+                                <?php pll_e('ISO 27 001 certified'); ?>
+                            </div>
+                        </div>
+                        <div class="top-footer__made-item">
+                            <div class="top-footer__made-flag">
                                 <img src="<?php echo get_template_directory_uri() ?>/assets/img/top-footer__made-flag-1.svg"
                                      alt="footer__made-flag">
                             </div>
