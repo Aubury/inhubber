@@ -24,11 +24,17 @@ if (!empty($block['className'])) {
 if (!empty($block['align'])) {
     $classes .= ' align' . $block['align'];
 }
+
+$id_home = pll_get_post(get_option('page_on_front'));
+get_field( 'display_raiting_&_comppliance_badges' ) == 1
+    ? $rating_class = 'rating-wrapper'
+    : $rating_class = '';
+
 ?>
 
 <section id="<?php echo esc_attr($id); ?>" class="offer overwiew-offer <?php echo esc_attr($classes); ?>">
     <div class="container">
-        <div class="offer__wrapper">
+        <div class="offer__wrapper <?php echo $rating_class ?>">
             <div class="offer__header">
                 <h1><?php the_field('title'); ?></h1>
                 <div class="offer__text">
@@ -41,6 +47,74 @@ if (!empty($block['align'])) {
                        class="btn-fill"><?php echo esc_html($link['title']); ?></a>
                 <?php endif; ?>
             </div>
+
+            <?php if ( get_field( 'display_raiting_&_comppliance_badges' ) == 1 ) : ?>
+                <div class="rating-compliance_badges">
+                    <?php if ($crb_raiting_gallery = carbon_get_post_meta($id_home, 'crb_raiting_gallery')): ?>
+
+                        <?php
+                        $ids = carbon_get_post_meta($id_home, 'crb_raiting_gallery') ?: [];
+
+                        $images = array_values(array_filter(array_map(function($id){
+                            $id  = (int) $id;
+                            $url = wp_get_attachment_url($id);
+                            if (!$url) return null;
+
+                            return [
+                                'id'    => $id,
+                                'url'   => $url,
+                                'alt'   => get_post_meta($id, '_wp_attachment_image_alt', true),
+                                'title' => get_the_title($id),
+                                // метаданные с размерами (thumbnail, medium, etc.)
+                                'meta'  => wp_get_attachment_metadata($id),
+                            ];
+                        }, $ids)));
+
+                        ?>
+                        <div class="rating-row">
+                            <?php
+                            foreach ($images as $img) : ?>
+
+                                <?php
+                                echo '<img src="' . esc_url($img['url']) . '" alt="' . esc_attr($img['alt']) . '">';
+                                ?>
+
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($crb_comppliance_badges = carbon_get_post_meta($id_home, 'crb_comppliance_badges')): ?>
+                        <div class="compliance-row">
+                            <?php foreach ($crb_comppliance_badges as $badge) : ?>
+                                <?php if ($badge) : ?>
+                                    <?php $badge['crb_comppliance_text'] ? $compliance_class = '' : $compliance_class = 'compliance_none_text' ?>
+                                    <div class="singe-badge <?php echo $compliance_class ?>">
+                                        <?php if ($badge['crb_comppliance_imags']) :
+                                            $id  = (int) $badge['crb_comppliance_imags'];
+                                            $url = wp_get_attachment_url($id);
+                                            if (!$url) return null;
+                                            ?>
+
+                                            <img src="<?php echo esc_url( $url ); ?>"
+                                                 alt="<?php echo 'Badge'; ?>" />
+
+                                        <?php endif; ?>
+
+                                        <?php if ($badge['crb_comppliance_text']) : ?>
+                                            <div class="singe-badge-text">
+                                                <?php echo $badge['crb_comppliance_text']; ?>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            <?php else : ?>
+                <?php // echo 'false'; ?>
+            <?php endif; ?>
+
         </div>
     </div>
 </section>

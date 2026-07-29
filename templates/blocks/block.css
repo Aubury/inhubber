@@ -7313,6 +7313,37 @@ background: transparent;
   white-space: normal;
 }
 
+.rating-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+}
+
+.rating-wrapper .rating-compliance_badges {
+  gap: 32px;
+}
+
+.rating-wrapper .rating-row {
+  padding-right: 32px;
+}
+
+.rating-wrapper .compliance-row {
+  gap: 32px;
+}
+
+.rating-wrapper .compliance_none_text {
+   max-height: 24px;
+   max-width: unset;
+}
+
+.rating-wrapper .compliance_none_text img {
+  max-height: 24px;
+  height: auto;
+  width: auto;
+}
+
 @media screen and (max-width: 1281px) {
   .block-main-page-security-compliance {
     padding: 120px 0;
@@ -7377,6 +7408,10 @@ background: transparent;
 @media screen and (max-width: 821px) {
   .rating-compliance_badges {
     flex-direction: column;
+  }
+
+  .rating-wrapper .rating-row {
+    padding-right: unset;
   }
 
   .rating-row {
@@ -7603,5 +7638,9 @@ background: transparent;
 
   .block-main-page-contracts-with-rating-badges {
     background: #E9E5FF;
+  }
+
+  .rating-wrapper {
+    gap: 64px
   }
 }
