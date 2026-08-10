@@ -38,18 +38,28 @@ function crb_attach_theme_front_page() {
 
      ))
 
-//      ->add_tab( __('Trusted by','inhubber'), array(
-//
-//     		Field::make( 'text', 'crb_trusted_title', __( 'Title','inhubber' ) )->set_required( true )->set_width( 50 )->set_default_value('Trusted by successful global companies'),
-//
-//
-//     		Field::make( 'media_gallery', 'crb_trusted_gallery', __( 'Images logo','inhubber' ) )
-//                ->set_required( false )
-//                ->set_width( 50 )
-//                ->set_type( array( 'image' ) ),
-//
-//
-//     ))
+     ->add_tab( __('Raiting & Comppliance badges','inhubber'), array(
+
+            Field::make( 'media_gallery', 'crb_raiting_gallery', __( 'Raiting Images','inhubber' ) )
+                ->set_required( false )
+                ->set_width( 50 )
+                ->set_type( array( 'image' ) )
+                ->set_duplicates_allowed(false),
+
+    		
+    		Field::make( 'complex', 'crb_comppliance_badges', __( 'Comppliance badges','inhubber' ) )
+				->add_fields( array(
+				    Field::make( 'image', 'crb_comppliance_imags', __( 'Comppliance Image','inhubber' ) )
+						->set_required( false )
+						->set_width( 30 )
+						->set_type( array( 'image' ) ),
+
+					Field::make( 'text', 'crb_comppliance_text', __( 'Raiting text','inhubber' ) )
+						->set_required( false )
+						->set_width( 70 ),
+				) )->set_layout('tabbed-horizontal'),
+
+    ))
 
         ->add_tab( __('New - Trusted by','inhubber'), array(
 
