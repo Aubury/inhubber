@@ -24,6 +24,11 @@ if ( ! empty( $block['className'] ) ) {
 if ( ! empty( $block['align'] ) ) {
     $classes .= ' align' . $block['align'];
 }
+
+$id_home = pll_get_post(get_option('page_on_front'));
+get_field( 'display_raiting_&_comppliance_badges' ) == 1
+    ? $rating_class = 'rating-wrapper'
+    : $rating_class = '';
 ?>
 <?php $language = function_exists('pll_current_language') ? pll_current_language() : 'en'; ?>
 <style type="text/css">
@@ -32,7 +37,7 @@ if ( ! empty( $block['align'] ) ) {
     }
 </style>
 
-<section id="<?php echo esc_attr( $id ); ?>" class="offer overwiew-offer white_bg block-first-block-with-title-page <?php echo esc_attr( $classes ); ?>">
+<section id="<?php echo esc_attr( $id ); ?>" class="offer overwiew-offer white_bg block-first-block-with-title-page <?php echo esc_attr( $classes ); ?> <?php echo $rating_class ?>">
     <div class="container">
         <div class="offer__wrapper">
             <div class="section-header">
@@ -87,5 +92,75 @@ if ( ! empty( $block['align'] ) ) {
             </div>
         </div>
     </div>
+    
+    <?php if ( get_field( 'display_raiting_&_comppliance_badges' ) == 1 ) : ?>
+        <div class="container">
+            <div class="rating-compliance_badges">
+                <?php if ($crb_raiting_gallery = carbon_get_post_meta($id_home, 'crb_raiting_gallery')): ?>
+
+                    <?php
+                    $ids = carbon_get_post_meta($id_home, 'crb_raiting_gallery') ?: [];
+
+                    $images = array_values(array_filter(array_map(function($id){
+                        $id  = (int) $id;
+                        $url = wp_get_attachment_url($id);
+                        if (!$url) return null;
+
+                        return [
+                            'id'    => $id,
+                            'url'   => $url,
+                            'alt'   => get_post_meta($id, '_wp_attachment_image_alt', true),
+                            'title' => get_the_title($id),
+                            // метаданные с размерами (thumbnail, medium, etc.)
+                            'meta'  => wp_get_attachment_metadata($id),
+                        ];
+                    }, $ids)));
+
+                    ?>
+                    <div class="rating-row">
+                        <?php
+                        foreach ($images as $img) : ?>
+
+                            <?php
+                            echo '<img src="' . esc_url($img['url']) . '" alt="' . esc_attr($img['alt']) . '">';
+                            ?>
+
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($crb_comppliance_badges = carbon_get_post_meta($id_home, 'crb_comppliance_badges')): ?>
+                    <div class="compliance-row">
+                        <?php foreach ($crb_comppliance_badges as $badge) : ?>
+                            <?php if ($badge) : ?>
+                                <?php $badge['crb_comppliance_text'] ? $compliance_class = '' : $compliance_class = 'compliance_none_text' ?>
+                                <div class="singe-badge <?php echo $compliance_class ?>">
+                                    <?php if ($badge['crb_comppliance_imags']) :
+                                        $id  = (int) $badge['crb_comppliance_imags'];
+                                        $url = wp_get_attachment_url($id);
+                                        if (!$url) return null;
+                                        ?>
+
+                                        <img src="<?php echo esc_url( $url ); ?>"
+                                             alt="<?php echo 'Badge'; ?>" />
+
+                                    <?php endif; ?>
+
+                                    <?php if ($badge['crb_comppliance_text']) : ?>
+                                        <div class="singe-badge-text">
+                                            <?php echo $badge['crb_comppliance_text']; ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php else : ?>
+        <?php // echo 'false'; ?>
+    <?php endif; ?>
+
 </section>
 <script src="https://js.hsforms.net/forms/embed/6737149.js" defer></script>

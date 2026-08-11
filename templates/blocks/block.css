@@ -7321,6 +7321,10 @@ background: transparent;
   gap: 80px;
 }
 
+.rating-wrapper .offer__images {
+  margin: 0;
+}
+
 @media screen and (max-width: 1281px) {
   .block-main-page-security-compliance {
     padding: 120px 0;

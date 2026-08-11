@@ -74,9 +74,9 @@ get_field( 'display_raiting_&_comppliance_badges' ) == 1
         </div>
     </div>
 
-    <div class="container">
-        <?php if ( get_field( 'display_raiting_&_comppliance_badges' ) == 1 ) : ?>
-        <div class="rating-compliance_badges">
+    <?php if ( get_field( 'display_raiting_&_comppliance_badges' ) == 1 ) : ?>
+        <div class="container">
+           <div class="rating-compliance_badges">
             <?php if ($crb_raiting_gallery = carbon_get_post_meta($id_home, 'crb_raiting_gallery')): ?>
 
                 <?php
@@ -138,8 +138,9 @@ get_field( 'display_raiting_&_comppliance_badges' ) == 1
                 </div>
             <?php endif; ?>
         </div>
+        </div>
     <?php else : ?>
         <?php // echo 'false'; ?>
     <?php endif; ?>
-    </div>
+
 </section>
