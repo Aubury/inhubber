@@ -43,7 +43,19 @@ if ( ! empty( $block['align'] ) ) {
                     <div class="stories__slide">
                         <div class="stories__slide-video">
                             <div class="stories__slide-img no-before">
-                                <img src="<?php echo esc_url( $main_image['url'] ); ?>" alt="<?php echo esc_attr( $main_image['alt'] ); ?>" />
+                                <?php
+                                    $dimensionsBig = inhubber_get_image_dimensions(
+                                        array(
+                                            'ID' => $main_image['id'],
+                                        )
+                                    );
+                                ?>
+                                <img src="<?php echo esc_url( $main_image['url'] ); ?>"
+                                     width="<?php echo esc_attr( $dimensionsBig['width'] ); ?>"
+                                     height="<?php echo esc_attr( $dimensionsBig['height'] ); ?>"
+                                     alt="<?php echo esc_attr( $main_image['alt'] ); ?>"
+                                     loading="lazy"
+                                     decoding="async"/>
                             </div>
                         </div>
                     </div>

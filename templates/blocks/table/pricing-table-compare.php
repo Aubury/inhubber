@@ -148,7 +148,7 @@ if ( ! empty( $block['align'] ) ) {
                                                 ?>
                                                 <a href="<?php echo esc_url( $url ); ?>"
                                                    onclick="<?php echo esc_attr( $onclick ); ?>"
-                                                   class="btn-fill full-width <?php echo esc_attr( $class ); ?>">
+                                                   class="btn-fill full-width js-open-calendly <?php echo esc_attr( $class ); ?>">
                                                     <?php echo esc_html( $button['title'] ); ?>
                                                 </a>
 
@@ -219,7 +219,7 @@ if ( ! empty( $block['align'] ) ) {
 
                                                 <a href="<?php echo esc_url( $url ); ?>"
                                                    onclick="<?php echo esc_attr( $onclick ); ?>"
-                                                   class="btn-fill full-width <?php echo esc_attr( $class ); ?>">
+                                                   class="btn-fill full-width js-open-calendly <?php echo esc_attr( $class ); ?>">
                                                     <?php echo esc_html( $button['title'] ); ?>
                                                 </a>
 
@@ -288,7 +288,7 @@ if ( ! empty( $block['align'] ) ) {
                                                 ?>
                                                 <a href="<?php echo esc_url( $url ); ?>"
                                                    onclick="<?php echo esc_attr( $onclick ); ?>"
-                                                   class="btn-fill full-width <?php echo esc_attr( $class ); ?>">
+                                                   class="btn-fill full-width js-open-calendly <?php echo esc_attr( $class ); ?>">
                                                     <?php echo esc_html( $button['title'] ); ?>
                                                 </a>
 

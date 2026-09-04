@@ -98,7 +98,17 @@ $thumb_url = kama_thumb_src([
             </section>
             <section class="single-content">
                 <div class="container">
-                    <img src="<?php echo esc_url($thumb_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                    <?php
+                        $thumb_id = get_post_thumbnail_id();
+                        $image    = wp_get_attachment_image_src($thumb_id, 'full');
+                    ?>
+                    <img src="<?php echo esc_url($thumb_url); ?>"
+                         width="<?php echo esc_attr($image[1]); ?>"
+                         height="<?php echo esc_attr($image[2]); ?>"
+                         alt="<?php echo esc_attr(get_the_title()); ?>"
+                         loading="lazy"
+                         decoding="async"
+                    >
                     <?php the_content(); ?>
                 </div>
             </section>

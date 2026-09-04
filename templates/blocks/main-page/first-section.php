@@ -27,7 +27,29 @@ if ( ! empty( $block['align'] ) ) {
 
 $id_home = pll_get_post(get_option('page_on_front'));
 $language = function_exists('pll_current_language') ? pll_current_language() : 'en';
+
+$banner_image = get_field( 'banner_image' );
+$banner_image_loading = wp_get_attachment_image(
+    $banner_image,
+    'full',
+    false,
+    array(
+        'class'         => 'banner-bg-img__image',
+        'alt'           => '',
+        'loading'       => 'eager',
+        'fetchpriority' => 'high',
+        'decoding'      => 'async',
+        'aria-hidden'   => 'true',
+    ));
+
 ?>
+
+<link
+        rel="preload"
+        as="image"
+        href="<?php echo esc_url( $banner_image['url'] ); ?>"
+        fetchpriority="high"
+>
 
 <style type="text/css">
     <?php echo '#' . $id; ?> {
@@ -92,10 +114,23 @@ $language = function_exists('pll_current_language') ? pll_current_language() : '
 
                                 <div class="rating-row">
                                     <?php while ( have_rows( 'raiting' ) ) : the_row(); ?>
-                                        <?php $image = get_sub_field( 'image' ); ?>
-                                        <?php if ( $image ) : ?>
+                                        <?php $image = get_sub_field( 'image' );  ?>
+                                        <?php if ( $image ) :
+                                            $dimensions = inhubber_get_image_dimensions( $image );
+                                        ?>
                                             <img src="<?php echo esc_url( $image['url'] ); ?>"
-                                                 alt="<?php echo esc_attr( $image['alt'] ); ?>" />
+
+                                                <?php if ( $dimensions['width'] && $dimensions['height'] ) : ?>
+                                                    width="<?php echo esc_attr( $dimensions['width'] ); ?>"
+                                                    height="<?php echo esc_attr( $dimensions['height'] ); ?>"
+                                                <?php endif; ?>
+
+                                                    class="rating-image"
+                                                    alt="<?php echo esc_attr( $image['alt'] ?? '' ); ?>"
+                                                    loading="eager"
+                                                    decoding="async"
+                                            >
+
                                         <?php endif; ?>
                                     <?php endwhile; ?>
                                 </div>
@@ -110,9 +145,22 @@ $language = function_exists('pll_current_language') ? pll_current_language() : '
                                     <?php while ( have_rows( 'comppliance_badges' ) ) : the_row(); ?>
                                         <div class="singe-badge">
                                             <?php $image = get_sub_field( 'image' ); ?>
-                                            <?php if ( $image ) : ?>
+                                            <?php if ( $image ) :
+                                                $dimensions = inhubber_get_image_dimensions( $image );
+                                            ?>
                                                 <img src="<?php echo esc_url( $image['url'] ); ?>"
-                                                     alt="<?php echo esc_attr( $image['alt'] ); ?>" />
+
+                                                    <?php if ( $dimensions['width'] && $dimensions['height'] ) : ?>
+                                                        width="<?php echo esc_attr( $dimensions['width'] ); ?>"
+                                                        height="<?php echo esc_attr( $dimensions['height'] ); ?>"
+                                                    <?php endif; ?>
+
+                                                     class="rating-image"
+                                                     alt="<?php echo esc_attr( $image['alt'] ?? '' ); ?>"
+                                                     loading="eager"
+                                                     decoding="async"
+                                                >
+
                                             <?php endif; ?>
 
                                             <?php if (get_sub_field('text')) : ?>
@@ -136,12 +184,40 @@ $language = function_exists('pll_current_language') ? pll_current_language() : '
         </div>
     </div>
 
-    <?php $banner_image = get_field( 'banner_image' ); ?>
     <?php if ( $banner_image ) : ?>
+        <?php
+            $image_id = $banner_image['ID'] ?? $banner_image['id'] ?? 0;
+        ?>
         <div class="banner-wrap-container">
             <div class="banner-wrap">
-                <div class="banner-bg-img"
-                     style="background-image: url('<?php echo esc_url( $banner_image['url'] ); ?>');">
+                <div class="banner-bg-img">
+                    <?php if ( $image_id ) : ?>
+                        <?php echo wp_get_attachment_image(
+                            $image_id,
+                            'full',
+                            false,
+                            array(
+                                'class'         => 'banner-bg-img__image',
+                                'alt'           => '',
+                                'loading'       => 'eager',
+                                'fetchpriority' => 'high',
+                                'decoding'      => 'async',
+                                'aria-hidden'   => 'true',
+                            )
+                        ); ?>
+                    <?php else : ?>
+                        <img
+                                class="banner-bg-img__image"
+                                src="<?php echo esc_url( $banner_image['url'] ); ?>"
+                                width="<?php echo esc_attr( $banner_image['width'] ); ?>"
+                                height="<?php echo esc_attr( $banner_image['height'] ); ?>"
+                                alt=""
+                                loading="eager"
+                                fetchpriority="high"
+                                decoding="async"
+                                aria-hidden="true"
+                        >
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -164,21 +240,55 @@ $language = function_exists('pll_current_language') ? pll_current_language() : '
                             $url = wp_get_attachment_url($id);
                             if (!$url) return null;
 
+                            $dimensions = inhubber_get_image_dimensions(
+                                array(
+                                    'ID' => $id,
+                                )
+                            );
+
                             return [
                                 'id'    => $id,
                                 'url'   => $url,
                                 'alt'   => get_post_meta($id, '_wp_attachment_image_alt', true),
                                 'title' => get_the_title($id),
+                                'width' => $dimensions['width'],
+                                'height' => $dimensions['height'],
                                 // метаданные с размерами (thumbnail, medium, etc.)
                                 'meta'  => wp_get_attachment_metadata($id),
                             ];
                         }, $ids)));
 
                         foreach ($images as $img) : ?>
+                            <?php
+                            $mobile_image = inhubber_get_mobile_logo_data(
+                                $img['id']
+                            );
+                            ?>
+
                             <div class="offer__trusted-image block-logo__slide swiper-slide">
-                                <?php
-                                echo '<img src="' . esc_url($img['url']) . '" alt="' . esc_attr($img['alt']) . '">';
-                                ?>
+                                <picture class="block-logo__picture">
+
+                                    <source media="(max-width: 570px)"
+                                            srcset="<?php echo esc_url($mobile_image['url']); ?>"
+                                            width="<?php echo esc_attr($mobile_image['width']); ?>"
+                                            height="<?php echo esc_attr($mobile_image['height']); ?>"
+
+                                    >
+
+                                    <img
+                                            src="<?php echo esc_url($img['url']); ?>"
+                                        <?php if ($img['width'] && $img['height']) : ?>
+                                            width="<?php echo esc_attr($img['width']); ?>"
+                                            height="<?php echo esc_attr($img['height']); ?>"
+                                        <?php endif; ?>
+                                            alt="<?php echo esc_attr(
+                                                $img['alt'] ?: 'Logo image'
+                                            ); ?>"
+                                            loading="lazy"
+                                            decoding="async"
+                                    >
+
+                                </picture>
                             </div>
                         <?php endforeach; ?>
 

@@ -483,3 +483,295 @@ add_filter( 'rank_math/frontend/canonical', function( $canonical ) {
   }
   return $canonical;
 });
+
+/**
+ * Возвращает исходные размеры изображения.
+ *
+ * Для PNG/JPG/WebP берет данные из WordPress.
+ * Для SVG читает width/height или viewBox.
+ */
+function inhubber_get_image_dimensions( $image ) {
+    $dimensions = array(
+        'width'  => 0,
+        'height' => 0,
+    );
+
+    if ( empty( $image ) || ! is_array( $image ) ) {
+        return $dimensions;
+    }
+
+    // ACF уже может содержать размеры PNG/JPG/WebP.
+    if ( ! empty( $image['width'] ) && ! empty( $image['height'] ) ) {
+        return array(
+            'width'  => (int) $image['width'],
+            'height' => (int) $image['height'],
+        );
+    }
+
+    $attachment_id = ! empty( $image['ID'] )
+        ? (int) $image['ID']
+        : 0;
+
+    if ( ! $attachment_id ) {
+        return $dimensions;
+    }
+
+    // Проверяем метаданные WordPress.
+    $metadata = wp_get_attachment_metadata( $attachment_id );
+
+    if (
+        ! empty( $metadata['width'] ) &&
+        ! empty( $metadata['height'] )
+    ) {
+        return array(
+            'width'  => (int) $metadata['width'],
+            'height' => (int) $metadata['height'],
+        );
+    }
+
+    // Для SVG получаем размеры непосредственно из файла.
+    $file_path = get_attached_file( $attachment_id );
+    $mime_type = get_post_mime_type( $attachment_id );
+
+    if (
+        'image/svg+xml' !== $mime_type ||
+        ! $file_path ||
+        ! is_readable( $file_path )
+    ) {
+        return $dimensions;
+    }
+
+    $svg_content = file_get_contents( $file_path );
+
+    if ( ! $svg_content ) {
+        return $dimensions;
+    }
+
+    // Сначала пробуем width и height.
+    if (
+        preg_match( '/<svg[^>]*\bwidth=["\']([\d.]+)(?:px)?["\']/i', $svg_content, $width_match ) &&
+        preg_match( '/<svg[^>]*\bheight=["\']([\d.]+)(?:px)?["\']/i', $svg_content, $height_match )
+    ) {
+        return array(
+            'width'  => (int) round( (float) $width_match[1] ),
+            'height' => (int) round( (float) $height_match[1] ),
+        );
+    }
+
+    // Если width/height отсутствуют, берем пропорции из viewBox.
+    if (
+        preg_match(
+            '/<svg[^>]*\bviewBox=["\'][\d.\-]+\s+[\d.\-]+\s+([\d.]+)\s+([\d.]+)["\']/i',
+            $svg_content,
+            $viewbox_match
+        )
+    ) {
+        return array(
+            'width'  => (int) round( (float) $viewbox_match[1] ),
+            'height' => (int) round( (float) $viewbox_match[2] ),
+        );
+    }
+
+    return $dimensions;
+}
+
+function inhubber_get_svg_dimensions($svg_path) {
+    $width  = '';
+    $height = '';
+
+    if (file_exists($svg_path)) {
+        $svg = simplexml_load_file($svg_path);
+
+        if ($svg !== false) {
+            $attributes = $svg->attributes();
+
+            // Если в SVG заданы width и height
+            $width  = isset($attributes->width)
+                ? preg_replace('/[^0-9.]/', '', (string) $attributes->width)
+                : '';
+
+            $height = isset($attributes->height)
+                ? preg_replace('/[^0-9.]/', '', (string) $attributes->height)
+                : '';
+
+            // Если размеров нет, получаем их из viewBox
+            if ((!$width || !$height) && isset($attributes->viewBox)) {
+                $view_box = preg_split(
+                    '/[\s,]+/',
+                    trim((string) $attributes->viewBox)
+                );
+
+                if (count($view_box) === 4) {
+                    $width  = $view_box[2];
+                    $height = $view_box[3];
+                }
+            }
+        }
+    }
+
+    return array('width' => $width, 'height' => $height);
+}
+
+add_action('after_setup_theme', function () {
+    add_image_size('customer-logo-mobile', 150, 50, false);
+});
+
+function inhubber_get_mobile_logo_url($attachment_id)
+{
+    $attachment_id = (int) $attachment_id;
+
+    // Проверяем, существует ли уже мобильная копия.
+    $mobile_image = image_get_intermediate_size(
+        $attachment_id,
+        'customer-logo-mobile'
+    );
+
+    if (!empty($mobile_image['url'])) {
+        return $mobile_image['url'];
+    }
+
+    $original_path = get_attached_file($attachment_id);
+
+    if (!$original_path || !file_exists($original_path)) {
+        return wp_get_attachment_url($attachment_id);
+    }
+
+    /*
+     * Создаём изображение, вписанное в область 150×50.
+     * false — без обрезки, с сохранением пропорций.
+     */
+    $resized = image_make_intermediate_size(
+        $original_path,
+        150,
+        50,
+        false
+    );
+
+    if (!$resized || is_wp_error($resized)) {
+        return wp_get_attachment_url($attachment_id);
+    }
+
+    // Добавляем новый размер в метаданные WordPress.
+    $metadata = wp_get_attachment_metadata($attachment_id);
+
+    if (!is_array($metadata)) {
+        $metadata = [];
+    }
+
+    if (empty($metadata['sizes'])) {
+        $metadata['sizes'] = [];
+    }
+
+    $metadata['sizes']['customer-logo-mobile'] = $resized;
+
+    wp_update_attachment_metadata(
+        $attachment_id,
+        $metadata
+    );
+
+    $original_url = wp_get_attachment_url($attachment_id);
+
+    return trailingslashit(dirname($original_url)) . $resized['file'];
+}
+
+function inhubber_get_mobile_logo_data($attachment_id)
+{
+    $attachment_id = (int) $attachment_id;
+
+    if (!$attachment_id) {
+        return false;
+    }
+
+    /*
+     * SVG не требует отдельной мобильной версии.
+     */
+    if (get_post_mime_type($attachment_id) === 'image/svg+xml') {
+        return false;
+    }
+
+    /*
+     * Проверяем, создал ли WordPress нужную
+     * миниатюру при загрузке изображения.
+     */
+    $existing = image_get_intermediate_size(
+        $attachment_id,
+        'customer-logo-mobile'
+    );
+
+    if (
+        !empty($existing['url']) &&
+        !empty($existing['width']) &&
+        !empty($existing['height'])
+    ) {
+        return [
+            'url'    => $existing['url'],
+            'width'  => (int) $existing['width'],
+            'height' => (int) $existing['height'],
+        ];
+    }
+
+    /*
+     * Если миниатюры нет, создаём её
+     * автоматически при первом выводе.
+     */
+    if (!function_exists('image_make_intermediate_size')) {
+        require_once ABSPATH . 'wp-admin/includes/image.php';
+    }
+
+    $original_path = get_attached_file($attachment_id);
+    $original_url  = wp_get_attachment_url($attachment_id);
+
+    if (
+        !$original_path ||
+        !file_exists($original_path) ||
+        !$original_url
+    ) {
+        return false;
+    }
+
+    $resized = image_make_intermediate_size(
+        $original_path,
+        150,
+        50,
+        false
+    );
+
+    if (
+        !is_array($resized) ||
+        empty($resized['file']) ||
+        empty($resized['width']) ||
+        empty($resized['height'])
+    ) {
+        return false;
+    }
+
+    /*
+     * Сохраняем новый размер в метаданных,
+     * чтобы больше его не создавать.
+     */
+    $metadata = wp_get_attachment_metadata($attachment_id);
+
+    if (!is_array($metadata)) {
+        $metadata = [];
+    }
+
+    if (empty($metadata['sizes'])) {
+        $metadata['sizes'] = [];
+    }
+
+    $metadata['sizes']['customer-logo-mobile'] = $resized;
+
+    wp_update_attachment_metadata(
+        $attachment_id,
+        $metadata
+    );
+
+    return [
+        'url' => trailingslashit(
+                dirname($original_url)
+            ) . $resized['file'],
+
+        'width'  => (int) $resized['width'],
+        'height' => (int) $resized['height'],
+    ];
+}

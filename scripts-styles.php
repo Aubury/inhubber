@@ -242,6 +242,43 @@ function inhubber_scripts() {
 }
 add_action('wp_enqueue_scripts', 'inhubber_scripts');
 
+add_action( 'wp_head', function () {
+    ?>
+    <link
+            rel="preload"
+            href="<?php echo esc_url(
+                get_template_directory_uri() .
+                '/assets/fonts/Inter-Variable.woff2'
+            ); ?>"
+            as="font"
+            type="font/woff2"
+            crossorigin
+    >
+
+    <?php
+    $style_file = get_template_directory() .
+        '/assets/css/preload-style.css';
+
+    $style_url = get_template_directory_uri() .
+        '/assets/css/preload-style.css';
+
+    if ( file_exists( $style_file ) ) {
+        $style_url = add_query_arg(
+            'ver',
+            md5_file( $style_file ),
+            $style_url
+        );
+    }
+    ?>
+
+    <link
+            rel="stylesheet"
+            href="<?php echo esc_url( $style_url ); ?>"
+            as="style"
+    >
+    
+    <?php
+}, 1 );
 
 // script for lazy loading scripts and styles
 add_action('wp_footer', function() {

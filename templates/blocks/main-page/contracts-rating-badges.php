@@ -79,9 +79,21 @@ if ( ! empty( $block['align'] ) ) {
                             <div class="rating-row">
                                 <?php while ( have_rows( 'rating' ) ) : the_row(); ?>
                                     <?php $image = get_sub_field( 'image' ); ?>
-                                    <?php if ( $image ) : ?>
+                                    <?php if ( $image ) :
+                                        $dimensions = inhubber_get_image_dimensions( $image );
+                                    ?>
                                         <img src="<?php echo esc_url( $image['url'] ); ?>"
-                                             alt="<?php echo esc_attr( $image['alt'] ); ?>" />
+
+                                            <?php if ( $dimensions['width'] && $dimensions['height'] ) : ?>
+                                                width="<?php echo esc_attr( $dimensions['width'] ); ?>"
+                                                height="<?php echo esc_attr( $dimensions['height'] ); ?>"
+                                            <?php endif; ?>
+
+                                             class="rating-image"
+                                             alt="<?php echo esc_attr( $image['alt'] ?? '' ); ?>"
+                                             loading="eager"
+                                             decoding="async"
+                                        >
                                     <?php endif; ?>
                                 <?php endwhile; ?>
                             </div>
@@ -94,9 +106,21 @@ if ( ! empty( $block['align'] ) ) {
                                 <?php while ( have_rows( 'compliance' ) ) : the_row(); ?>
                                     <div class="singe-badge">
                                         <?php $image = get_sub_field( 'image' ); ?>
-                                        <?php if ( $image ) : ?>
+                                        <?php if ( $image ) :
+                                            $dimensions = inhubber_get_image_dimensions( $image );
+                                            ?>
                                             <img src="<?php echo esc_url( $image['url'] ); ?>"
-                                                 alt="<?php echo esc_attr( $image['alt'] ); ?>" />
+
+                                                <?php if ( $dimensions['width'] && $dimensions['height'] ) : ?>
+                                                    width="<?php echo esc_attr( $dimensions['width'] ); ?>"
+                                                    height="<?php echo esc_attr( $dimensions['height'] ); ?>"
+                                                <?php endif; ?>
+
+                                                 class="rating-image"
+                                                 alt="<?php echo esc_attr( $image['alt'] ?? '' ); ?>"
+                                                 loading="eager"
+                                                 decoding="async"
+                                            >
                                         <?php endif; ?>
 
                                         <?php if (get_sub_field('text')) : ?>

@@ -118,7 +118,15 @@
                 <div class="top-header__wrapper">
                     <div class="top-header__left">
                         <div class="top-header__icon">
-                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/Video.svg" alt="Video">
+                            <?php
+                                $video_path = get_template_directory() . '/assets/img/Video.svg';
+                                $video_url  = get_template_directory_uri() . '/assets/img/Video.svg';
+                                $video_size = inhubber_get_svg_dimensions($video_path);
+                            ?>
+                            <img src="<?php echo esc_url($video_url); ?>"
+                                 width="<?php echo esc_attr($video_size['width']); ?>"
+                                 height="<?php echo esc_attr($video_size['height']); ?>"
+                                 alt="Video">
                         </div>
 
                         <div class="top-header__text">
@@ -165,11 +173,54 @@
         <div class="container">
             <div class="bottom-header__wrapper">
                 <div class="bottom-header__logo">
-                    <a href="<?php echo home_url() ?>">
+                    <a href="<?php echo trailingslashit( home_url() ) ?>">
                         <?php if (carbon_get_theme_option('crb_options_logo' . carbon_lang_prefix())): ?>
-                            <?php echo wp_get_attachment_image(carbon_get_theme_option('crb_options_logo' . carbon_lang_prefix()), 'full',); ?>
+                            <?php
+                                $logo_id = carbon_get_theme_option(
+                                    'crb_options_logo' . carbon_lang_prefix()
+                                );
+                            ?>
+
+                            <?php if ( $logo_id ) : ?>
+
+                                    <?php
+                                    $dimensions = inhubber_get_image_dimensions(
+                                        array(
+                                            'ID' => $logo_id,
+                                        )
+                                    );
+
+                                    $logo_url   = wp_get_attachment_url( $logo_id );
+                                    $logo_alt   = get_post_meta(
+                                        $logo_id,
+                                        '_wp_attachment_image_alt',
+                                        true
+                                    );
+                                  ?>
+
+                                <img src="<?php echo esc_url( $logo_url ); ?>"
+                                        width="<?php echo esc_attr( $dimensions['width'] ); ?>"
+                                        height="<?php echo esc_attr( $dimensions['height'] ); ?>"
+                                        class="header-logo-image"
+                                        alt="<?php echo esc_attr( $logo_alt ?: 'Inhubber' ); ?>"
+                                        loading="eager"
+                                        decoding="async"
+                                        fetchpriority="high"
+                                >
+                            <?php endif; ?>
+
                         <?php else: ?>
-                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/Logo.svg" alt="Logo">
+                                <img src="<?php echo esc_url(
+                                            get_template_directory_uri() . '/assets/img/Logo.svg'
+                                        ); ?>"
+                                        width="114"
+                                        height="20"
+                                        class="header-logo-image"
+                                        alt="Inhubber"
+                                        loading="eager"
+                                        decoding="async"
+                                        fetchpriority="high"
+                                >
                         <?php endif; ?>
                     </a>
                 </div>
@@ -249,7 +300,7 @@
                     <?php endif; ?>
                     <a href=""
                        onclick="Calendly.initPopupWidget({url: '<?php echo $calendar_link ?>' });return false;"
-                       class="btn-fill">
+                       class="btn-fill js-open-calendly">
                         <?php pll_e('Request a demo'); ?>
                     </a>
                 </div>
@@ -271,9 +322,25 @@
 
 
                 <div class="header__burger burger-header">
-                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/burger.svg" alt="burger"
+                    <?php
+                        $burger_path = get_template_directory() . '/assets/img/burger.svg';
+                        $burger_url  = get_template_directory_uri() . '/assets/img/burger.svg';
+                        $burger_size = inhubber_get_svg_dimensions($burger_path);
+                    ?>
+                    <img src="<?php echo esc_url($burger_url); ?>"
+                         width="<?php echo esc_attr($burger_size['width']); ?>"
+                         height="<?php echo esc_attr($burger_size['height']); ?>"
+                         alt="burger"
                          class="_burger">
-                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/close.svg" alt="close"
+                    <?php
+                        $close_path = get_template_directory() . '/assets/img/burger.svg';
+                        $close_url  = get_template_directory_uri() . '/assets/img/burger.svg';
+                        $close_size = inhubber_get_svg_dimensions($close_path);
+                    ?>
+                    <img src="<?php echo esc_url($close_url); ?>"
+                         width="<?php echo esc_attr($close_size['width']); ?>"
+                         height="<?php echo esc_attr($close_size['height']); ?>"
+                         alt="close"
                          class="_close">
                 </div>
             </div>

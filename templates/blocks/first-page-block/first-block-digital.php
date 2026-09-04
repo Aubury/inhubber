@@ -78,13 +78,22 @@ get_field( 'display_raiting_&_comppliance_badges' ) == 1
                     $images = array_values(array_filter(array_map(function($id){
                         $id  = (int) $id;
                         $url = wp_get_attachment_url($id);
+
                         if (!$url) return null;
 
+                        $dimensions = inhubber_get_image_dimensions(
+                            array(
+                                'ID' => $id,
+                            )
+                        );
                         return [
                             'id'    => $id,
                             'url'   => $url,
                             'alt'   => get_post_meta($id, '_wp_attachment_image_alt', true),
                             'title' => get_the_title($id),
+                            // Размеры изображения.
+                            'width'  => $dimensions['width'],
+                            'height' => $dimensions['height'],
                             // метаданные с размерами (thumbnail, medium, etc.)
                             'meta'  => wp_get_attachment_metadata($id),
                         ];
@@ -94,11 +103,17 @@ get_field( 'display_raiting_&_comppliance_badges' ) == 1
                     <div class="rating-row">
                         <?php
                         foreach ($images as $img) : ?>
+                            <img src="<?php echo esc_url( $img['url'] ); ?>"
 
-                            <?php
-                            echo '<img src="' . esc_url($img['url']) . '" alt="' . esc_attr($img['alt']) . '">';
-                            ?>
+                                <?php if ( $img['width'] && $img['height'] ) : ?>
+                                    width="<?php echo esc_attr( $img['width'] ); ?>"
+                                    height="<?php echo esc_attr( $img['height'] ); ?>"
+                                <?php endif; ?>
 
+                                 alt="<?php echo esc_attr( $img['alt'] ); ?>"
+                                 loading="eager"
+                                 decoding="async"
+                            >
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
@@ -113,11 +128,22 @@ get_field( 'display_raiting_&_comppliance_badges' ) == 1
                                         $id  = (int) $badge['crb_comppliance_imags'];
                                         $url = wp_get_attachment_url($id);
                                         if (!$url) return null;
+                                        $dimensions = inhubber_get_image_dimensions(
+                                            array(
+                                                'ID' => $id,
+                                            )
+                                        );
                                         ?>
 
                                         <img src="<?php echo esc_url( $url ); ?>"
-                                             alt="<?php echo 'Badge'; ?>" />
-
+                                            <?php if ( $img['width'] && $img['height'] ) : ?>
+                                                width="<?php echo esc_attr( $img['width'] ); ?>"
+                                                height="<?php echo esc_attr( $img['height'] ); ?>"
+                                            <?php endif; ?>
+                                             alt="<?php echo 'Badge'; ?>"
+                                             loading="eager"
+                                             decoding="async"
+                                        >
                                     <?php endif; ?>
 
                                     <?php if ($badge['crb_comppliance_text']) : ?>
@@ -141,7 +167,17 @@ get_field( 'display_raiting_&_comppliance_badges' ) == 1
             <?php $image = get_field( 'image' ); ?>
             <?php if ( $image ) : ?>
                 <div class="offer__images wow animate__animated animate__fadeInUp">
-                    <img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>" />
+                    <?php
+                    $dimensions = inhubber_get_image_dimensions(
+                        array(
+                            'ID' => $image['id'],
+                        )
+                    );
+                    ?>
+                    <img src="<?php echo esc_url( $image['url'] ); ?>"
+                         width="<?php echo esc_attr( $dimensions['width'] ); ?>"
+                         height="<?php echo esc_attr( $dimensions['height'] ); ?>"
+                         alt="<?php echo esc_attr( $image['alt'] ); ?>" />
                 </div>
             <?php endif; ?>
 
@@ -153,7 +189,17 @@ get_field( 'display_raiting_&_comppliance_badges' ) == 1
                         <?php get_sub_field( 'shadow_for_back_image' ) == 1 ? $shadow = 'img-box-shadow' : $shadow = ''; ?>
                         <?php if ( $back_image ) : ?>
                             <div class="offer__images-big <?php echo $shadow; ?>">
-                                <img src="<?php echo esc_url( $back_image['url'] ); ?>" alt="offer__images" />
+                                <?php
+                                $dimensionsBig = inhubber_get_image_dimensions(
+                                    array(
+                                        'ID' => $back_image['id'],
+                                    )
+                                );
+                                ?>
+                                <img src="<?php echo esc_url( $back_image['url'] ); ?>"
+                                     width="<?php echo esc_attr( $dimensionsBig['width'] ); ?>"
+                                     height="<?php echo esc_attr( $dimensionsBig['height'] ); ?>"
+                                     alt="offer__images" />
                             </div>
                         <?php endif; ?>
 

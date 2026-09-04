@@ -44,15 +44,91 @@ if (!empty($block['align'])) {
             <?php endif; ?>
         </div>
         <div class="security-offer__img">
-            <?php $image_block = get_field('image_block'); ?>
-            <?php if ($image_block) : ?>
-                <img src="<?php echo esc_url($image_block['url']); ?>"
-                     alt="<?php echo esc_attr($image_block['alt']); ?>"/>
-            <?php endif; ?>
-            <?php $image_block_mobi = get_field('image_block_mobi'); ?>
-            <?php if ($image_block_mobi) : ?>
-                <img class="_mobile" src="<?php echo esc_url($image_block_mobi['url']); ?>"
-                     alt="<?php echo esc_attr($image_block_mobi['alt']); ?>">
+            <?php
+            $image_block      = get_field('image_block');
+            $image_block_mobi = get_field('image_block_mobi');
+
+            /*
+             * Основное изображение для <img>.
+             * Если десктопного нет, используем мобильное.
+             */
+            $fallback_image = $image_block ?: $image_block_mobi;
+
+            if ($fallback_image) :
+                $desktop_id = !empty($fallback_image['ID'])
+                    ? (int) $fallback_image['ID']
+                    : (int) ($fallback_image['id'] ?? 0);
+
+                $mobile_id = !empty($image_block_mobi['ID'])
+                    ? (int) $image_block_mobi['ID']
+                    : (int) ($image_block_mobi['id'] ?? 0);
+
+                $desktop_dimensions = $desktop_id
+                    ? inhubber_get_image_dimensions([
+                        'ID' => $desktop_id,
+                    ])
+                    : [];
+
+                $mobile_dimensions = $mobile_id
+                    ? inhubber_get_image_dimensions([
+                        'ID' => $mobile_id,
+                    ])
+                    : [];
+
+                $image_alt = !empty($fallback_image['alt'])
+                    ? $fallback_image['alt']
+                    : (
+                    !empty($image_block_mobi['alt'])
+                        ? $image_block_mobi['alt']
+                        : 'Security offer'
+                    );
+                ?>
+
+                <picture class="security-offer__picture">
+
+                    <?php if ($image_block_mobi) : ?>
+                        <source
+                                media="(max-width: 576px)"
+                                srcset="<?php echo esc_url(
+                                    $image_block_mobi['url']
+                                ); ?>"
+                            <?php if (
+                                !empty($mobile_dimensions['width']) &&
+                                !empty($mobile_dimensions['height'])
+                            ) : ?>
+                                width="<?php echo esc_attr(
+                                    $mobile_dimensions['width']
+                                ); ?>"
+                                height="<?php echo esc_attr(
+                                    $mobile_dimensions['height']
+                                ); ?>"
+                            <?php endif; ?>
+                        >
+                    <?php endif; ?>
+
+                    <img
+                            src="<?php echo esc_url(
+                                $fallback_image['url']
+                            ); ?>"
+                        <?php if (
+                            !empty($desktop_dimensions['width']) &&
+                            !empty($desktop_dimensions['height'])
+                        ) : ?>
+                            width="<?php echo esc_attr(
+                                $desktop_dimensions['width']
+                            ); ?>"
+                            height="<?php echo esc_attr(
+                                $desktop_dimensions['height']
+                            ); ?>"
+                        <?php endif; ?>
+                            fetchpriority="high"
+                            loading="eager"
+                            decoding="async"
+                            alt="<?php echo esc_attr($image_alt); ?>"
+                    >
+
+                </picture>
+
             <?php endif; ?>
         </div>
     </div>

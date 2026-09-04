@@ -81,7 +81,19 @@ endif; ?>
                             <?php $image = get_sub_field( 'image' ); ?>
                             <?php if ( $image ) : ?>
                                 <div class="benefits-card-button">
-                                    <img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>" />
+                                    <?php
+                                        $dimensions = inhubber_get_image_dimensions(
+                                            array(
+                                                'ID' => $image['id'],
+                                            )
+                                        );
+                                    ?>
+                                    <img src="<?php echo esc_url( $image['url'] ); ?>"
+                                        <?php if ( $dimensions['width'] && $dimensions['height'] ) : ?>
+                                            width="<?php echo esc_attr( $dimensions['width'] ); ?>"
+                                            height="<?php echo esc_attr( $dimensions['height'] ); ?>"
+                                        <?php endif; ?>
+                                         alt="Benefits" />
 
                                     <?php if ( get_sub_field( 'link' ) ) : ?>
                                         <span class="benefits-card-link">

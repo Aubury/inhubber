@@ -17,7 +17,6 @@
 }
 .offer {
    padding: 120px 0;
-	margin: 108px 0 0 0;
 }
 .swiper-wrapper {
   position: relative;
@@ -238,7 +237,7 @@
 }
 
 .header {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
@@ -659,7 +658,6 @@
 }
 
 .offer {
-  margin: 108px 0px 0px 0px;
   padding: 120px 0px;
   background: -webkit-gradient(
     linear,
@@ -906,12 +904,12 @@
   justify-content: space-between;
 }
 
-.offer__trusted-image img {
-  max-width: 100%;
-  height: auto;
-  -o-object-fit: cover;
-  object-fit: cover;
-}
+/*.offer__trusted-image img {*/
+/*  max-width: 100%;*/
+/*  height: auto;*/
+/*  -o-object-fit: cover;*/
+/*  object-fit: cover;*/
+/*}*/
 
 .features {
   padding: 120px 0px;
@@ -2505,8 +2503,7 @@
 }
 
 .blog-offer {
-  margin: 114px 0px 0px 0px;
-  padding: 120px 0px;
+  padding: 120px 0;
 }
 
 .blog-offer h1 {
@@ -2714,8 +2711,7 @@
 }
 
 .single-offer {
-  margin: 114px 0px 0px 0px;
-  padding: 120px 0px;
+  padding: 120px 0;
 }
 
 .single-offer h1 {
@@ -3340,9 +3336,8 @@ background: transparent;
 }
 
 .security-offer {
-  padding: 120px 0 0px 0;
+  padding: 120px 0 0 0;
   background: #1b1b1f;
-  margin: 114px 0px 0px 0px;
 }
 .security-offer__header {
   display: flex;
@@ -3402,14 +3397,25 @@ background: transparent;
   height: auto;
   object-fit: cover;
 }
-.security-offer__img ._mobile {
-  display: none;
+
+.security-offer__picture {
+  display: block;
+  width: 100%;
 }
 
+.security-offer__picture img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.case-blog-mane-block .stories__slide-video {
+  height: auto !important;
+}
 @media screen and (max-width: 768px) {
   .security-offer {
-    padding: 80px 0px;
-    margin: 137px 0px 0px 0px;
+    padding: 80px 0;
   }
   .security-offer__header-label {
     font-size: 20px;
@@ -3445,12 +3451,6 @@ background: transparent;
   }
   .security-offer__img {
     margin-top: 48px;
-  }
-  .security-offer__img img {
-    display: none;
-  }
-  .security-offer__img ._mobile {
-    display: block;
   }
 }
 
@@ -3710,6 +3710,7 @@ background: transparent;
 
 .overwiew-offer .offer__header {
   max-width: 1000px;
+  width: 100%;
 }
 .overwiew-features .section-header {
   max-width: 1000px;
@@ -4938,6 +4939,10 @@ background: transparent;
     left: auto;
     right: 0;
   }
+
+  .container {
+    max-width: 100%;
+  }
 }
 
 @media screen and (max-width: 1230px) {
@@ -5136,14 +5141,6 @@ background: transparent;
     margin: 0px 80px 0 0;
   }
 
-  .blog-offer {
-    margin: 0px 0px 0px 0px;
-  }
-
-  .single-offer {
-    margin: 0px 0px 0px 0px;
-  }
-
   .events-content__wrapper {
     margin: 0px 0px 32px 0px;
   }
@@ -5239,7 +5236,6 @@ background: transparent;
 
   .offer {
     padding: 80px 0px;
-    margin: 137px 0px 0px 0px;
   }
 
   .offer__header h1 {
@@ -6034,7 +6030,8 @@ background: transparent;
   }
 
   .container {
-    padding: 0px 16px;
+    max-width: 100%;
+    padding: 0 16px;
   }
 
   .section-header a {
@@ -6064,9 +6061,6 @@ background: transparent;
 }
 
 @media screen and (max-width: 450px) {
-  .offer {
-    margin: 160px 0px 0px 0px;
-  }
 
   .offer__trusted-images {
     -webkit-box-pack: justify;
@@ -6228,7 +6222,7 @@ background: transparent;
   display: flex;
   align-items: center;
   gap: 16px;
-  max-height: 32px;
+  height: 32px;
   border-right: 1px solid #DEDEE0;
   padding-right: 24px;
 }
@@ -6236,6 +6230,7 @@ background: transparent;
 .rating-row img {
   max-height: 100%;
   width: auto;
+  min-width: 62px;
 }
 
 .compliance-row {
@@ -6245,6 +6240,10 @@ background: transparent;
   align-content: center;
   gap: 24px;
   flex-wrap: wrap;
+}
+
+.compliance-row img {
+  height: 40px;
 }
 
 .singe-badge {
@@ -6285,6 +6284,7 @@ background: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .banner-bg-img {
@@ -6300,6 +6300,8 @@ background: transparent;
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 0 48px 64px 0 rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  object-fit: contain;
 }
 
 .main-page-trusted {

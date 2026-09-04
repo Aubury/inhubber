@@ -25,8 +25,14 @@ if (!empty($block['className'])) {
 if (!empty($block['align'])) {
     $classes .= ' align' . $block['align'];
 }
+
+$id_home = pll_get_post(get_option('page_on_front'));
+get_field( 'display_raiting_&_comppliance_badges' ) == 1
+    ? $rating_class = 'rating-wrapper'
+    : $rating_class = '';
+
 ?>
-<section id="<?php echo esc_attr($id); ?>" class="offer customers-single-offer <?php echo esc_attr($classes); ?>">
+<section id="<?php echo esc_attr($id); ?>" class="offer customers-single-offer <?php echo esc_attr($classes); ?> <?php echo $rating_class ?>">
     <div class="container">
         <div class="offer__wrapper">
             <div class="offer__header full-width">
@@ -51,28 +57,103 @@ if (!empty($block['align'])) {
                 <?php endif; ?>
             </div>
         </div>
-
-        <div class="offer__rating">
-            <?php if (carbon_get_post_meta($id_home, 'crb_one_block_rating_stars')): ?>
-                <div class="offer__rating-show">
-                    <div class="offer__rating-stars">
-                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/Stars.svg"
-                             alt="Stars">
-                    </div>
-                    <div class="offer__rating-tex">
-                        <?php echo carbon_get_post_meta($id_home, 'crb_one_block_rating_stars'); ?>
-                    </div>
-                </div>
-            <?php endif; ?>
-            <?php if ($crb_one_block_gallery = carbon_get_post_meta($id_home, 'crb_one_block_gallery')): ?>
-                <div class="offer__rating-logo">
-                    <?php foreach ($crb_one_block_gallery as $image): ?>
-                        <div class="offer__rating-item 3">
-                            <?php echo wp_get_attachment_image($image, 'full',); ?>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            <?php endif; ?>
-        </div>
     </div>
+
+    <?php if ( get_field( 'display_raiting_&_comppliance_badges' ) == 1 ) : ?>
+        <div class="container">
+            <div class="rating-compliance_badges">
+                <?php if ($crb_raiting_gallery = carbon_get_post_meta($id_home, 'crb_raiting_gallery')): ?>
+
+                    <?php
+                    $ids = carbon_get_post_meta($id_home, 'crb_raiting_gallery') ?: [];
+
+                    $images = array_values(array_filter(array_map(function($id){
+                        $id  = (int) $id;
+                        $url = wp_get_attachment_url($id);
+                        if (!$url) return null;
+
+                        $dimensions = inhubber_get_image_dimensions(
+                            array(
+                                'ID' => $id,
+                            )
+                        );
+
+                        return [
+                            'id'    => $id,
+                            'url'   => $url,
+                            'alt'   => get_post_meta($id, '_wp_attachment_image_alt', true),
+                            'title' => get_the_title($id),
+                            // Размеры изображения.
+                            'width'  => $dimensions['width'],
+                            'height' => $dimensions['height'],
+                            // метаданные с размерами (thumbnail, medium, etc.)
+                            'meta'  => wp_get_attachment_metadata($id),
+                        ];
+                    }, $ids)));
+
+                    ?>
+                    <div class="rating-row">
+                        <?php
+                        foreach ($images as $img) : ?>
+                            <img src="<?php echo esc_url( $img['url'] ); ?>"
+
+                                <?php if ( $img['width'] && $img['height'] ) : ?>
+                                    width="<?php echo esc_attr( $img['width'] ); ?>"
+                                    height="<?php echo esc_attr( $img['height'] ); ?>"
+                                <?php endif; ?>
+
+                                 alt="<?php echo esc_attr( $img['alt'] ); ?>"
+                                 loading="eager"
+                                 decoding="async"
+                            >
+
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($crb_comppliance_badges = carbon_get_post_meta($id_home, 'crb_comppliance_badges')): ?>
+                    <div class="compliance-row">
+                        <?php foreach ($crb_comppliance_badges as $badge) : ?>
+                            <?php if ($badge) : ?>
+                                <?php $badge['crb_comppliance_text'] ? $compliance_class = '' : $compliance_class = 'compliance_none_text' ?>
+                                <div class="singe-badge <?php echo $compliance_class ?>">
+                                    <?php if ($badge['crb_comppliance_imags']) :
+                                        $id  = (int) $badge['crb_comppliance_imags'];
+                                        $url = wp_get_attachment_url($id);
+
+                                        if (!$url) return null;
+
+                                        $dimensions = inhubber_get_image_dimensions(
+                                            array(
+                                                'ID' => $id,
+                                            )
+                                        );
+                                        ?>
+
+                                        <img src="<?php echo esc_url( $url ); ?>"
+                                            <?php if ( $dimensions['width'] && $dimensions['height'] ) : ?>
+                                                width="<?php echo esc_attr( $dimensions['width'] ); ?>"
+                                                height="<?php echo esc_attr( $dimensions['height'] ); ?>"
+                                            <?php endif; ?>
+                                             alt="<?php echo 'Badge'; ?>"
+                                             loading="eager"
+                                             decoding="async"
+                                        >
+                                    <?php endif; ?>
+
+                                    <?php if ($badge['crb_comppliance_text']) : ?>
+                                        <div class="singe-badge-text">
+                                            <?php echo $badge['crb_comppliance_text']; ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php else : ?>
+        <?php // echo 'false'; ?>
+    <?php endif; ?>
 </section>

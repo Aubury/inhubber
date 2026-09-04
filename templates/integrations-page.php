@@ -140,7 +140,7 @@ if (have_posts()) {
                     <?php if ($crb_integrations_text_link = carbon_get_post_meta($post->ID, 'crb_integrations_text_link')): ?>
                         <a href=""
                            onclick="Calendly.initPopupWidget({url: '<?php echo  carbon_get_theme_option('crb_options_menu_request' . carbon_lang_prefix()); ?>' });return false;"
-                           class="contracts__btn btn-fill">
+                           class="contracts__btn btn-fill js-open-calendly">
                             <?php pll_e('Request a demo'); ?>
                         </a>
                     <?php endif; ?>
