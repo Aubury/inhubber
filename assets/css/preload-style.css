@@ -24,10 +24,7 @@ section {
 }
 
 .top-header {
-    min-width: 100vw;
-    width: 100%;
-    height: auto;
-    padding: 12px 0;
+    padding: 12px 0px;
     background: -webkit-gradient(
             linear,
             left top,
@@ -625,7 +622,6 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
 }
 
 .banner-bg-img {
@@ -641,8 +637,6 @@ section {
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow: 0 48px 64px 0 rgba(0, 0, 0, 0.12);
-    overflow: hidden;
-    object-fit: contain;
 }
 
 .main-page-trusted {
@@ -1955,10 +1949,6 @@ section {
 }
 
 @media screen and (max-width: 576px) {
-    .top-header {
-        min-height: 72px;
-    }
-
     .top-header__right {
         padding: 5px 0 5px 16px;
     }

@@ -2,10 +2,11 @@
 
 get_header();
 $cat = get_the_terms(get_the_ID(), 'category');
+$authors = carbon_get_post_meta(get_the_ID(), 'crb_author_blog');
 
 if ( have_posts()) :
    while (have_posts()) : the_post(); ?>
-      <section class="single-offer case-blog">
+      <section class="single-offer case-blog 2">
           <div class="container">
               <div class="single-offer__wrapper">
 

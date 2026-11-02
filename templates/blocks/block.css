@@ -6284,7 +6284,6 @@ background: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 }
 
 .banner-bg-img {
@@ -6300,8 +6299,6 @@ background: transparent;
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 0 48px 64px 0 rgba(0, 0, 0, 0.12);
-  overflow: hidden;
-  object-fit: contain;
 }
 
 .main-page-trusted {

@@ -29,19 +29,6 @@ $id_home = pll_get_post(get_option('page_on_front'));
 $language = function_exists('pll_current_language') ? pll_current_language() : 'en';
 
 $banner_image = get_field( 'banner_image' );
-$banner_image_loading = wp_get_attachment_image(
-    $banner_image,
-    'full',
-    false,
-    array(
-        'class'         => 'banner-bg-img__image',
-        'alt'           => '',
-        'loading'       => 'eager',
-        'fetchpriority' => 'high',
-        'decoding'      => 'async',
-        'aria-hidden'   => 'true',
-    ));
-
 ?>
 
 <link
@@ -185,39 +172,10 @@ $banner_image_loading = wp_get_attachment_image(
     </div>
 
     <?php if ( $banner_image ) : ?>
-        <?php
-            $image_id = $banner_image['ID'] ?? $banner_image['id'] ?? 0;
-        ?>
         <div class="banner-wrap-container">
             <div class="banner-wrap">
-                <div class="banner-bg-img">
-                    <?php if ( $image_id ) : ?>
-                        <?php echo wp_get_attachment_image(
-                            $image_id,
-                            'full',
-                            false,
-                            array(
-                                'class'         => 'banner-bg-img__image',
-                                'alt'           => '',
-                                'loading'       => 'eager',
-                                'fetchpriority' => 'high',
-                                'decoding'      => 'async',
-                                'aria-hidden'   => 'true',
-                            )
-                        ); ?>
-                    <?php else : ?>
-                        <img
-                                class="banner-bg-img__image"
-                                src="<?php echo esc_url( $banner_image['url'] ); ?>"
-                                width="<?php echo esc_attr( $banner_image['width'] ); ?>"
-                                height="<?php echo esc_attr( $banner_image['height'] ); ?>"
-                                alt=""
-                                loading="eager"
-                                fetchpriority="high"
-                                decoding="async"
-                                aria-hidden="true"
-                        >
-                    <?php endif; ?>
+                <div class="banner-bg-img"
+                     style="background-image: url('<?php echo esc_url( $banner_image['url'] ); ?>');">
                 </div>
             </div>
         </div>

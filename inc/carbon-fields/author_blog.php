@@ -8,8 +8,8 @@ function crb_author_blog() {
 
     Container::make( 'post_meta', __('Author Blog','inhubber') )
         ->where( 'post_term', '=', array(
-            'field' => 'slug',
-            'value' => 'news',
+            'field' => 'term_id',
+            'value' => 18,
             'taxonomy' => 'category',
         ))
         ->add_fields( array(
@@ -32,8 +32,8 @@ function crb_author_blog() {
 
     Container::make( 'post_meta', __('Author Blog','inhubber') )
         ->where( 'post_term', '=', array(
-            'field' => 'slug',
-            'value' => 'nachrichten',
+            'field' => 'term_id',
+            'value' => 8,
             'taxonomy' => 'category',
         ))
         ->add_fields( array(

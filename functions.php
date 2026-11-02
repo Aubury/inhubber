@@ -253,15 +253,17 @@ add_filter('template_include', function ($template) {
 	return $template;
 });
 
-if( function_exists('acf_add_options_page') ) {
-  acf_add_options_page(array(
-      'page_title'    => 'ACF Global Settings',
-      'menu_title'    => 'ACF Global Settings',
-      'menu_slug'     => 'global-settings',
-      'capability'    => 'edit_posts',
-      'redirect'      => false
-  ));
-}
+add_action('acf/init', function () {
+    if (function_exists('acf_add_options_page')) {
+        acf_add_options_page([
+            'page_title' => 'ACF Global Settings',
+            'menu_title' => 'ACF Global Settings',
+            'menu_slug'  => 'global-settings',
+            'capability' => 'edit_posts',
+            'redirect'   => false,
+        ]);
+    }
+});
 
 
 ////////////////////////////////////////////

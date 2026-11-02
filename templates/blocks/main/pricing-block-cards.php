@@ -116,7 +116,7 @@ if ( ! empty( $block['align'] ) ) {
 
                                    <a href="<?php echo esc_url( $url ); ?>"
                                       onclick="<?php echo esc_attr( $onclick ); ?>"
-                                      class="btn-fill full-width <?php echo esc_attr( $class ); ?> js-open-calendly">
+                                      class="btn-fill full-width <?php echo esc_attr( $class ); ?>">
                                        <?php echo esc_html( $button['title'] ); ?>
                                    </a>
 

@@ -233,7 +233,13 @@ function inhubber_scripts() {
 
     foreach ($assets as $key => $asset) {
         if ($asset['type'] === 'script') {
-            wp_enqueue_script($key, $asset['uri'], [], $versions[$key], $asset['in_footer']);
+            wp_enqueue_script(
+                $key,
+                $asset['uri'],
+                $asset['deps'] ?? [],
+                $versions[$key],
+                $asset['in_footer'] ?? true
+            );
         }
         if ($asset['type'] === 'style') {
             wp_enqueue_style($key, $asset['uri'], [], $versions[$key]);
@@ -276,7 +282,6 @@ add_action( 'wp_head', function () {
             href="<?php echo esc_url( $style_url ); ?>"
             as="style"
     >
-    
     <?php
 }, 1 );
 
