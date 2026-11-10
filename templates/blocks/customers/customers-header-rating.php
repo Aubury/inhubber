@@ -36,11 +36,47 @@ get_field( 'display_raiting_&_comppliance_badges' ) == 1
     <div class="container">
         <div class="offer__wrapper">
             <div class="offer__header full-width">
-                <?php if (get_field('over_title')) : ?>
-                    <h4 class="section-header__overtitle wow animate__animated animate__fadeInUp">
-                        <?php the_field( 'over_title' ); ?>
-                    </h4>
+
+                <?php $display_badge_or_over_title = get_field( 'display_badge_or_over_title' );  ?>
+
+                <?php if ( $display_badge_or_over_title === 'Over title' ) : ?>
+                    <?php if (get_field('over_title')) : ?>
+                        <h4 class="section-header__overtitle wow animate__animated animate__fadeInUp">
+                            <?php the_field( 'over_title' ); ?>
+                        </h4>
+                    <?php endif; ?>
+                <?php else : ?>
+
+                    <?php if ( have_rows( 'badge_number_one' ) ) : ?>
+                        <?php while ( have_rows( 'badge_number_one' ) ) : the_row(); ?>
+                            <div class="over_title_badge" style="margin-bottom: 24px;">
+                                <?php $image = get_sub_field( 'image' ); ?>
+                                <?php if ( $image ) : ?>
+
+                                    <img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>" />
+
+                                <?php endif; ?>
+
+                                <div class="desktop-display">
+                                    <?php the_sub_field( 'text' ); ?>
+                                </div>
+
+                                <div class="table-display">
+                                    <?php the_sub_field( 'text_for_mobile' ); ?>
+                                </div>
+
+                                <?php $company_image = get_sub_field( 'company_image' ); ?>
+                                <?php if ( $company_image ) : ?>
+                                    <div class="company-image-badge-block">
+                                        <img src="<?php echo esc_url( $company_image['url'] ); ?>" alt="<?php echo esc_attr( $company_image['alt'] ); ?>" />
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
+
                 <?php endif; ?>
+
                 <h1>
                     <?php the_field( 'title' ); ?>
                 </h1>

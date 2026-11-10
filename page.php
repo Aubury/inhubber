@@ -26,6 +26,11 @@ $glossary_pages_link = $lang === 'en' ? get_the_permalink(2794) : get_the_permal
 $glossary_cat_id = get_cat_ID('glossary');
 $glossary_category = get_category($glossary_cat_id);
 
+/** FAQ */
+$faq_pages_link = $lang === 'en' ? get_the_permalink(1772) : get_the_permalink(1683);
+$faq_cat_id = get_cat_ID('faq');
+$faq_category = get_category($faq_cat_id);
+
 if (get_the_ID() === 124 || get_the_ID() === 1237 || $post_slug === 'blog' || $post_slug === 'blog-2') { // 124
     ?>
     <section class="blog-offer 1">
@@ -62,7 +67,7 @@ if (get_the_ID() === 124 || get_the_ID() === 1237 || $post_slug === 'blog' || $p
                         'taxonomy' => 'category',
                         'hide_empty' => true,
                         'orderby' => 'id',
-                        'exclude'    => [$case_studies_cat_id, $news_cat_id, $blog_cat_id, $glossary_cat_id]
+                        'exclude'    => [$case_studies_cat_id, $news_cat_id, $blog_cat_id, $glossary_cat_id, $faq_cat_id]
                     ]);
                     ?>
                     <?php if ($terms): ?>
@@ -83,12 +88,24 @@ if (get_the_ID() === 124 || get_the_ID() === 1237 || $post_slug === 'blog' || $p
         </div>
     </section>
     <?php
+    $excluded_categories = array_values(
+        array_filter([
+            (int) $glossary_cat_id,
+            (int) $faq_cat_id,
+        ])
+    );
+
+
     $args = array(
-        'post_type' => 'post',
-        'post_status' => 'publish',
-        'order' => 'DESC',
-        'orderby' => 'date',
-        'cat'         => '-' . $glossary_cat_id, // Именно так: минус перед ID
+        'post_type'           => 'post',
+        'post_status'         => 'publish',
+        'posts_per_page'      => (int) get_option('posts_per_page', 10),
+        'paged'              => 1,
+        'order'              => 'DESC',
+        'orderby'            => 'date',
+        'category__not_in'   => $excluded_categories,
+        'lang'               => $lang,
+        'ignore_sticky_posts' => true,
     );
 
 
@@ -99,11 +116,11 @@ if (get_the_ID() === 124 || get_the_ID() === 1237 || $post_slug === 'blog' || $p
             <div class="container">
                 <div class="blog-content__content">
                     <div class="blog-content__items" id="blog-content__items">
-                        <?php while ($query->have_posts()) : $query->the_post(); ?>
-                            <?php if (has_category('glossary', $id)) :
-                                continue; // Пропустить пост, если у него есть категория glossary
-                            endif; ?>
-                            <?php get_template_part('templates/post-block/blog'); ?>
+                        <?php while ($query->have_posts()) : ?>
+                            <?php
+                            $query->the_post();
+                            get_template_part('templates/post-block/blog');
+                            ?>
                         <?php endwhile; ?>
                     </div>
                     <?php

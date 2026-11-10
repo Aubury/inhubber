@@ -55,8 +55,7 @@
 	text-overflow: ellipsis;
 }
 
-.cf-file__browse.button {
-	@include cf-button-chrome;
+.cf-file__browse {
 	position: relative;
 
 	.cf-file__content ~ & {

@@ -35,8 +35,7 @@ module.exports = [
 			path: paths.gutenbergBuildPath
 		},
 		externals: Object.assign( {}, wpPackages.externals, {
-			'lodash': [ 'lodash' ],
-			'@wordpress/components': [ 'wp', 'components' ]
+			'lodash': [ 'lodash' ]
 		} )
 	} ),
 	merge( base, config, {
@@ -44,8 +43,7 @@ module.exports = [
 			path: paths.classicBuildPath
 		},
 		externals: Object.assign( {}, wpPackages.proxyExternals, {
-			'lodash': [ 'cf', 'vendor', 'lodash' ],
-			'@wordpress/components': [ 'cf', 'vendor', '@wordpress/components' ]
+			'lodash': [ 'cf', 'vendor', 'lodash' ]
 		} ),
 		plugins: [
 			new webpack.ProvidePlugin( {

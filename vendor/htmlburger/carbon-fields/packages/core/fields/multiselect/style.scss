@@ -12,7 +12,7 @@
 
 	&--is-focused,
 	&--is-focused:hover {
-		border-color: $wp-admin-theme-color !important;
+		border-color: $wp-color-medium-blue !important;
 		box-shadow: none;
 	}
 }
@@ -69,7 +69,7 @@
 	padding: $size-base;
 
 	&--is-focused {
-		background-color: $wp-admin-theme-color;
+		background-color: $wp-color-medium-blue;
 		color: $color-white;
 	}
 }

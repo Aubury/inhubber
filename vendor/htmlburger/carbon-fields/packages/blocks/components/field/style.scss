@@ -3,8 +3,7 @@
    ========================================================================== */
 
 .cf-field {
-	.block-editor &,
-	.editor-styles-wrapper & {
+	.block-editor & {
 		font-family: $wp-font;
 		font-size: $wp-font-size;
 		line-height: $wp-line-height;
@@ -21,8 +20,7 @@
 		padding: $size-base 0 0;
 	}
 
-	.block-editor .cf-complex &,
-	.editor-styles-wrapper .cf-complex & {
+	.block-editor .cf-complex & {
 		border-width: 1px 1px 0 0;
 		border-style: solid;
 		border-color: $wp-color-gray-light-500;
@@ -38,8 +36,7 @@
 	font-weight: 600;
 	color: $wp-color-dark-gray;
 
-	.block-editor &,
-	.editor-styles-wrapper & {
+	.block-editor & {
 		margin-bottom: 4px;
 	}
 

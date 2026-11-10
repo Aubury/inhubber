@@ -9,9 +9,8 @@
 		margin-top: $size-base;
 	}
 
-	.block-editor .cf-oembed:focus-within &,
-	.editor-styles-wrapper .cf-oembed:focus-within & {
-		border-color: $wp-admin-theme-color;
+	.block-editor .cf-oembed:focus-within & {
+		border-color: $wp-color-medium-blue;
 	}
 }
 

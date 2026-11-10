@@ -44,6 +44,11 @@ $glossary_pages_link = $lang === 'en' ? get_the_permalink(2794) : get_the_permal
 $glossary_cat_id = get_cat_ID('glossary');
 $glossary_category = get_category($glossary_cat_id);
 
+/** FAQ */
+$faq_pages_link = $lang === 'en' ? get_the_permalink(1772) : get_the_permalink(1683);
+$faq_cat_id = get_cat_ID('faq');
+$faq_category = get_category($faq_cat_id);
+
 ?>
 
 <section class="blog-offer">
@@ -76,7 +81,7 @@ $glossary_category = get_category($glossary_cat_id);
                     'taxonomy' => 'category',
                     'hide_empty' => true,
                     'orderby' => 'id',
-                    'exclude'    => [$current_cat_id, $case_studies_cat_id, $blog_cat_id, $glossary_cat_id]
+                    'exclude'    => [$current_cat_id, $case_studies_cat_id, $blog_cat_id, $glossary_cat_id, $faq_cat_id]
                 ]);
                 ?>
                 <?php if ($terms): ?>

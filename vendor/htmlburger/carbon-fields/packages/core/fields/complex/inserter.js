@@ -1,20 +1,10 @@
 /**
  * External dependencies.
  */
-import { createRef, Component } from '@wordpress/element';
+import onClickOutside from 'react-onclickoutside';
+import { Component } from '@wordpress/element';
 
 class ComplexInserter extends Component {
-	/**
-	 * Define the project base properties
-	 *
-	 * @return {void}
-	 */
-	constructor() {
-		super();
-
-		this.node = createRef();
-	}
-
 	/**
 	 * Local state.
 	 *
@@ -25,41 +15,14 @@ class ComplexInserter extends Component {
 	};
 
 	/**
-	 * Lifecycle hook.
-	 *
-	 * @param  {Object} prevProps
-	 * @param  {Object} prevState
-	 * @return {void}
-	 */
-	componentDidUpdate( prevProps, prevState ) {
-		if ( this.state.menuVisible && ! prevState.menuVisible ) {
-			this.node.current.ownerDocument.addEventListener( 'mousedown', this.handleOutsideClick, true );
-		} else if ( ! this.state.menuVisible && prevState.menuVisible ) {
-			this.node.current.ownerDocument.removeEventListener( 'mousedown', this.handleOutsideClick, true );
-		}
-	}
-
-	/**
-	 * Lifecycle hook.
+	 * Handles the click outside the main element.
 	 *
 	 * @return {void}
 	 */
-	componentWillUnmount() {
-		if ( this.state.menuVisible ) {
-			this.node.current.ownerDocument.removeEventListener( 'mousedown', this.handleOutsideClick, true );
-		}
-	}
-
-	/**
-	 * Closes the menu when clicking outside of it.
-	 *
-	 * @param  {Object} event
-	 * @return {void}
-	 */
-	handleOutsideClick = ( event ) => {
-		if ( this.node.current && ! this.node.current.contains( event.target ) ) {
-			this.setState( { menuVisible: false } );
-		}
+	handleClickOutside = () => {
+		this.setState( {
+			menuVisible: false
+		} );
 	}
 
 	/**
@@ -102,7 +65,7 @@ class ComplexInserter extends Component {
 		const { buttonText, groups } = this.props;
 
 		return (
-			<div className="cf-complex__inserter" ref={ this.node }>
+			<div className="cf-complex__inserter">
 				<button type="button" className="button cf-complex__inserter-button" onClick={ this.handleAddClick }>
 					{ buttonText }
 				</button>
@@ -125,4 +88,4 @@ class ComplexInserter extends Component {
 	}
 }
 
-export default ComplexInserter;
+export default onClickOutside( ComplexInserter );

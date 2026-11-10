@@ -2,10 +2,17 @@
  * External dependencies.
  */
 import { Component } from '@wordpress/element';
-import { Popover } from '@wordpress/components';
 import { SketchPicker } from 'react-color';
+import onClickOutside from 'react-onclickoutside';
 
 class Picker extends Component {
+	/**
+	 * Handles the click outside the main element.
+	 *
+	 * @return {void}
+	 */
+	handleClickOutside = () => this.props.onClose()
+
 	/**
 	 * Render the component.
 	 *
@@ -13,7 +20,6 @@ class Picker extends Component {
 	 */
 	render() {
 		const {
-			anchor,
 			color,
 			onChange,
 			disableAlpha,
@@ -21,24 +27,16 @@ class Picker extends Component {
 		} = this.props;
 
 		return (
-			<Popover
-				className="cf-color__picker"
-				anchor={ anchor }
-				placement="bottom-start"
-				focusOnMount={ false }
-				noArrow
-			>
-				<div id="carbon-color-picker-wrapper">
-					<SketchPicker
-						color={ color }
-						onChange={ onChange }
-						disableAlpha={ disableAlpha }
-						presetColors={ presetColors }
-					/>
-				</div>
-			</Popover>
+			<div id="carbon-color-picker-wrapper" className="cf-color__picker">
+				<SketchPicker
+					color={ color }
+					onChange={ onChange }
+					disableAlpha={ disableAlpha }
+					presetColors={ presetColors }
+				/>
+			</div>
 		);
 	}
 }
 
-export default Picker;
+export default onClickOutside( Picker );

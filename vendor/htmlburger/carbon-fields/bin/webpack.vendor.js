@@ -27,7 +27,6 @@ module.exports = [
 			'react': 'React',
 			'react-dom': 'ReactDOM',
 			'jquery': 'jQuery',
-			'@wordpress/components': [ 'wp', 'components' ]
 		} )
 	} ),
 	merge( base, config, {

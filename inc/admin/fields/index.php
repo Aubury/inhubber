@@ -1,7 +1,7 @@
 <?php
 
 // 1. Настройка пути к ACF
-//add_filter('acf/settings/path', 'my_acf_settings_path');
+add_filter('acf/settings/path', 'my_acf_settings_path'); 
 function my_acf_settings_path( $path ) { 
     // обновить путь
     $path = get_stylesheet_directory() . '/inc/admin/fields/acf/';    
@@ -12,7 +12,7 @@ function my_acf_settings_path( $path ) {
  
 
 // 2. Настройка пути до настроек
-//add_filter('acf/settings/dir', 'my_acf_settings_dir');
+add_filter('acf/settings/dir', 'my_acf_settings_dir');
  
 function my_acf_settings_dir( $dir ) { 
     // обновить путь
@@ -27,16 +27,4 @@ function my_acf_settings_dir( $dir ) {
 // add_filter('acf/settings/show_admin', '__return_false');
 
 // 4. Подключить ACF
-//include_once( get_stylesheet_directory() . '/inc/admin/fields/acf/acf.php' );
-
-add_action( 'after_setup_theme', 'my_theme_editor_styles' );
-function my_theme_editor_styles(): void
-{
-    // Включаем поддержку стилей редактора
-    add_theme_support( 'editor-styles' );
-
-    if ( class_exists('acf')) {
-        add_editor_style( 'templates/blocks/block.css' );
-    }
-
-}
+include_once( get_stylesheet_directory() . '/inc/admin/fields/acf/acf.php' );

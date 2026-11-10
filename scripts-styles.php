@@ -233,13 +233,7 @@ function inhubber_scripts() {
 
     foreach ($assets as $key => $asset) {
         if ($asset['type'] === 'script') {
-            wp_enqueue_script(
-                $key,
-                $asset['uri'],
-                $asset['deps'] ?? [],
-                $versions[$key],
-                $asset['in_footer'] ?? true
-            );
+            wp_enqueue_script($key, $asset['uri'], [], $versions[$key], $asset['in_footer']);
         }
         if ($asset['type'] === 'style') {
             wp_enqueue_style($key, $asset['uri'], [], $versions[$key]);

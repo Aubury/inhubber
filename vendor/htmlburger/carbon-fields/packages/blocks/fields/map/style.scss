@@ -9,8 +9,7 @@
 		margin-top: $size-base;
 	}
 
-	.block-editor .cf-map__search:focus-within ~ &,
-	.editor-styles-wrapper .cf-map__search:focus-within ~ & {
-		border-color: $wp-admin-theme-color;
+	.block-editor .cf-map__search:focus-within ~ & {
+		border-color: $wp-color-medium-blue;
 	}
 }

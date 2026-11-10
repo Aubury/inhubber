@@ -7324,6 +7324,41 @@ background: transparent;
   margin: 0;
 }
 
+.over_title_badge {
+  display: flex;
+  padding: 6px 16px 6px  8px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  border-radius: 999px;
+  border: 1px solid #F3F2F5;
+  background: #FFF;
+
+  /* Key visuals */
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.08);
+
+  color:  #1B1B1F;
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+}
+
+.company-image-badge-block {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  object-fit: contain;
+}
+
+.company-image-badge-block img {
+  width: auto;
+  height: 12px;
+}
+
 @media screen and (max-width: 1281px) {
   .block-main-page-security-compliance {
     padding: 120px 0;
@@ -7467,6 +7502,16 @@ background: transparent;
 
   .contracts-with-rating-badges-wrap .main-title-block-container {
     padding: 80px;
+  }
+
+  .over_title_badge {
+    font-size: 14px;
+    line-height: 20px; /* 142.857% */
+  }
+
+  .over_title_badge img {
+    max-height: 20px;
+    width: auto;
   }
 }
 
