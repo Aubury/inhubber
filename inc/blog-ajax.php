@@ -54,7 +54,11 @@ function blog_loadmore_ajax_handler()
             'order'       => 'DESC',
             'orderby'     => 'date',
             'paged'       => $_POST['page'] + 1,
-            'cat'         => '-' . $glossary_cat_id, // Именно так: минус перед ID
+            'category__not_in' => array_values(array_filter([
+                (int) $glossary_cat_id,
+                1772, // FAQ — English
+                1683, // FAQ — Deutsch
+            ])),
         );
     } else {
         $args = array(

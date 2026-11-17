@@ -4940,6 +4940,10 @@ background: transparent;
     right: 0;
   }
 
+  #bottom-header__btn {
+    display: none !important;
+  }
+
   .container {
     max-width: 100%;
   }
@@ -5001,6 +5005,12 @@ background: transparent;
 }
 
 @media screen and (max-width: 1050px) {
+  .burger-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
   .bottom-header__logo {
     margin: 0px 28px 0px 0px;
   }

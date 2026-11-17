@@ -259,7 +259,7 @@
 
                     ?>
 
-                <div class="bottom-header__btns table-xl-display-none">
+                <div class="bottom-header__btns">
                     <div class="language">
                         <div class="langeage__btn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -290,7 +290,7 @@
                 </div>
 
 
-                <div id="bottom-header__btn" class="bottom-header__btns table-xl-display-none">
+                <div id="bottom-header__btn" class="bottom-header__btns bottom-header__btns-second">
                     <?php if (!empty(carbon_get_theme_option('crb_options_header_button_link' . carbon_lang_prefix()))) : ?>
                         <a class="btn button_header_border"
                            href="<?php echo carbon_get_theme_option('crb_options_header_button_link' . carbon_lang_prefix()) ?>"
