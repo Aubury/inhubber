@@ -123,6 +123,7 @@ $faq_category = get_category($faq_cat_id);
     </section>
 
     <script>
+        let step = 10;
 
         function showMore() {
             let cards = document.querySelectorAll(".blog-content__item.hidden");
@@ -134,8 +135,8 @@ $faq_category = get_category($faq_cat_id);
         document.addEventListener("DOMContentLoaded", function() {
 
             let cards = document.querySelectorAll(".blog-content__item");
-            if (cards.length > 4) {
-                for (let i = 4; i < cards.length; i++) {
+            if (cards.length > step) {
+                for (let i = step; i < cards.length; i++) {
                     cards[i].classList.add("hidden");
                 }
                 document.getElementById("loadMore").classList.remove("hidden");

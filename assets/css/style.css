@@ -7132,7 +7132,8 @@ td.bg-gray {
   display: none;
 }
 
-#loadMore {
+#loadMore,
+#blog_loadmore {
   background-color: #ffffff;
   padding: 12px 24px;
   border: 1px solid #ABA9B8;
