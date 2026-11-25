@@ -7396,6 +7396,24 @@ background: transparent;
     background-position: left top;
   }
 
+  .over_title_badge .desktop-display {
+    display: none;
+  }
+
+  .over_title_badge .table-display {
+    display: block;
+  }
+
+  .over_title_badge {
+    font-size: 14px;
+    line-height: 20px; /* 142.857% */
+  }
+
+  .over_title_badge img {
+    max-height: 20px;
+    width: auto;
+  }
+
   .stories-image-wrap {
     width: 400px;
   }
@@ -7512,16 +7530,6 @@ background: transparent;
 
   .contracts-with-rating-badges-wrap .main-title-block-container {
     padding: 80px;
-  }
-
-  .over_title_badge {
-    font-size: 14px;
-    line-height: 20px; /* 142.857% */
-  }
-
-  .over_title_badge img {
-    max-height: 20px;
-    width: auto;
   }
 }
 
