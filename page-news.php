@@ -123,7 +123,7 @@ $faq_category = get_category($faq_cat_id);
     </section>
 
     <script>
-        let step = 10;
+        let step = 20;
 
         function showMore() {
             let cards = document.querySelectorAll(".blog-content__item.hidden");

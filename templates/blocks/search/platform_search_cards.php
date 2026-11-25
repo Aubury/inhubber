@@ -122,12 +122,13 @@ if ( ! empty( $block['align'] ) ) {
 </section>
 
 <script>
+    let step = 20;
 
     document.addEventListener("DOMContentLoaded", function() {
 
         let cards = document.querySelectorAll(".card");
-        if (cards.length > 6) {
-            for (let i = 6; i < cards.length; i++) {
+        if (cards.length > step) {
+            for (let i = step; i < cards.length; i++) {
                 cards[i].classList.add("hidden");
             }
             document.getElementById("loadMore").classList.remove("hidden");
@@ -163,8 +164,8 @@ if ( ! empty( $block['align'] ) ) {
     function showMore() {
         let _cards = document.querySelectorAll(".card.hidden");
 
-        if (_cards.length > 6) {
-            for (let i = 0; i < 6; i++) {
+        if (_cards.length > step) {
+            for (let i = 0; i < step; i++) {
                 _cards[i].classList.remove("hidden");
             }
         } else {
